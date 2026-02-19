@@ -1,0 +1,200 @@
+/* === RESET === */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === PAGE === */
+:root {
+  --paper: #f0ece4;
+  --ink: #1a1a1a;
+  --red: #c41e1e;
+  --grey: #6b6560;
+  --rule: #1a1a1a;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === RULES === */
+.rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0.75rem 0;
+}
+
+.rule.thick {
+  border-top-width: 3px;
+}
+
+/* === HEADER === */
+header {
+  margin-bottom: 1.5rem;
+}
+
+.masthead h1 {
+  font-family: 'Oswald', 'Impact', 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 3.5rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.bulletin-line {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  color: var(--red);
+  margin-top: 0.15rem;
+  font-weight: 700;
+}
+
+.issue-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.date {
+  font-weight: 700;
+}
+
+.issue-no {
+  color: var(--grey);
+}
+
+/* === STORIES === */
+.stories {
+  list-style: none;
+  counter-reset: story;
+}
+
+.stories li {
+  counter-increment: story;
+  position: relative;
+  padding: 0.6rem 0 0.6rem 2.5rem;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+}
+
+.stories li:last-child {
+  border-bottom: none;
+}
+
+.stories li::before {
+  content: counter(story, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--red);
+  line-height: 1.5;
+}
+
+.stories li a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.45;
+  display: block;
+  transition: color 0.15s;
+}
+
+.stories li a:hover {
+  color: var(--red);
+}
+
+.source {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--grey);
+  margin-top: 0.2rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* === FOOTER === */
+footer {
+  margin-top: 2rem;
+}
+
+.colophon {
+  margin-top: 0.75rem;
+  font-size: 0.7rem;
+  color: var(--grey);
+  line-height: 1.6;
+}
+
+.colophon .sources {
+  letter-spacing: 0.05em;
+}
+
+.colophon .credit {
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+  body {
+    padding: 1.25rem 1rem 2rem;
+  }
+
+  .masthead h1 {
+    font-size: 2.5rem;
+  }
+
+  .stories li {
+    padding-left: 2rem;
+  }
+
+  .stories li::before {
+    font-size: 0.95rem;
+  }
+
+  .stories li a {
+    font-size: 0.85rem;
+  }
+}
+
+/* === PRINT === */
+@media print {
+  body {
+    background: white;
+    max-width: none;
+    padding: 0;
+  }
+
+  .stories li a {
+    color: black;
+  }
+
+  .stories li a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: #666;
+  }
+}
