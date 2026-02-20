@@ -83,10 +83,29 @@ header {
   color: var(--grey);
 }
 
+/* === CATEGORIES === */
+.category {
+  margin-bottom: 1.5rem;
+}
+
+.category h2 {
+  font-family: 'Oswald', 'Impact', 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: var(--red);
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 /* === STORIES === */
+.category {
+  counter-reset: story;
+}
+
 .stories {
   list-style: none;
-  counter-reset: story;
 }
 
 .stories li {
