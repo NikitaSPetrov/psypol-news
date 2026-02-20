@@ -132,7 +132,7 @@ function fitTitle() {
   }
   h1.style.fontSize = (size - 1) + 'px';
 }
-fitTitle();
+document.fonts.ready.then(fitTitle);
 window.addEventListener('resize', fitTitle);
 </script>
 </body>
