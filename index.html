@@ -6,21 +6,20 @@
   <title>PSYCHOPOLITICA — Daily Bulletin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
+  <div class="banner-bar">
+    <span class="banner-left">No. 002</span>
+    <span class="banner-date">20 February 2026</span>
+    <span class="banner-right">Daily Bulletin</span>
+  </div>
   <div class="masthead">
-    <h1>PSYCHOPOLITICA</h1>
-    <div class="bulletin-line">DAILY BULLETIN</div>
+    <h1><span class="title-red">PSYPOL</span>/NEWS</h1>
   </div>
-  <div class="issue-info">
-    <span class="date">FEBRUARY 20, 2026</span>
-    <span class="issue-no">No. 002</span>
-  </div>
-  <div class="rule thick"></div>
 </header>
 
 <main>
@@ -112,12 +111,29 @@
 </main>
 
 <footer>
-  <div class="rule thick"></div>
-  <div class="colophon">
-    <p class="sources">Sources: Google News &middot; Meduza &middot; Ars Technica &middot; Rest of World &middot; Atlas Obscura &middot; The Intercept</p>
-    <p class="credit">Curated by machine, edited by hand.</p>
+  <div class="banner-bar">
+    <span class="banner-left">Psychopolitica</span>
+    <span class="banner-date">news.psychopolitica.com</span>
+    <span class="banner-right">No. 002</span>
   </div>
 </footer>
 
+<script>
+function fitTitle() {
+  const h1 = document.querySelector('.masthead h1');
+  const box = document.querySelector('.masthead');
+  const style = getComputedStyle(box);
+  const target = box.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+  let size = 10;
+  h1.style.fontSize = size + 'px';
+  while (h1.scrollWidth < target && size < 200) {
+    size++;
+    h1.style.fontSize = size + 'px';
+  }
+  h1.style.fontSize = (size - 1) + 'px';
+}
+fitTitle();
+window.addEventListener('resize', fitTitle);
+</script>
 </body>
 </html>
