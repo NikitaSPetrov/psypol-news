@@ -148,6 +148,19 @@ main {
   font-style: italic;
 }
 
+/* === FEATURED STORIES === */
+.stories li.featured a {
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.stories li.featured a::before {
+  content: '◆ ';
+  color: var(--red);
+  font-size: 0.7em;
+  vertical-align: middle;
+}
+
 /* === FOOTER === */
 footer {
   margin-top: 2rem;
