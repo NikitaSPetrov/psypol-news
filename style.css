@@ -42,6 +42,18 @@ body {
   letter-spacing: 0.1em;
 }
 
+.banner-bar > span {
+  flex: 1;
+}
+
+.banner-bar > span:nth-child(2) {
+  text-align: center;
+}
+
+.banner-bar > span:last-child {
+  text-align: right;
+}
+
 .banner-date {
   font-style: italic;
 }
