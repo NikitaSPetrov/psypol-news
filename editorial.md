@@ -45,3 +45,5 @@ We are not looking for:
 ## Structure
 
 **TODAY** contains stories from the current day's feeds. **THIS WEEK** collects the strongest stories from earlier in the week. Both sections carry between 5 and 20 stories depending on how much interesting material has surfaced. THIS WEEK resets each Monday.
+
+Headlines are rewritten to be descriptive enough that a reader gets the story without clicking.
