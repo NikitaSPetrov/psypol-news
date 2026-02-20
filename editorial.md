@@ -4,7 +4,7 @@ PSYPOL/NEWS is a daily bulletin published by Psychopolitica. It curates stories 
 
 ## How It Works
 
-The initial scan is performed by Claude Code (Anthropic), which reads approximately 300 items daily from RSS feeds and proposes a shortlist. Every final decision, what makes the cut, what gets rejected, how headlines are written, is made by a human editor. The filter improves over time: each yes/no decision teaches the system what Psychopolitica considers worth paying attention to.
+The initial scan is performed by Claude Code (Anthropic), which reads approximately 300 items daily from RSS feeds and proposes a shortlist. Every final decision, what makes the cut, what gets rejected, how headlines are written, is made by [Nikita Petrov](https://psychopolitica.com). The filter improves over time: each yes/no decision teaches the system what Psychopolitica considers worth paying attention to.
 
 ## Sources
 
@@ -15,7 +15,11 @@ Each day, the following feeds are scanned:
 - **Ars Technica** — Deep technology and science reporting
 - **Rest of World** — Technology and its consequences outside the Western bubble
 - **Atlas Obscura** — The genuinely strange
-- **The Intercept** — Investigative journalism
+- **Wired** — Technology, science, and culture at the edge
+- **404 Media** — Independent tech journalism, the digital underbelly
+- **Nature** — Primary science research
+- **New Scientist** — Science, technology, and their human implications
+- **Futurism** — Emerging technology and the future as it arrives
 
 When a story in these feeds is a retelling of reporting from another outlet, we link to the original source. Paywalled originals are linked through archive.ph when possible.
 
