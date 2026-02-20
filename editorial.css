@@ -1,0 +1,73 @@
+/* === EDITORIAL PAGE === */
+.editorial {
+  margin-top: 1.5rem;
+}
+
+.editorial h2 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: var(--red);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.editorial h2:first-child {
+  margin-top: 0;
+}
+
+.editorial p {
+  font-family: 'PT Serif', 'Georgia', serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.editorial ul {
+  list-style: none;
+  margin-bottom: 0.75rem;
+}
+
+.editorial ul li {
+  font-family: 'PT Serif', 'Georgia', serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.3rem 0 0.3rem 1.2rem;
+  position: relative;
+}
+
+.editorial ul li::before {
+  content: "\2014";
+  position: absolute;
+  left: 0;
+  color: var(--red);
+}
+
+.editorial a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+
+.editorial a:hover {
+  color: var(--red);
+}
+
+.editorial strong {
+  font-weight: 700;
+}
+
+.editorial em {
+  font-style: italic;
+}
+
+/* Banner bar links */
+.banner-bar a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.banner-bar a:hover {
+  text-decoration: underline;
+}

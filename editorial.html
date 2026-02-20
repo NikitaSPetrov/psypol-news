@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editorial Policy — PSYPOL/NEWS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="editorial.css">
+</head>
+<body>
+
+<header>
+  <div class="banner-bar">
+    <span class="banner-left"><a href="index.html">&larr; Bulletin</a></span>
+    <span class="banner-date">Editorial Policy</span>
+    <span class="banner-right"></span>
+  </div>
+  <div class="masthead">
+    <h1><span class="title-red">PSYPOL</span>/NEWS</h1>
+  </div>
+</header>
+
+<main>
+
+  <article class="editorial">
+
+    <h2>How It Works</h2>
+
+    <p>The initial scan is performed by <a href="https://claude.ai/claude-code">Claude Code</a> (Anthropic), which reads approximately 300 items daily from RSS feeds and proposes a shortlist. Every final decision&mdash;what makes the cut, what gets rejected, how headlines are written&mdash;is made by a human editor. The filter improves over time: each yes/no decision teaches the system what Psychopolitica considers worth paying attention to.</p>
+
+    <h2>Sources</h2>
+
+    <p>Each day, the following feeds are scanned:</p>
+
+    <ul>
+      <li><strong>Google News</strong> &mdash; Top Stories, World, Science, and Technology sections (~230 items)</li>
+      <li><strong>Meduza</strong> &mdash; Independent Russian-language journalism</li>
+      <li><strong>Ars Technica</strong> &mdash; Deep technology and science reporting</li>
+      <li><strong>Rest of World</strong> &mdash; Technology and its consequences outside the Western bubble</li>
+      <li><strong>Atlas Obscura</strong> &mdash; The genuinely strange</li>
+      <li><strong>The Intercept</strong> &mdash; Structural and investigative journalism</li>
+    </ul>
+
+    <p>When a story in these feeds is a retelling of reporting from another outlet, we link to the original source&mdash;not the reteller. Paywalled originals are linked through archive.ph when possible.</p>
+
+    <h2>The Filter</h2>
+
+    <p>We are looking for:</p>
+
+    <ul>
+      <li>Stories where the structural mechanics of power, reality construction, or social control become visible&mdash;even briefly</li>
+      <li>Reality glitches: AI content passing as real, deepfakes with consequences, information operations caught in progress, the boundary between real and fabricated shifting</li>
+      <li>The agency question: surveillance, algorithmic control, behavioral manipulation&mdash;and its inverse, people finding autonomy or building outside the system</li>
+      <li>Power caught without its story straight: propaganda mid-operation, corporate capture documented, state violence before the framing arrives</li>
+      <li>The absurdist angle: machinery visible and failing, or contradicting itself</li>
+      <li>Things that read like science fiction but are happening: biotech, neurotech, consciousness research, anything that shifts what &ldquo;human&rdquo; means</li>
+      <li>Russia as a place where these dynamics run faster and more visibly</li>
+      <li>Fringe going mainstream: psychedelics in clinical settings, esoteric practices getting institutional backing, forbidden ideas becoming respectable</li>
+      <li>The global south drawn into structural dynamics that the tech press ignores</li>
+      <li>People under extreme constraint revealing something structural about what humans are</li>
+    </ul>
+
+    <p>We are not looking for:</p>
+
+    <ul>
+      <li>Standard breaking news with no deeper angle</li>
+      <li>Stories that fit cleanly into left/right framing</li>
+      <li>Tech hype or doom without the structural element</li>
+      <li>Celebrity, sports, or markets&mdash;unless something structurally strange is happening</li>
+      <li>Outrage bait</li>
+    </ul>
+
+    <h2>The Shrug Test</h2>
+
+    <p>Every candidate story gets the shrug test: if a reader&rsquo;s reaction is &ldquo;yeah, that figures,&rdquo; it fails. PSYPOL/NEWS stories make you stop&mdash;not because they are shocking, but because they are <em>revealing</em>. The machinery running as expected is not a story. The visible glitch is.</p>
+
+    <h2>Structure</h2>
+
+    <p><strong>TODAY</strong> contains stories from the current day&rsquo;s feeds. <strong>THIS WEEK</strong> collects the strongest stories from earlier in the week. Both sections carry between 5 and 20 stories depending on how much interesting material has surfaced. THIS WEEK resets each Monday.</p>
+
+    <p>Headlines are rewritten to be descriptive enough that a reader gets the story without clicking. We don&rsquo;t editorialize&mdash;we let the facts carry the strangeness.</p>
+
+  </article>
+
+</main>
+
+<footer>
+  <div class="banner-bar">
+    <span class="banner-left">Psychopolitica</span>
+    <span class="banner-date">news.psychopolitica.com</span>
+    <span class="banner-right"><a href="index.html">Bulletin</a></span>
+  </div>
+</footer>
+
+<script>
+function fitTitle() {
+  const h1 = document.querySelector('.masthead h1');
+  const box = document.querySelector('.masthead');
+  const style = getComputedStyle(box);
+  const target = box.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+  let size = 10;
+  h1.style.fontSize = size + 'px';
+  while (h1.scrollWidth < target && size < 200) {
+    size++;
+    h1.style.fontSize = size + 'px';
+  }
+  h1.style.fontSize = (size - 1) + 'px';
+}
+fitTitle();
+window.addEventListener('resize', fitTitle);
+</script>
+</body>
+</html>
