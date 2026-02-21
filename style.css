@@ -161,6 +161,47 @@ main {
   vertical-align: middle;
 }
 
+/* === DIGEST FORMAT === */
+.stories li.digest {
+  padding-bottom: 1rem;
+}
+
+.stories li.digest > a {
+  margin-bottom: 0.25rem;
+}
+
+.nuggets {
+  list-style: none;
+  margin-top: 0.4rem;
+  padding-left: 1.2rem;
+}
+
+.nuggets li {
+  font-family: 'PT Serif', 'Georgia', serif;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: var(--ink);
+  padding: 0.2rem 0;
+  position: relative;
+  border-bottom: none !important;
+}
+
+.nuggets li::before {
+  content: '·';
+  position: absolute;
+  left: -1rem;
+  color: var(--grey);
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 480px) {
+  .nuggets li {
+    font-size: 0.95rem;
+  }
+}
+
 /* === FOOTER === */
 footer {
   margin-top: 2rem;
