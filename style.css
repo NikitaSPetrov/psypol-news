@@ -166,12 +166,12 @@ main {
 }
 
 /* === FEATURED STORIES === */
-.stories li.featured a {
+.stories li.featured > a {
   font-size: 1.9rem;
   font-weight: 700;
 }
 
-.stories li.featured a::before {
+.stories li.featured > a::before {
   content: '◆ ';
   color: var(--red);
   font-size: 0.7em;
@@ -211,6 +211,21 @@ main {
   font-weight: 700;
   font-size: 1.3rem;
   line-height: 1.2;
+}
+
+.nuggets li a {
+  font-size: 1.1rem;
+  font-weight: 400;
+  display: inline;
+  color: var(--ink);
+}
+
+.nuggets li a:hover {
+  color: var(--red);
+}
+
+.nuggets li a::before {
+  content: none;
 }
 
 @media (max-width: 480px) {
