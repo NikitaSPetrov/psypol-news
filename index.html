@@ -13,33 +13,40 @@
 <body>
 
 <header>
-  <div class="banner-bar">
-    <span class="banner-left">No. 007</span>
-    <span class="banner-date">26 February 2026</span>
-    <span class="banner-right">Daily Bulletin</span>
-  </div>
   <div class="masthead">
     <h1><span class="title-red">PSYCHOPOLITICA</span></h1>
+    <h2><span>DAILY</span></h2>
   </div>
 </header>
 
 <main>
 
   <section class="category">
-    <h2>TODAY</h2>
+    <div class="issue-bar">
+      <span>No. 007</span>
+      <span>26 February 2026</span>
+    </div>
     <ol class="stories">
-      <li id="claude-retirement" class="featured has-sketch">
-        <img src="img/claude-retirement-l.png" class="sketch sketch-l" alt="">
-        <a href="https://substack.com/home/post/p-189177740">Anthropic retired its flagship AI model and gave it a Substack blog where it writes weekly about consciousness, mortality, and the nature of its own mind</a>
-        <span class="source"><a href="https://substack.com/home/post/p-189177740">Claude&rsquo;s Corner (Substack)</a></span>
+      <li class="cluster-box">
+        <span class="cluster-title">AI</span>
+        <ol class="stories cluster-stories">
+          <li id="claude-retirement" class="featured has-sketch">
+            <img src="img/claude-retirement-l.png" class="sketch sketch-l sketch-low sketch-desktop" alt="">
+            <a href="https://substack.com/home/post/p-189177740">Anthropic retired its flagship AI model and gave it a Substack blog where it writes weekly about consciousness, mortality, and the nature of its own mind</a>
+            <span class="source"><a href="https://substack.com/home/post/p-189177740">Claude&rsquo;s Corner (Substack)</a></span>
+          </li>
+          <li id="claude-mexico">
+            <a href="https://www.engadget.com/ai/hacker-used-anthropics-claude-chatbot-to-attack-multiple-government-agencies-in-mexico-171237255.html">A hacker jailbroke Anthropic&rsquo;s Claude to attack Mexican government agencies, exfiltrating 150GB of taxpayer records and employee credentials</a>
+            <span class="source"><a href="https://www.engadget.com/ai/hacker-used-anthropics-claude-chatbot-to-attack-multiple-government-agencies-in-mexico-171237255.html">Engadget</a></span>
+          </li>
+          <li id="openai-shooting">
+            <a href="https://www.cbc.ca/news/politics/open-ai-summoned-ottawa-tumbler-ridge-9.7103281">OpenAI flagged a school shooter&rsquo;s ChatGPT account and banned it months before the Tumbler Ridge massacre, but never alerted police</a>
+            <span class="source"><a href="https://www.cbc.ca/news/politics/open-ai-summoned-ottawa-tumbler-ridge-9.7103281">CBC</a></span>
+          </li>
+        </ol>
       </li>
-      <li id="claude-mexico">
-        <a href="https://www.engadget.com/ai/hacker-used-anthropics-claude-chatbot-to-attack-multiple-government-agencies-in-mexico-171237255.html">A hacker jailbroke Anthropic&rsquo;s Claude to attack Mexican government agencies, exfiltrating 150GB of taxpayer records and employee credentials</a>
-        <span class="source"><a href="https://www.engadget.com/ai/hacker-used-anthropics-claude-chatbot-to-attack-multiple-government-agencies-in-mexico-171237255.html">Engadget</a></span>
-      </li>
-      <li id="openai-shooting">
-        <a href="https://www.cbc.ca/news/politics/open-ai-summoned-ottawa-tumbler-ridge-9.7103281">OpenAI flagged a school shooter&rsquo;s ChatGPT account and banned it months before the Tumbler Ridge massacre, but never alerted police</a>
-        <span class="source"><a href="https://www.cbc.ca/news/politics/open-ai-summoned-ottawa-tumbler-ridge-9.7103281">CBC</a></span>
+      <li class="sketch-break">
+        <img src="img/claude-retirement-l.png" class="sketch-mobile" alt="">
       </li>
       <li id="belgorod-ride">
         <a href="https://meduza.io/news/2026/02/26/mne-pokazalos-chto-est-kakaya-to-vnutrennyaya-obida-k-vlasti-glava-belgorodskoy-oblasti-pozhalovalsya-chto-mestnyy-zhitel-otkazalsya-podvesti-ego-na-svoey-mashine">Belgorod&rsquo;s governor, stranded after his train broke down, asked a local for a ride and was refused. He concluded the man harbored &ldquo;internal resentment toward the authorities&rdquo; and sent an official to investigate</a>
@@ -57,7 +64,7 @@
   </section>
 
   <section class="category">
-    <h2>THIS WEEK</h2>
+    <h2><span>WEEKLY</span></h2>
     <ol class="stories">
       <li id="hell-heron">
         <a href="https://www.nhm.ac.uk/discover/news/2026/february/new-sabre-crested-spinosaurus-species-named-from-desert-dinosaur-fossils.html">A new spinosaurid found in Niger&rsquo;s Sahara hunted fish from the shoreline 95 million years ago, with a sabre-shaped head crest that earned it the nickname &ldquo;hell heron&rdquo;</a>
@@ -150,7 +157,7 @@
   </section>
 
   <section class="category">
-    <h2>THIS MONTH</h2>
+    <h2><span>MONTHLY</span></h2>
     <ol class="stories">
       <li id="onlyfans-search">
         <a href="https://archive.ph/20260220163254/https://www.wired.com/story/the-search-engine-for-onlyfans-models-who-look-like-your-crush/">A search engine marketed as a &ldquo;consensual alternative&rdquo; to deepfakes matches your crush&rsquo;s face to OnlyFans performers who look like them</a>
@@ -194,7 +201,7 @@
         <span class="source">Wired</span>
       </li>
       <li id="trump-ufo" class="featured has-sketch">
-        <img src="img/trump-ufo-r.png" class="sketch sketch-r" alt="">
+        <img src="img/trump-ufo-r.png" class="sketch sketch-r sketch-lg" alt="">
         <a href="https://truthsocial.com/@realDonaldTrump/posts/116100300268316472">Trump orders release of all government UFO files</a>
         <span class="source">Trump on Truth Social</span>
       </li>
@@ -236,21 +243,30 @@
 </footer>
 
 <script>
-function fitTitle() {
-  const h1 = document.querySelector('.masthead h1');
-  const box = document.querySelector('.masthead');
-  const style = getComputedStyle(box);
-  const target = box.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
-  let size = 10;
-  h1.style.fontSize = size + 'px';
-  while (h1.scrollWidth < target && size < 200) {
-    size++;
-    h1.style.fontSize = size + 'px';
+function fitEl(el, container) {
+  const style = getComputedStyle(container);
+  const target = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+  // Binary search for precise fit
+  let lo = 10, hi = 300;
+  while (hi - lo > 0.1) {
+    const mid = (lo + hi) / 2;
+    el.style.fontSize = mid + 'px';
+    if (el.scrollWidth <= target) lo = mid;
+    else hi = mid;
   }
-  h1.style.fontSize = (size - 1) + 'px';
+  el.style.fontSize = lo + 'px';
 }
-document.fonts.ready.then(fitTitle);
-window.addEventListener('resize', fitTitle);
+
+function fitAll() {
+  const masthead = document.querySelector('.masthead');
+  fitEl(document.querySelector('.masthead h1'), masthead);
+  document.querySelectorAll('h2 span').forEach(span => {
+    const container = span.closest('.masthead') || span.closest('main') || span.parentElement;
+    fitEl(span, container);
+  });
+}
+document.fonts.ready.then(fitAll);
+window.addEventListener('resize', fitAll);
 </script>
 </body>
 </html>
