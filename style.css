@@ -92,7 +92,7 @@ header {
   white-space: nowrap;
   display: block;
   text-align: center;
-  margin: -2rem 0 0;
+  margin: -0.15em 0 0;
   padding-bottom: 0;
 }
 
@@ -327,12 +327,15 @@ main {
   z-index: 1;
 }
 
-.sketch-r { right: 0; transform: translateY(-50%) translateX(100%); }
-.sketch-l { left: 0; transform: translateY(-50%) translateX(-100%); }
+.sketch-r { right: 0; transform: translateY(-50%) translateX(calc(100% + 1rem)); }
+.sketch-l { left: 0; transform: translateY(-50%) translateX(calc(-100% - 1rem)); }
 
 .sketch-lg { width: clamp(300px, 30vw, 480px); }
 .sketch-low { top: 80%; }
 .sketch-high { top: 20%; }
+
+.cluster-stories .sketch-l { left: -1.25rem; }
+.cluster-stories .sketch-r { right: -1.25rem; }
 
 .has-sketch > a,
 .has-sketch > .source {
