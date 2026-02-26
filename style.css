@@ -242,14 +242,16 @@ main {
 
 .sketch {
   position: absolute;
-  top: -2.5rem;
-  right: -5.5rem;
-  width: 200px;
+  top: 50%;
+  width: 240px;
   height: auto;
   pointer-events: none;
   opacity: 0.85;
   z-index: 1;
 }
+
+.sketch-r { right: 0; transform: translateY(-50%) translateX(50%); }
+.sketch-l { left: 0; transform: translateY(-50%) translateX(-50%); }
 
 .has-sketch > a,
 .has-sketch > .source {
@@ -257,14 +259,16 @@ main {
   z-index: 2;
 }
 
+@media (max-width: 720px) {
+  .sketch { opacity: 0.4; }
+  .sketch-r { transform: translateY(-50%) translateX(15%); }
+  .sketch-l { transform: translateY(-50%) translateX(-15%); }
+}
+
 @media (max-width: 480px) {
-  .sketch {
-    width: 200px;
-    top: 50%;
-    transform: translateY(-50%);
-    right: -6.5rem;
-    opacity: 0.85;
-  }
+  .sketch { width: 200px; opacity: 0.3; }
+  .sketch-r { transform: translateY(-50%) translateX(10%); }
+  .sketch-l { transform: translateY(-50%) translateX(-10%); }
 }
 
 /* === FOOTER === */
