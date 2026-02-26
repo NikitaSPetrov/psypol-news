@@ -234,6 +234,38 @@ main {
   }
 }
 
+/* === SKETCH ILLUSTRATIONS === */
+.has-sketch {
+  position: relative;
+  overflow: visible;
+}
+
+.sketch {
+  position: absolute;
+  top: -2.5rem;
+  right: -5.5rem;
+  width: 200px;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+.has-sketch > a,
+.has-sketch > .source {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 480px) {
+  .sketch {
+    width: 130px;
+    top: -1rem;
+    right: -1rem;
+  }
+
+}
+
 /* === FOOTER === */
 footer {
   margin-top: 2rem;
