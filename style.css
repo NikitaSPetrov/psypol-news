@@ -353,7 +353,7 @@ main {
   min-width: 0;
 }
 
-.cluster-columns .cluster-stories li a {
+.cluster-columns .cluster-stories li > a {
   font-size: 1.25rem;
 }
 
@@ -391,7 +391,7 @@ main {
     padding-top: 1.25rem;
   }
 
-  .cluster-columns .cluster-stories li a {
+  .cluster-columns .cluster-stories li > a {
     font-size: 1.5rem;
   }
 
