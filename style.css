@@ -250,8 +250,8 @@ main {
   z-index: 1;
 }
 
-.sketch-r { right: 0; transform: translateY(-50%) translateX(50%); }
-.sketch-l { left: 0; transform: translateY(-50%) translateX(-50%); }
+.sketch-r { right: 0; transform: translateY(-50%) translateX(90%); }
+.sketch-l { left: 0; transform: translateY(-50%) translateX(-90%); }
 
 .has-sketch > a,
 .has-sketch > .source {
