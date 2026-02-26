@@ -3,116 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editorial Policy — PSYPOL/NEWS</title>
+  <title>Editorial Policy — PSYCHOPOLITICA DAILY</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="editorial.css">
 </head>
 <body>
 
 <header>
-  <div class="banner-bar">
-    <span class="banner-left"><a href="index.html">&larr; Bulletin</a></span>
-    <span class="banner-date" style="text-align:center">Editorial Policy</span>
-    <span class="banner-right">&nbsp;</span>
-  </div>
   <div class="masthead">
-    <h1><span class="title-red">PSYPOL</span>/NEWS</h1>
+    <h1><span>EDITORIAL</span></h1>
+    <h2><span>POLICY</span></h2>
   </div>
 </header>
 
 <main>
 
+  <div class="issue-bar">
+    <span><a href="index.html" style="color:inherit;text-decoration:none">&larr; Bulletin</a></span>
+    <span><a href="https://psychopolitica.com" style="color:inherit;text-decoration:none">Psychopolitica</a></span>
+  </div>
+
   <article class="editorial">
 
-    <h2>How It Works</h2>
+    <div class="cluster-box">
+      <span class="cluster-title">HOW IT WORKS</span>
+      <div class="cluster-content">
+        <p>The initial scan is performed by <a href="https://claude.ai/claude-code">Claude Code</a> (Anthropic), which reads approximately 500 items daily from RSS feeds and proposes a shortlist. Every final decision, what makes the cut, what gets rejected, how headlines are written, is made by <a href="https://psychopolitica.com">Nikita Petrov</a>. The filter improves over time: each yes/no decision teaches the system what Psychopolitica considers worth paying attention to.</p>
+      </div>
+    </div>
 
-    <p>The initial scan is performed by <a href="https://claude.ai/claude-code">Claude Code</a> (Anthropic), which reads approximately 500 items daily from RSS feeds and proposes a shortlist. Every final decision, what makes the cut, what gets rejected, how headlines are written, is made by <a href="https://psychopolitica.com">Nikita Petrov</a>. The filter improves over time: each yes/no decision teaches the system what Psychopolitica considers worth paying attention to.</p>
+    <div class="cluster-box">
+      <span class="cluster-title">SOURCES</span>
+      <div class="cluster-content">
+        <p>Each day, the following feeds are scanned:</p>
+        <ul>
+          <li><strong>Google News</strong> — Top Stories, World, Science, and Technology sections (~230 items)</li>
+          <li><strong>Meduza</strong> — Independent Russian-language journalism</li>
+          <li><strong>Ars Technica</strong> — Deep technology and science reporting</li>
+          <li><strong>Rest of World</strong> — Technology and its consequences outside the Western bubble</li>
+          <li><strong>Atlas Obscura</strong> — The genuinely strange</li>
+          <li><strong>Wired</strong> — Technology, science, and culture at the edge</li>
+          <li><strong>404 Media</strong> — Independent tech journalism, the digital underbelly</li>
+          <li><strong>Nature</strong> — Primary science research</li>
+          <li><strong>New Scientist</strong> — Science, technology, and their human implications</li>
+          <li><strong>Futurism</strong> — Emerging technology and the future as it arrives</li>
+        </ul>
+        <p>When a story in these feeds is a retelling of reporting from another outlet, we link to the original source. Paywalled originals are linked through archive.ph when possible.</p>
+      </div>
+    </div>
 
-    <h2>Sources</h2>
+    <div class="cluster-box">
+      <span class="cluster-title">THE FILTER</span>
+      <div class="cluster-content">
+        <p>We are looking for:</p>
+        <ul>
+          <li>Stories where the mechanics of power, reality construction, or social control become visible, even briefly</li>
+          <li>Reality glitches: AI content passing as real, deepfakes with consequences, information operations caught in progress, the boundary between real and fabricated shifting</li>
+          <li>The agency question: surveillance, algorithmic control, behavioral manipulation, and its inverse — people finding autonomy or building outside the system</li>
+          <li>Power caught without its story straight: propaganda mid-operation, corporate capture documented, state violence before the framing arrives</li>
+          <li>The absurdist angle: machinery visible and failing, or contradicting itself</li>
+          <li>Things that read like science fiction but are happening: biotech, neurotech, consciousness research, anything that shifts what &ldquo;human&rdquo; means</li>
+          <li>Russia as a place where these dynamics run faster and more visibly</li>
+          <li>Fringe going mainstream: psychedelics in clinical settings, esoteric practices getting institutional backing, forbidden ideas becoming respectable</li>
+          <li>The global south drawn into dynamics that rarely get covered: the human supply chains of conflict, power reshaped by technology in places most outlets ignore</li>
+          <li>People under extreme constraint revealing something about what humans are</li>
+        </ul>
+        <p>We are not looking for:</p>
+        <ul>
+          <li>Standard breaking news with no deeper angle</li>
+          <li>Stories that fit cleanly into left/right framing</li>
+          <li>Tech hype or doom without the deeper element</li>
+          <li>Celebrity, sports, or markets, unless something genuinely strange is happening</li>
+          <li>Outrage bait</li>
+        </ul>
+      </div>
+    </div>
 
-    <p>Each day, the following feeds are scanned:</p>
-
-    <ul>
-      <li><strong>Google News</strong> — Top Stories, World, Science, and Technology sections (~230 items)</li>
-      <li><strong>Meduza</strong> — Independent Russian-language journalism</li>
-      <li><strong>Ars Technica</strong> — Deep technology and science reporting</li>
-      <li><strong>Rest of World</strong> — Technology and its consequences outside the Western bubble</li>
-      <li><strong>Atlas Obscura</strong> — The genuinely strange</li>
-      <li><strong>Wired</strong> — Technology, science, and culture at the edge</li>
-      <li><strong>404 Media</strong> — Independent tech journalism, the digital underbelly</li>
-      <li><strong>Nature</strong> — Primary science research</li>
-      <li><strong>New Scientist</strong> — Science, technology, and their human implications</li>
-      <li><strong>Futurism</strong> — Emerging technology and the future as it arrives</li>
-    </ul>
-
-    <p>When a story in these feeds is a retelling of reporting from another outlet, we link to the original source. Paywalled originals are linked through archive.ph when possible.</p>
-
-    <h2>The Filter</h2>
-
-    <p>We are looking for:</p>
-
-    <ul>
-      <li>Stories where the mechanics of power, reality construction, or social control become visible, even briefly</li>
-      <li>Reality glitches: AI content passing as real, deepfakes with consequences, information operations caught in progress, the boundary between real and fabricated shifting</li>
-      <li>The agency question: surveillance, algorithmic control, behavioral manipulation, and its inverse — people finding autonomy or building outside the system</li>
-      <li>Power caught without its story straight: propaganda mid-operation, corporate capture documented, state violence before the framing arrives</li>
-      <li>The absurdist angle: machinery visible and failing, or contradicting itself</li>
-      <li>Things that read like science fiction but are happening: biotech, neurotech, consciousness research, anything that shifts what &ldquo;human&rdquo; means</li>
-      <li>Russia as a place where these dynamics run faster and more visibly</li>
-      <li>Fringe going mainstream: psychedelics in clinical settings, esoteric practices getting institutional backing, forbidden ideas becoming respectable</li>
-      <li>The global south drawn into dynamics that rarely get covered: the human supply chains of conflict, power reshaped by technology in places most outlets ignore</li>
-      <li>People under extreme constraint revealing something about what humans are</li>
-    </ul>
-
-    <p>We are not looking for:</p>
-
-    <ul>
-      <li>Standard breaking news with no deeper angle</li>
-      <li>Stories that fit cleanly into left/right framing</li>
-      <li>Tech hype or doom without the deeper element</li>
-      <li>Celebrity, sports, or markets, unless something genuinely strange is happening</li>
-      <li>Outrage bait</li>
-    </ul>
-
-    <h2>Structure</h2>
-
-    <p>The bulletin follows a weekly rhythm. Tuesday through Saturday, two sections: <strong>TODAY</strong> (stories from the current day&rsquo;s feeds) and <strong>THIS WEEK</strong> (the strongest stories from earlier in the week). On Sundays, a single <strong>WEEKEND EDITION</strong> merges the best of the week with any fresh stories. On Mondays, <strong>TODAY</strong> and <strong>LAST WEEK</strong>. Each section carries between 5 and 20 stories depending on how much interesting material has surfaced.</p>
-
-    <p>Related stories are sometimes grouped under an umbrella headline with individually linked items below. Major investigative pieces with multiple angles get a digest treatment: a featured header followed by structural nuggets.</p>
-
-    <p>Headlines are rewritten to be descriptive enough that a reader gets the story without clicking. Past editions are kept on the homepage under earlier date headings.</p>
+    <div class="cluster-box">
+      <span class="cluster-title">STRUCTURE</span>
+      <div class="cluster-content">
+        <p>The bulletin follows a weekly rhythm. Tuesday through Saturday, two sections: <strong>TODAY</strong> (stories from the current day&rsquo;s feeds) and <strong>THIS WEEK</strong> (the strongest stories from earlier in the week). On Sundays, a single <strong>WEEKEND EDITION</strong> merges the best of the week with any fresh stories. On Mondays, <strong>TODAY</strong> and <strong>LAST WEEK</strong>. Each section carries between 5 and 20 stories depending on how much interesting material has surfaced.</p>
+        <p>Related stories are sometimes grouped under an umbrella headline with individually linked items below. Major investigative pieces with multiple angles get a digest treatment: a featured header followed by structural nuggets.</p>
+        <p>Headlines are rewritten to be descriptive enough that a reader gets the story without clicking. Past editions are kept on the homepage under earlier date headings.</p>
+      </div>
+    </div>
 
   </article>
 
 </main>
 
 <footer>
-  <div class="banner-bar">
-    <span class="banner-left"><a href="index.html">&larr; Bulletin</a></span>
-    <span class="banner-date"><a href="https://psychopolitica.com">Psychopolitica</a></span>
-    <span class="banner-right">&nbsp;</span>
+  <div class="issue-bar">
+    <span><a href="index.html" style="color:inherit;text-decoration:none">&larr; Bulletin</a></span>
+    <span><a href="https://psychopolitica.com" style="color:inherit;text-decoration:none">Psychopolitica</a></span>
   </div>
 </footer>
 
 <script>
-function fitTitle() {
-  const h1 = document.querySelector('.masthead h1');
-  const box = document.querySelector('.masthead');
-  const style = getComputedStyle(box);
-  const target = box.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
-  let size = 10;
-  h1.style.fontSize = size + 'px';
-  while (h1.scrollWidth < target && size < 200) {
-    size++;
-    h1.style.fontSize = size + 'px';
+function fitEl(el, container) {
+  const style = getComputedStyle(container);
+  const target = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+  let lo = 10, hi = 300;
+  while (hi - lo > 0.1) {
+    const mid = (lo + hi) / 2;
+    el.style.fontSize = mid + 'px';
+    if (el.scrollWidth <= target) lo = mid;
+    else hi = mid;
   }
-  h1.style.fontSize = (size - 1) + 'px';
+  el.style.fontSize = lo + 'px';
 }
-document.fonts.ready.then(fitTitle);
-window.addEventListener('resize', fitTitle);
+
+function fitAll() {
+  const masthead = document.querySelector('.masthead');
+  fitEl(document.querySelector('.masthead h1'), masthead);
+  document.querySelectorAll('.masthead h2 span').forEach(span => {
+    fitEl(span, masthead);
+  });
+}
+document.fonts.ready.then(fitAll);
+window.addEventListener('resize', fitAll);
 </script>
 </body>
 </html>

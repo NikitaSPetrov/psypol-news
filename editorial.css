@@ -1,19 +1,45 @@
 /* === EDITORIAL PAGE === */
-.editorial {
-  margin-top: 1.5rem;
+
+/* All-black — no red on this page */
+body:has(.editorial) .masthead h2 {
+  color: var(--ink);
 }
 
-.editorial h2 {
+body:has(.editorial) .issue-bar {
+  color: var(--ink);
+}
+
+body:has(.editorial) .issue-bar::before,
+body:has(.editorial) .issue-bar::after {
+  background: var(--ink);
+}
+
+/* Cluster boxes as sections */
+.editorial .cluster-box {
+  border: 2px dotted var(--ink);
+  padding: 1.25rem 1.25rem 0.75rem;
+  position: relative;
+  margin: 2.5rem 0 0;
+}
+
+.editorial .cluster-box:first-child {
+  margin-top: 0;
+}
+
+.editorial .cluster-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--paper);
+  padding: 0 1rem;
   font-family: 'Playfair Display', 'Georgia', serif;
   font-weight: 900;
   font-size: 1.3rem;
-  color: var(--red);
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.editorial h2:first-child {
-  margin-top: 0;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
 }
 
 .editorial p {
@@ -23,9 +49,17 @@
   margin-bottom: 0.75rem;
 }
 
+.editorial p:last-child {
+  margin-bottom: 0;
+}
+
 .editorial ul {
   list-style: none;
   margin-bottom: 0.75rem;
+}
+
+.editorial ul:last-child {
+  margin-bottom: 0;
 }
 
 .editorial ul li {
@@ -40,7 +74,7 @@
   content: "\2014";
   position: absolute;
   left: 0;
-  color: var(--red);
+  color: var(--grey);
 }
 
 .editorial a {
@@ -56,18 +90,4 @@
 
 .editorial strong {
   font-weight: 700;
-}
-
-.editorial em {
-  font-style: italic;
-}
-
-/* Banner bar links */
-.banner-bar a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.banner-bar a:hover {
-  text-decoration: underline;
 }
