@@ -92,7 +92,7 @@ header {
   white-space: nowrap;
   display: block;
   text-align: center;
-  margin: -0.15em 0 0;
+  margin: -2rem 0 0;
   padding-bottom: 0;
 }
 
@@ -412,6 +412,10 @@ footer {
 
   .masthead h1 {
     font-size: 1.75rem;
+  }
+
+  .masthead h2 {
+    margin-top: -0.12em;
   }
 
   .stories li a {
