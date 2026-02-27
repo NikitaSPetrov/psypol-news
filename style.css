@@ -166,12 +166,16 @@ main {
   text-align: center;
   margin-top: -0.2rem;
   margin-bottom: 0;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
   border-bottom: none;
   line-height: 1;
   white-space: nowrap;
   display: block;
   position: relative;
+}
+
+.category h2 + .stories {
+  padding-top: 1rem;
 }
 
 .category h2::after {
@@ -186,6 +190,17 @@ main {
 
 .category h2 span {
   display: inline-block;
+  white-space: nowrap;
+}
+
+.category h2:has(.section-sub) {
+  white-space: normal;
+}
+
+.section-sub {
+  display: block;
+  color: var(--red);
+  white-space: nowrap;
 }
 
 /* === STORIES === */
