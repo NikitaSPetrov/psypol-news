@@ -27,8 +27,10 @@
       <span>27 February 2026</span>
     </div>
     <ol class="stories">
-      <li id="pakistan-afghanistan" class="featured">
+      <li id="pakistan-afghanistan" class="featured has-sketch">
         <a href="https://www.aljazeera.com/news/2026/2/27/pakistan-warplanes-bomb-kabul-as-clashes-with-afghanistan-intensify">Pakistan and Afghanistan are in &ldquo;open war&rdquo; after trading airstrikes. Pakistan bombed Kabul and three other Afghan cities; Afghanistan says it destroyed 19 Pakistani military posts along the border</a>
+        <img class="sketch sketch-l" src="img/pakistan-afghanistan-l.png" alt="">
+        <img class="sketch sketch-r" src="img/pakistan-afghanistan-r.png" alt="">
         <span class="source"><a href="https://www.aljazeera.com/news/2026/2/27/pakistan-warplanes-bomb-kabul-as-clashes-with-afghanistan-intensify">Al Jazeera</a></span>
       </li>
       <li id="us-exodus">
@@ -46,12 +48,14 @@
             <a href="https://www.newscientist.com/article/2516885-ais-cant-stop-recommending-nuclear-strikes-in-war-game-simulations/">In simulated war games, AI models from OpenAI, Anthropic, and Google chose nuclear strikes in 95% of cases</a>
             <span class="source"><a href="https://www.newscientist.com/article/2516885-ais-cant-stop-recommending-nuclear-strikes-in-war-game-simulations/">New Scientist</a></span>
           </li>
-          <li id="burger-king-ai">
+          <li id="burger-king-ai" class="has-sketch">
             <a href="https://futurism.com/artificial-intelligence/burger-king-adding-ai-employees-headsets">Burger King is adding AI to employee headsets to monitor how friendly they sound to customers</a>
+            <img class="sketch sketch-r sketch-desktop" src="img/burger-king-ai-r.png" alt="">
             <span class="source"><a href="https://futurism.com/artificial-intelligence/burger-king-adding-ai-employees-headsets">Futurism</a></span>
           </li>
         </ol>
       </li>
+      <li class="sketch-break"><img class="sketch-mobile" src="img/burger-king-ai-r.png" alt=""></li>
       <li id="ostrich-geometry">
         <a href="https://gizmodo.com/humans-sketched-oddly-precise-geometric-patterns-onto-ostrich-eggs-60000-years-ago-2000727079">Humans engraved precise geometric patterns onto ostrich eggs 60,000 years ago in South Africa, the oldest known human geometries</a>
         <span class="source"><a href="https://gizmodo.com/humans-sketched-oddly-precise-geometric-patterns-onto-ostrich-eggs-60000-years-ago-2000727079">Gizmodo</a></span>
@@ -327,6 +331,7 @@ function fitAll() {
 }
 document.fonts.ready.then(fitAll);
 window.addEventListener('resize', fitAll);
+
 </script>
 </body>
 </html>
