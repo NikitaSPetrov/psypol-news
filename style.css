@@ -392,6 +392,23 @@ main {
   border-bottom: 2px dotted var(--ink);
 }
 
+/* === RED ALERT CLUSTER === */
+.stories li.cluster-box.cluster-alert {
+  border-color: var(--red);
+}
+
+.stories > .cluster-box.cluster-alert {
+  border-bottom-color: var(--red);
+}
+
+.cluster-alert .cluster-title {
+  color: var(--red);
+}
+
+.cluster-alert .cluster-stories li.featured > a::before {
+  content: none;
+}
+
 @media (max-width: 1060px) {
   .cluster-columns {
     flex-direction: column;
