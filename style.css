@@ -439,6 +439,66 @@ main {
   }
 }
 
+/* === JOURNAL MODULE === */
+.journal-module {
+  width: 150%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px double var(--red);
+  padding: 2rem 2.5rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.journal-header {
+  margin-bottom: 1.5rem;
+}
+
+.journal-header .journal-sub {
+  font-family: 'Old Standard TT', 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--red);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.journal-header .journal-title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 900;
+  color: var(--red);
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-block;
+  line-height: 1;
+}
+
+.journal-module img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 1060px) {
+  .journal-module {
+    width: 100%;
+    left: 0;
+    transform: none;
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .journal-module {
+    padding: 1rem 0.75rem;
+  }
+
+  .journal-header .journal-sub {
+    font-size: 0.9rem;
+  }
+}
+
 /* === SKETCH ILLUSTRATIONS === */
 .has-sketch {
   position: relative;
