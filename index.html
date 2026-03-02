@@ -457,10 +457,11 @@ function fitAll() {
     fitEl(el, el.closest('.journal-header'));
   });
 }
-document.fonts.ready.then(() => { fitAll(); setTimeout(fitAll, 100); });
-window.addEventListener('load', fitAll);
+function safeFit() { requestAnimationFrame(fitAll); }
+document.fonts.ready.then(() => { safeFit(); setTimeout(safeFit, 200); });
+window.addEventListener('load', safeFit);
 window.addEventListener('resize', () => {
-  if (window.innerWidth !== lastWidth) fitAll();
+  if (window.innerWidth !== lastWidth) safeFit();
 });
 </script>
 </body>
