@@ -595,6 +595,22 @@ main {
 
 }
 
+@media (max-width: 720px) {
+  .masthead-top {
+    display: none;
+  }
+
+  .masthead {
+    border-top: 2px solid var(--red);
+  }
+
+  footer .issue-bar {
+    padding: 0.4rem 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+  }
+}
+
 @media (max-width: 480px) {
   .nuggets li {
     font-size: 0.95rem;
