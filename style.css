@@ -91,29 +91,45 @@ body {
 
 /* === HEADER === */
 header {
-  margin-bottom: 0;
+  margin-bottom: 1.5rem;
 }
 
 .masthead {
-  padding: 1.25rem 1.5rem 0;
+  width: calc((100% - 3rem) * 1.5);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid var(--red);
 }
 
-.masthead h2 {
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-weight: 900;
-  line-height: 1;
+.masthead-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  align-self: stretch;
+  padding: 1.25rem 0 0.5rem;
+  border-bottom: 2px solid var(--red);
+}
+
+.dateline {
+  font-family: 'PT Serif', 'Georgia', serif;
+  font-size: 0.85rem;
+  font-style: italic;
   color: var(--red);
-  text-transform: uppercase;
-  white-space: nowrap;
-  display: block;
-  text-align: center;
-  margin: -2rem 0 0;
-  padding-bottom: 0;
 }
 
-.masthead h2 span {
-  display: inline-block;
+.byline {
+  font-family: 'PT Serif', 'Georgia', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--red);
+  white-space: nowrap;
+  padding-left: 1rem;
 }
 
 .masthead h1 {
@@ -124,6 +140,8 @@ header {
   text-transform: uppercase;
   white-space: nowrap;
   display: inline-block;
+  margin: 0.08em 0;
+  transform: translateY(-0.07em);
 }
 
 .title-red {
@@ -166,6 +184,9 @@ main {
   white-space: nowrap;
   display: block;
   position: relative;
+  width: 150%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .category h2::after {
@@ -195,6 +216,51 @@ main {
   display: block;
   color: var(--ink);
   white-space: nowrap;
+}
+
+/* === BOXED CATEGORY (R&P) === */
+.category.category-boxed {
+  width: 150%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px dotted var(--ink);
+  padding: 2rem 2.5rem;
+}
+
+.category.category-boxed h2 {
+  width: 100%;
+  left: 0;
+  transform: none;
+  padding-bottom: 0;
+  margin-bottom: 1rem;
+}
+
+/* === EPIGRAPH === */
+.epigraph {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  margin: 1.5rem 0;
+  color: var(--red);
+}
+
+.epigraph p {
+  font-family: 'Old Standard TT', 'Georgia', serif;
+  font-style: italic;
+  font-size: 2.1rem;
+  line-height: 1.4;
+}
+
+.epigraph cite {
+  display: block;
+  font-family: 'Old Standard TT', 'Georgia', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+.category.category-boxed h2::after {
+  display: none;
 }
 
 /* === STORIES === */
@@ -251,6 +317,11 @@ main {
 .stories li .source a::before,
 .stories li.featured .source a::before {
   content: none;
+}
+
+.stories li .source a:hover,
+.stories li.featured .source a:hover {
+  color: var(--red);
 }
 
 /* === FEATURED STORIES === */
@@ -386,6 +457,42 @@ main {
   border-bottom: 2px dotted var(--ink);
 }
 
+/* === FRONT PAGE CLUSTER === */
+.stories li.cluster-box.cluster-front {
+  width: 150%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding-top: 1.75rem;
+}
+
+.stories li.cluster-box.cluster-winter {
+  padding-top: 0;
+  border: none;
+}
+
+.ai-section,
+.russia-section,
+.life-section {
+  position: relative;
+  margin-top: 1.5rem;
+  padding-top: 1.75rem;
+  border-top: 2px dotted var(--ink);
+}
+
+@media (max-width: 720px) {
+  .cluster-winter > .sketch {
+    display: none;
+  }
+}
+
+.cluster-front .cluster-stories li.featured > a::before {
+  color: var(--ink);
+}
+
 /* === RED ALERT CLUSTER === */
 .stories li.cluster-box.cluster-alert {
   border-color: var(--red);
@@ -404,6 +511,19 @@ main {
 }
 
 @media (max-width: 1060px) {
+  .masthead {
+    width: 100%;
+    left: 0;
+    transform: none;
+    padding: 0 1.5rem;
+  }
+
+  .category h2 {
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
+
   .cluster-columns {
     flex-direction: column;
     gap: 0;
@@ -417,12 +537,60 @@ main {
     padding-top: 1.25rem;
   }
 
+  .stories li.cluster-box.cluster-front {
+    width: 100%;
+    left: 0;
+    transform: none;
+    border: none;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding-top: 1.25rem;
+  }
+
+  .stories li.cluster-box.cluster-winter {
+    border: none;
+    padding-top: 0;
+  }
+
+  .cluster-title {
+    position: static;
+    transform: none;
+    display: block;
+    text-align: center;
+    background: none;
+    padding: 0;
+    margin-bottom: 0.75rem;
+    white-space: normal;
+    font-size: 1.3rem;
+    letter-spacing: 0.25em;
+  }
+
+  .ai-section,
+  .russia-section,
+  .life-section {
+    border: 2px dotted var(--ink);
+    padding: 1.25rem 1.25rem 0.5rem;
+  }
+
   .cluster-columns .cluster-stories li > a {
     font-size: 1.5rem;
   }
 
   .cluster-columns .cluster-stories li.featured > a {
     font-size: 1.9rem;
+  }
+
+  .category.category-boxed {
+    width: 100%;
+    left: 0;
+    transform: none;
+    padding: 1.5rem 1.25rem;
+  }
+
+  footer .issue-bar {
+    width: 100%;
+    left: 0;
+    transform: none;
   }
 
 }
@@ -439,7 +607,7 @@ main {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  border: 6px double var(--ink);
+  border: 6px double var(--red);
   padding: 2rem 2.5rem;
   margin: 2rem 0;
   text-align: center;
@@ -454,7 +622,7 @@ main {
   width: 60px;
   height: auto;
   margin: 1.5rem auto 0;
-  color: var(--ink);
+  color: var(--red);
 }
 
 .journal-header .journal-sub {
@@ -469,7 +637,7 @@ main {
 .journal-header .journal-title {
   font-family: 'Playfair Display', 'Georgia', serif;
   font-weight: 900;
-  color: var(--ink);
+  color: var(--red);
   text-transform: uppercase;
   white-space: nowrap;
   display: inline-block;
@@ -492,31 +660,33 @@ main {
   margin-bottom: 1.5rem;
 }
 
+.journal-entry p:last-of-type {
+  break-after: avoid;
+}
+
 .journal-entry:last-child {
   margin-bottom: 0;
 }
 
 .journal-date {
   display: block;
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-weight: 700;
+  font-family: 'Old Standard TT', 'Georgia', serif;
+  font-style: italic;
   font-size: 0.95rem;
-  color: var(--ink);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
+  color: var(--red);
+  text-align: right;
+  margin-top: 0.5rem;
 }
 
 .journal-date::before {
-  content: '◆ ';
-  color: #2c3e6b;
+  content: '— ';
 }
 
 .journal-entry p {
   font-family: 'Old Standard TT', 'Georgia', serif;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1.6;
-  color: var(--ink);
+  color: var(--red);
   margin: 0 0 0.75rem 0;
 }
 
@@ -652,6 +822,10 @@ footer {
 }
 
 footer .issue-bar {
+  width: calc((100% - 3rem) * 1.5);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   margin-bottom: 0.5rem;
 }
 
@@ -671,11 +845,28 @@ footer .issue-bar {
   }
 
   .masthead {
-    padding: 1rem 1rem 0.6rem;
+    padding: 0 1rem;
   }
 
-  .masthead h2 {
-    margin-top: -5vw;
+  .masthead-top {
+    padding: 0.75rem 0 0.4rem;
+  }
+
+  .dateline {
+    font-size: 0.75rem;
+  }
+
+  .byline {
+    font-size: 0.75rem;
+  }
+
+  .category.category-boxed {
+    padding: 1rem 0.75rem;
+  }
+
+  .cluster-title {
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
   }
 
   .issue-bar {
