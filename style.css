@@ -236,6 +236,15 @@ main {
   margin-bottom: 1rem;
 }
 
+/* === ORNAMENT === */
+.ornament {
+  text-align: center;
+  font-size: 1.4rem;
+  color: var(--red);
+  letter-spacing: 0.5em;
+  margin: 0;
+}
+
 /* === EPIGRAPH === */
 .epigraph {
   text-align: center;
@@ -481,6 +490,13 @@ main {
   margin-top: 1.5rem;
   padding-top: 1.75rem;
   border-top: 2px dotted var(--ink);
+}
+
+.life-section:not(:has(.cluster-title)),
+.russia-section:not(:has(.cluster-title)),
+.ai-section:not(:has(.cluster-title)) {
+  border-top: none;
+  padding-top: 0;
 }
 
 @media (max-width: 720px) {
@@ -830,6 +846,14 @@ main {
     border: none;
     vertical-align: middle;
   }
+}
+
+/* === INSET SKETCH === */
+.sketch-inset {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 /* === FOOTER === */
