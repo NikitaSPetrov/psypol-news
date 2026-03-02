@@ -16,6 +16,7 @@
 
 html {
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -526,6 +527,19 @@ main {
   content: none;
 }
 
+/* === FOOTER === */
+footer {
+  margin-top: 2rem;
+}
+
+footer .issue-bar {
+  width: calc((100% - 3rem) * 1.5);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 1060px) {
   .masthead {
     width: 100%;
@@ -790,6 +804,17 @@ main {
 
 .sketch-mobile { display: none; }
 
+@media (min-width: 721px) and (max-width: 1200px) {
+  .sketch {
+    width: clamp(80px, 12vw, 160px);
+  }
+  .sketch-r { transform: translateY(-50%) translateX(100%); }
+  .sketch-l { transform: translateY(-50%) translateX(-100%); }
+  .sketch-lg { width: clamp(100px, 15vw, 200px); }
+  .cluster-stories .sketch-l { left: 0; }
+  .cluster-stories .sketch-r { right: 0; }
+}
+
 @media (max-width: 720px) {
   .has-sketch {
     display: flex;
@@ -856,19 +881,6 @@ main {
   margin-bottom: 1rem;
 }
 
-/* === FOOTER === */
-footer {
-  margin-top: 2rem;
-}
-
-footer .issue-bar {
-  width: calc((100% - 3rem) * 1.5);
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 0.5rem;
-}
-
 /* === RESPONSIVE === */
 @media (max-width: 480px) {
   body {
@@ -912,6 +924,11 @@ footer .issue-bar {
   .issue-bar {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  footer .issue-bar {
+    font-size: 0.6rem;
+    letter-spacing: 0.02em;
   }
 
   .stories li a {

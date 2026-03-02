@@ -431,7 +431,6 @@
 function fitEl(el, container) {
   const style = getComputedStyle(container);
   const target = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
-  // Binary search for precise fit
   let lo = 10, hi = 300;
   while (hi - lo > 0.1) {
     const mid = (lo + hi) / 2;
@@ -442,7 +441,9 @@ function fitEl(el, container) {
   el.style.fontSize = lo + 'px';
 }
 
+let lastWidth = 0;
 function fitAll() {
+  lastWidth = window.innerWidth;
   const masthead = document.querySelector('.masthead');
   fitEl(document.querySelector('.masthead h1'), masthead);
   document.querySelectorAll('h2 span').forEach(span => {
@@ -453,9 +454,11 @@ function fitAll() {
     fitEl(el, el.closest('.journal-header'));
   });
 }
-document.fonts.ready.then(fitAll);
-window.addEventListener('resize', fitAll);
-
+document.fonts.ready.then(() => { fitAll(); setTimeout(fitAll, 100); });
+window.addEventListener('load', fitAll);
+window.addEventListener('resize', () => {
+  if (window.innerWidth !== lastWidth) fitAll();
+});
 </script>
 </body>
 </html>
