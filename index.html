@@ -431,7 +431,10 @@
 function fitEl(el, container) {
   const style = getComputedStyle(container);
   const target = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
-  let lo = 10, hi = 300;
+  if (target <= 0) return;
+  let lo = 10, hi = Math.min(300, target);
+  el.style.fontSize = hi + 'px';
+  if (el.scrollWidth <= target) { el.style.fontSize = hi + 'px'; return; }
   while (hi - lo > 0.1) {
     const mid = (lo + hi) / 2;
     el.style.fontSize = mid + 'px';

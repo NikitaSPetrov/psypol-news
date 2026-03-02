@@ -631,6 +631,12 @@ footer .issue-bar {
 
   .masthead {
     border-top: 2px solid var(--red);
+    padding: 0.25rem 1rem;
+  }
+
+  .masthead h1 {
+    margin: 0;
+    transform: none;
   }
 
   footer .issue-bar {
