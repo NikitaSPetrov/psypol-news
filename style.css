@@ -236,15 +236,6 @@ main {
   margin-bottom: 1rem;
 }
 
-/* === ORNAMENT === */
-.ornament {
-  text-align: center;
-  font-size: 1.4rem;
-  color: var(--red);
-  letter-spacing: 0.5em;
-  margin: 0;
-}
-
 /* === EPIGRAPH === */
 .epigraph {
   text-align: center;
@@ -578,7 +569,7 @@ footer .issue-bar {
 
   .stories li.cluster-box.cluster-winter {
     border: none;
-    padding-top: 0;
+    padding: 0;
   }
 
   .cluster-title {
@@ -623,12 +614,20 @@ footer .issue-bar {
 
   .masthead {
     border-top: none;
-    padding: 0 0 0.75rem 0;
+    width: 100%;
+    left: 0;
+    transform: none;
+    padding: 0 0.75rem 0.75rem;
   }
 
   .masthead h1 {
+    font-size: 11vw !important;
     margin: 0;
     transform: none;
+  }
+
+  .journal-header .journal-title {
+    font-size: 4.5vw !important;
   }
 
   footer .issue-bar {

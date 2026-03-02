@@ -29,7 +29,7 @@
       <div class="cluster-col">
         <ol class="stories cluster-stories">
           <li id="iran-war" class="featured digest" data-date="2026-03-02">
-            <a href="https://www.aljazeera.com/news/2026/3/1/who-are-irans-senior-figures-killed-in-us-israeli-attacks">War in Iran:</a>
+            <a href="https://www.aljazeera.com/news/2026/3/1/who-are-irans-senior-figures-killed-in-us-israeli-attacks">Israel &amp; US vs. Iran:</a>
             <span class="source"><a href="https://www.aljazeera.com/news/2026/3/1/who-are-irans-senior-figures-killed-in-us-israeli-attacks">Al Jazeera</a>, <a href="https://www.washingtonpost.com/world/2026/02/28/israel-strikes-iran-live-updates/">Washington Post</a>, <a href="https://iranwire.com/en/news/149712-ali-larijani-we-will-not-negotiate-with-the-united-states/">IranWire</a>, <a href="https://meduza.io/feature/2026/03/02/kto-teper-pravit-iranom-chto-za-perehodnyy-sovet-i-kto-stanet-novym-verhovnym-liderom-vmesto-ubitogo-ali-hamenei">Meduza</a>, <a href="https://www.wired.com/story/hacked-prayer-app-sends-surrender-messages-to-iranians-amid-israeli-strikes/">Wired</a></span>
             <ul class="nuggets">
               <li><a href="https://www.aljazeera.com/news/2026/3/1/who-are-irans-senior-figures-killed-in-us-israeli-attacks">U.S. and Israel continue bombing campaign after Khamenei and top command are killed</a></li>
@@ -93,8 +93,6 @@
       <line x1="62" y1="55" x2="65" y2="66" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
   </div>
-
-  <div class="ornament">&loz;</div>
 
   <blockquote class="epigraph">
     <p>&ldquo;<em>The felt presence of immediate experience</em> is all you know. Everything else comes as unconfirmed rumor, innuendo, unrealized possibility, fading memory, conjecture, lie, hope &mdash; who knows.&rdquo;</p>
@@ -447,15 +445,20 @@ function fitEl(el, container) {
 let lastWidth = 0;
 function fitAll() {
   lastWidth = window.innerWidth;
-  const masthead = document.querySelector('.masthead');
-  fitEl(document.querySelector('.masthead h1'), masthead);
+  const mobile = window.innerWidth <= 720;
+  if (!mobile) {
+    const masthead = document.querySelector('.masthead');
+    fitEl(document.querySelector('.masthead h1'), masthead);
+  }
   document.querySelectorAll('h2 span').forEach(span => {
     const container = span.closest('.masthead') || span.closest('h2') || span.closest('main') || span.parentElement;
     fitEl(span, container);
   });
-  document.querySelectorAll('.journal-title').forEach(el => {
-    fitEl(el, el.closest('.journal-header'));
-  });
+  if (!mobile) {
+    document.querySelectorAll('.journal-title').forEach(el => {
+      fitEl(el, el.closest('.journal-header'));
+    });
+  }
 }
 function safeFit() { requestAnimationFrame(fitAll); }
 document.fonts.ready.then(() => { safeFit(); setTimeout(safeFit, 200); });
