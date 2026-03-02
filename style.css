@@ -137,31 +137,25 @@ main {
 
 .category {
   margin-bottom: 0;
-  padding-top: 0;
+  padding-top: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: none;
   position: relative;
 }
 
 .category::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--red);
+  display: none;
 }
 
-.category:last-child::after {
-  display: none;
+.category:first-child {
+  padding-top: 0;
 }
 
 .category h2 {
   font-family: 'Playfair Display', 'Georgia', serif;
   font-weight: 900;
   letter-spacing: 0.35em;
-  color: var(--red);
+  color: var(--ink);
   text-transform: uppercase;
   text-align: center;
   margin-top: -0.2rem;
@@ -174,10 +168,6 @@ main {
   position: relative;
 }
 
-.category h2 + .stories {
-  padding-top: 1rem;
-}
-
 .category h2::after {
   content: '';
   position: absolute;
@@ -185,7 +175,11 @@ main {
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--red);
+  background: var(--ink);
+}
+
+.category h2 + .stories {
+  padding-top: 1rem;
 }
 
 .category h2 span {
@@ -199,7 +193,7 @@ main {
 
 .section-sub {
   display: block;
-  color: var(--red);
+  color: var(--ink);
   white-space: nowrap;
 }
 
@@ -445,7 +439,7 @@ main {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  border: 6px double var(--red);
+  border: 6px double var(--ink);
   padding: 2rem 2.5rem;
   margin: 2rem 0;
   text-align: center;
@@ -453,6 +447,14 @@ main {
 
 .journal-header {
   margin-bottom: 1.5rem;
+}
+
+.journal-icon {
+  display: block;
+  width: 60px;
+  height: auto;
+  margin: 1.5rem auto 0;
+  color: var(--ink);
 }
 
 .journal-header .journal-sub {
@@ -467,7 +469,7 @@ main {
 .journal-header .journal-title {
   font-family: 'Playfair Display', 'Georgia', serif;
   font-weight: 900;
-  color: var(--red);
+  color: var(--ink);
   text-transform: uppercase;
   white-space: nowrap;
   display: inline-block;
@@ -480,12 +482,58 @@ main {
   display: block;
 }
 
+.journal-entries {
+  text-align: left;
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.journal-entry {
+  margin-bottom: 1.5rem;
+}
+
+.journal-entry:last-child {
+  margin-bottom: 0;
+}
+
+.journal-date {
+  display: block;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.journal-date::before {
+  content: '◆ ';
+  color: #2c3e6b;
+}
+
+.journal-entry p {
+  font-family: 'Old Standard TT', 'Georgia', serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 0 0.75rem 0;
+}
+
+.journal-entry p:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 1060px) {
   .journal-module {
     width: 100%;
     left: 0;
     transform: none;
     padding: 1.5rem 1.25rem;
+  }
+
+  .journal-entries {
+    column-count: 1;
   }
 }
 
