@@ -619,6 +619,7 @@ footer .issue-bar {
     left: 0;
     transform: none;
     padding: 0 0.75rem 0;
+    flex-direction: column;
   }
 
   .masthead-top {
@@ -626,7 +627,8 @@ footer .issue-bar {
     text-align: center;
     padding: 0.6rem 0;
     border-top: 2px solid var(--red);
-    border-bottom: 2px solid var(--red);
+    border-bottom: none;
+    order: 2;
   }
 
   .masthead-top .byline {
@@ -641,6 +643,8 @@ footer .issue-bar {
   .masthead h1 {
     margin: 0;
     transform: none;
+    order: 1;
+    border-bottom: 2px solid var(--red);
   }
 
   .title-top, .title-bottom {
