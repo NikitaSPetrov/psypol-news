@@ -443,12 +443,14 @@ function fitAll() {
   lastWidth = window.innerWidth;
   const mobile = window.innerWidth <= 720;
   const masthead = document.querySelector('.masthead');
+  const h1 = document.querySelector('.masthead h1');
+  const titleParts = document.querySelectorAll('.title-top, .title-bottom');
   if (mobile) {
-    document.querySelectorAll('.title-top, .title-bottom').forEach(span => {
-      fitEl(span, masthead);
-    });
+    h1.style.fontSize = '';
+    titleParts.forEach(span => fitEl(span, masthead));
   } else {
-    fitEl(document.querySelector('.masthead h1'), masthead);
+    titleParts.forEach(span => span.style.fontSize = '');
+    fitEl(h1, masthead);
   }
   document.querySelectorAll('h2 span').forEach(span => {
     const container = span.closest('.masthead') || span.closest('h2') || span.closest('main') || span.parentElement;
