@@ -148,6 +148,10 @@ header {
   color: var(--red);
 }
 
+.title-top, .title-bottom {
+  display: inline;
+}
+
 /* === CATEGORIES === */
 main {
   padding: 0 1.5rem;
@@ -581,7 +585,7 @@ footer .issue-bar {
   .russia-section:has(.cluster-title),
   .life-section:has(.cluster-title) {
     border: 2px dotted var(--ink);
-    padding: 1.25rem 1.25rem 0.5rem;
+    padding: 1.75rem 1.25rem 0.5rem;
   }
 
   .cluster-columns .cluster-stories li > a {
@@ -608,22 +612,49 @@ footer .issue-bar {
 }
 
 @media (max-width: 720px) {
-  .masthead-top {
-    display: none;
-  }
-
   .masthead {
     border-top: none;
+    border-bottom: none;
     width: 100%;
     left: 0;
     transform: none;
-    padding: 0 0.75rem 0.75rem;
+    padding: 0 0.75rem 0;
+  }
+
+  .masthead-top {
+    display: block;
+    text-align: center;
+    padding: 0.6rem 0;
+    border-top: 2px solid var(--red);
+    border-bottom: 2px solid var(--red);
+  }
+
+  .masthead-top .byline {
+    display: none;
+  }
+
+  .masthead-top .dateline {
+    font-size: 0.75rem;
+    padding-left: 0;
   }
 
   .masthead h1 {
-    font-size: 11vw !important;
     margin: 0;
     transform: none;
+  }
+
+  .title-top, .title-bottom {
+    display: block;
+    white-space: nowrap;
+    line-height: 0.9;
+  }
+
+  .title-top {
+    padding-top: 0.15em;
+  }
+
+  .title-bottom {
+    padding-bottom: 0.15em;
   }
 
   .journal-header .journal-title {
