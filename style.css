@@ -641,6 +641,8 @@ footer .issue-bar {
   }
 
   .masthead h1 {
+    display: block;
+    width: 100%;
     margin: 0;
     transform: none;
     order: 1;

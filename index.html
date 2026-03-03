@@ -447,6 +447,7 @@ function fitAll() {
   const titleParts = document.querySelectorAll('.title-top, .title-bottom');
   if (mobile) {
     h1.style.fontSize = '';
+    titleParts.forEach(span => span.style.fontSize = '');
     titleParts.forEach(span => fitEl(span, masthead));
   } else {
     titleParts.forEach(span => span.style.fontSize = '');
