@@ -633,11 +633,108 @@ footer .issue-bar {
   }
 }
 
+/* === IDEA CAROUSEL === */
+.idea-carousel {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.idea-carousel-track {
+  flex: 1;
+  min-width: 0;
+  max-width: calc(480px * 0.8 * 3 + 2rem);
+  overflow: hidden;
+  padding: 10px 0; /* room for hover lift without clipping */
+}
+
+.idea-carousel-inner {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.4s ease;
+}
+
+.idea-carousel-inner .idea-card-pair {
+  flex: 0 0 calc((100% - 2rem) / 3);
+}
+
+/* --- Overlay (clone-to-overlay for expanded card) --- */
+.idea-carousel-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  transition: background 0.5s ease;
+  perspective: 1200px;
+}
+
+.idea-carousel-overlay.active {
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+}
+
+.idea-overlay-card {
+  width: min(90vw, calc(90vh * 5 / 7));
+  max-height: 90vh;
+  aspect-ratio: 5 / 7;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.55s ease;
+  cursor: pointer;
+}
+
+.carousel-arrow {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--red);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0 2.5rem;
+  transition: opacity 0.2s;
+}
+
+.carousel-arrow:hover {
+  opacity: 0.6;
+}
+
+/* Placeholder front for cards without illustration */
+.placeholder-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-img::after {
+  content: '';
+  width: 60%;
+  height: 60%;
+  border: 2px dashed var(--ink);
+  border-radius: 8px;
+  opacity: 0.2;
+}
+
+.placeholder-text {
+  font-style: italic;
+  opacity: 0.4;
+}
+
 /* === IDEA CARD === */
 .idea-card-pair {
   display: flex;
   justify-content: center;
-  margin: 2rem 0;
 }
 
 .idea-card {
@@ -646,6 +743,7 @@ footer .issue-bar {
   aspect-ratio: 5 / 7;
   perspective: 1000px;
   cursor: pointer;
+  container-type: inline-size;
 }
 
 .idea-card-flipper {
@@ -669,7 +767,7 @@ footer .issue-bar {
   backface-visibility: hidden;
   border: 3px solid var(--ink);
   border-radius: 12px;
-  background: var(--bg);
+  background: var(--paper);
   overflow: hidden;
 }
 
@@ -725,12 +823,12 @@ footer .issue-bar {
   display: block;
   font-family: 'Literata', 'Georgia', serif;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: clamp(0.75rem, 3.5cqi, 1.5rem);
   color: var(--ink);
   text-align: center;
   line-height: 1.2;
-  padding-top: 0.75rem;
-  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
   border-top: 1px solid var(--ink);
 }
 
@@ -739,7 +837,7 @@ footer .issue-bar {
   display: block;
   font-family: 'Literata', 'Georgia', serif;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: var(--ink);
   text-align: center;
   line-height: 1.2;
@@ -771,7 +869,7 @@ footer .issue-bar {
 .idea-source {
   display: block;
   font-family: 'Old Standard TT', serif;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-style: italic;
   color: var(--ink);
   margin-top: auto;
@@ -787,19 +885,17 @@ footer .issue-bar {
   color: var(--red);
 }
 
-@media (max-width: 480px) {
-  .idea-card-inner {
-    padding: 1rem;
-    margin: 4px;
+@media (max-width: 768px) {
+  .idea-carousel-inner .idea-card-pair {
+    flex: 0 0 100%;
   }
 
-  .idea-card-label,
-  .idea-card-title {
-    font-size: 1.2rem;
+  .idea-carousel {
+    padding: 2rem 0.5rem;
   }
 
-  .idea-text {
-    font-size: 0.85rem;
+  .carousel-arrow {
+    margin: 0 0.75rem;
   }
 }
 
