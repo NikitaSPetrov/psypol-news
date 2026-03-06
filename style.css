@@ -91,54 +91,48 @@ body {
 
 /* === HEADER === */
 header {
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
 }
 
 .masthead {
-  padding: 0;
+  padding: 0 3rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 2px solid var(--red);
-}
-
-.masthead-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  align-self: stretch;
-  padding: 1.25rem 0 0.5rem;
-  border-bottom: 2px solid var(--red);
-}
-
-.dateline {
-  font-family: 'PT Serif', 'Georgia', serif;
-  font-size: 0.85rem;
-  font-style: italic;
-  color: var(--red);
-}
-
-.byline {
-  font-family: 'PT Serif', 'Georgia', serif;
-  font-style: italic;
-  font-size: 0.85rem;
-  color: var(--red);
-  white-space: nowrap;
-  padding-left: 1rem;
+  width: 100vw;
+  max-width: 1600px;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .masthead h1 {
+  position: relative;
   font-family: 'Playfair Display', 'Georgia', serif;
   font-weight: 900;
   line-height: 1;
-  color: var(--ink);
   text-transform: uppercase;
   white-space: nowrap;
   display: inline-block;
-  margin: 0.08em 0;
-  transform: translateY(-0.07em);
 }
+
+/* Red rules sized to the title text.
+   Playfair Display hhea metrics: ascender 1082, descender -251, cap-height 710.
+   At line-height:1 → cap tops ~0.21em below box top, baseline ~0.08em above box bottom.
+   Offsets equalize the visual gap above caps and below baseline. */
+.masthead h1::before,
+.masthead h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--red);
+}
+
+.masthead h1::before { top: 0.05em; }
+.masthead h1::after { bottom: -0.07em; }
 
 .title-red {
   color: var(--red);
@@ -146,6 +140,73 @@ header {
 
 .title-top, .title-bottom {
   display: inline;
+  position: relative;
+}
+
+/* === MASTHEAD NAV === */
+.masthead-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.75rem 0 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.masthead-nav a {
+  font-family: 'Old Standard TT', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.masthead-nav a:hover {
+  color: var(--red);
+}
+
+/* === EDITOR'S NOTE === */
+.editors-note {
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.editors-note .epigraph {
+  padding: 1.5rem 0 1.5rem;
+  margin: 0;
+}
+
+.editors-note .epigraph p {
+  font-size: 1.4rem;
+}
+
+.editors-entries {
+  text-align: left;
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.editors-entries p {
+  font-family: 'Literata', 'Georgia', serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+
+.editors-entries p:last-child {
+  margin-bottom: 0;
+}
+
+.editors-entries a {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.editors-entries a:hover {
+  text-decoration: underline;
 }
 
 /* === CATEGORIES === */
@@ -197,6 +258,15 @@ main {
   background: var(--ink);
 }
 
+.section-dateline {
+  font-family: 'PT Serif', 'Georgia', serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--ink);
+  text-align: center;
+  margin: 0.5rem 0 0;
+}
+
 .category h2::after {
   content: '';
   position: absolute;
@@ -207,8 +277,33 @@ main {
   background: var(--ink);
 }
 
-.category h2 + .stories {
+.category h2 + .stories,
+.category h2 + .section-dateline + .stories,
+.category .section-epigraph + .stories {
   padding-top: 1rem;
+}
+
+.section-epigraph {
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 0 1rem 0.5rem;
+  color: var(--ink);
+}
+
+.section-epigraph p {
+  font-family: 'Old Standard TT', 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.section-epigraph cite {
+  display: block;
+  font-family: 'Old Standard TT', 'Georgia', serif;
+  font-style: italic;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
 }
 
 .category h2 span {
@@ -570,35 +665,22 @@ footer .issue-bar {
 
 @media (max-width: 720px) {
   .masthead {
-    border-bottom: none;
     padding: 0 0.75rem 0;
   }
 
-  .masthead-top {
-    display: block;
-    text-align: center;
-    padding: 0.6rem 0;
-    border-top: 2px solid var(--red);
-    border-bottom: none;
-    order: 2;
-  }
-
-  .masthead-top .byline {
-    display: none;
-  }
-
-  .masthead-top .dateline {
-    font-size: 0.75rem;
-    padding-left: 0;
+  .editors-note .epigraph p {
+    font-size: 1.1rem;
   }
 
   .masthead h1 {
     display: block;
     width: 100%;
-    margin: 0;
-    transform: none;
-    order: 1;
-    border-bottom: 2px solid var(--red);
+  }
+
+  /* Hide h1-level rules on mobile (wrong em context) */
+  .masthead h1::before,
+  .masthead h1::after {
+    display: none;
   }
 
   .title-top, .title-bottom {
@@ -607,13 +689,21 @@ footer .issue-bar {
     line-height: 0.9;
   }
 
-  .title-top {
-    padding-top: 0.15em;
+  /* Rules on spans — em is their own fitEl'd font-size.
+     At line-height:0.9 → cap tops ~0.16em below box top,
+     baseline ~0.04em above box bottom. */
+  .title-top::before,
+  .title-bottom::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--red);
   }
 
-  .title-bottom {
-    padding-bottom: 0.15em;
-  }
+  .title-top::before { top: 0.03em; }
+  .title-bottom::after { bottom: -0.09em; }
 
   .journal-header .journal-title {
     font-size: 4.5vw !important;
@@ -640,7 +730,7 @@ footer .issue-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem 2rem;
   position: relative;
   z-index: 1;
 }
@@ -648,7 +738,7 @@ footer .issue-bar {
 .idea-carousel-track {
   flex: 1;
   min-width: 0;
-  max-width: calc(480px * 0.8 * 3 + 2rem);
+  max-width: calc(960px - 3rem);
   overflow: hidden;
   padding: 10px 0; /* room for hover lift without clipping */
 }
@@ -683,8 +773,7 @@ footer .issue-bar {
 }
 
 .idea-overlay-card {
-  width: min(90vw, calc(90vh * 5 / 7));
-  max-height: 90vh;
+  width: min(90vw, 480px);
   aspect-ratio: 5 / 7;
   position: relative;
   transform-style: preserve-3d;
@@ -869,7 +958,7 @@ footer .issue-bar {
 .idea-source {
   display: block;
   font-family: 'Old Standard TT', serif;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   font-style: italic;
   color: var(--ink);
   margin-top: auto;
@@ -989,6 +1078,10 @@ footer .issue-bar {
 }
 
 @media (max-width: 1060px) {
+  .editors-entries {
+    column-count: 1;
+  }
+
   .journal-module {
     padding: 1.5rem 1.25rem;
     overflow: hidden;
@@ -1139,20 +1232,9 @@ footer .issue-bar {
   }
 
   .masthead {
-    padding: 0 0 0.75rem 0;
+    padding: 0 0.75rem;
   }
 
-  .masthead-top {
-    padding: 0.75rem 0 0.4rem;
-  }
-
-  .dateline {
-    font-size: 0.75rem;
-  }
-
-  .byline {
-    font-size: 0.75rem;
-  }
 
   .category.category-boxed {
     padding: 1rem 0.75rem;
