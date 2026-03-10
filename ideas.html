@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDEAS ARE ALIVE — PSYCHOPOLITICA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="ideas">
+
+<header></header>
+<script src="nav.js"></script>
+
+<main class="genre-page">
+
+  <div class="idea-grid">
+
+    <div class="idea-card-pair" data-date="2026-03-04">
+      <div class="idea-card">
+        <div class="idea-card-flipper">
+          <div class="idea-card-face idea-front">
+            <div class="idea-card-inner">
+              <div class="idea-card-img placeholder-img"></div>
+              <span class="idea-card-label">Dreams Were the First Internet</span>
+            </div>
+          </div>
+          <div class="idea-card-face idea-back">
+            <div class="idea-card-inner">
+              <span class="idea-card-title">Dreams Were the First Internet</span>
+              <div class="idea-card-divider"></div>
+              <p class="idea-text placeholder-text">Coming soon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card-pair" data-date="2026-03-04">
+      <div class="idea-card">
+        <div class="idea-card-flipper">
+          <div class="idea-card-face idea-front">
+            <div class="idea-card-inner">
+              <div class="idea-card-img">
+                <img src="img/one-war-r.png" alt="">
+              </div>
+              <span class="idea-card-label">There&rsquo;s Only One War</span>
+            </div>
+          </div>
+          <div class="idea-card-face idea-back">
+            <div class="idea-card-inner">
+              <span class="idea-card-title">There&rsquo;s Only One War</span>
+              <div class="idea-card-divider"></div>
+              <p class="idea-text">When I was little, WW1 and WW2 seemed like discrete events from wholly different eras, separated and surrounded by peace. That&rsquo;s not what they were.<br><br>There were 21 years in between them &mdash; the distance from now to 2005 (the year when the radio played <em>Feel Good Inc.</em> by Gorillaz, <em>Mr. Brightside</em> by The Killers, and <em>Hollaback Girl</em> by Gwen Stefani). These years were filled with civil wars, revolutions, and border conflicts.<br><br>The end of WW2 was also the start of the Cold War (which was not all that cold for Vietnam or Korea). We say that it ended with the fall of the Soviet Union, but the news from Ukraine suggests otherwise.<br><br>The last century is a continuous flow of violence.<br><br>Maybe there&rsquo;s just one war going round and round and round, and local escalations in different regions of time and space are like solar flares or storms in the ocean &mdash; not in any way separate from the currents around them.</p>
+              <span class="idea-source">Discussed in: <a href="https://www.nonzero.org/podcast">The Nonzero Podcast</a>, &ldquo;<a href="https://www.youtube.com/watch?v=LX_0gwt4sho">Will the Iran War Spiral Out of Control?</a>&rdquo; &mdash; Nikita Petrov &amp; Robert Wright</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card-pair" data-date="2026-03-05">
+      <div class="idea-card">
+        <div class="idea-card-flipper">
+          <div class="idea-card-face idea-front">
+            <div class="idea-card-inner">
+              <div class="idea-card-img placeholder-img"></div>
+              <span class="idea-card-label">Alienism</span>
+            </div>
+          </div>
+          <div class="idea-card-face idea-back">
+            <div class="idea-card-inner">
+              <span class="idea-card-title">Alienism</span>
+              <div class="idea-card-divider"></div>
+              <p class="idea-text placeholder-text">Coming soon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card-pair" data-date="2026-03-05">
+      <div class="idea-card">
+        <div class="idea-card-flipper">
+          <div class="idea-card-face idea-front">
+            <div class="idea-card-inner">
+              <div class="idea-card-img placeholder-img"></div>
+              <span class="idea-card-label">Post-Consensus Reality</span>
+            </div>
+          </div>
+          <div class="idea-card-face idea-back">
+            <div class="idea-card-inner">
+              <span class="idea-card-title">Post-Consensus Reality</span>
+              <div class="idea-card-divider"></div>
+              <p class="idea-text placeholder-text">Coming soon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer></footer>
+
+<div class="idea-carousel-overlay"></div>
+
+<script>
+// Card text fitting
+function fitCardText(card) {
+  var back = card.querySelector('.idea-back .idea-card-inner');
+  if (!back) return;
+  var text = back.querySelector('.idea-text');
+  if (!text) return;
+  var title = back.querySelector('.idea-card-title');
+  text.style.fontSize = '';
+  if (title) title.style.fontSize = '';
+  var face = card.querySelector('.idea-back');
+  var saved = {
+    vis: face.style.visibility,
+    bfv: face.style.backfaceVisibility,
+    pos: face.style.position,
+    ov: back.style.overflow
+  };
+  face.style.visibility = 'hidden';
+  face.style.backfaceVisibility = 'visible';
+  face.style.position = 'absolute';
+  back.style.overflow = 'auto';
+  back.offsetHeight;
+  var size = parseFloat(getComputedStyle(text).fontSize);
+  var minSize = 8;
+  while (back.scrollHeight > back.clientHeight && size > minSize) {
+    size -= 0.5;
+    text.style.fontSize = size + 'px';
+    if (title && size < 14) title.style.fontSize = Math.max(12, size + 2) + 'px';
+  }
+  face.style.visibility = saved.vis;
+  face.style.backfaceVisibility = saved.bfv;
+  face.style.position = saved.pos;
+  back.style.overflow = saved.ov;
+}
+
+function fitAllCards() {
+  document.querySelectorAll('.idea-card').forEach(fitCardText);
+}
+document.fonts.ready.then(function() { fitAllCards(); setTimeout(fitAllCards, 300); });
+window.addEventListener('load', fitAllCards);
+window.addEventListener('resize', fitAllCards);
+
+// Overlay zoom+flip
+(function() {
+  var overlay = document.querySelector('.idea-carousel-overlay');
+  var activeCard = null;
+  var closing = false;
+
+  function fitOverlayText(oc) {
+    var backFace = oc.querySelector('.idea-back');
+    if (!backFace) return;
+    var text = backFace.querySelector('.idea-text');
+    var title = backFace.querySelector('.idea-card-title');
+    var container = backFace.querySelector('.idea-card-inner');
+    if (!text || !container) return;
+    text.style.fontSize = '';
+    if (title) title.style.fontSize = '';
+    var savedBfv = backFace.style.backfaceVisibility;
+    var savedVis = backFace.style.visibility;
+    backFace.style.backfaceVisibility = 'visible';
+    backFace.style.visibility = 'hidden';
+    container.style.overflow = 'auto';
+    container.offsetHeight;
+    var size = parseFloat(getComputedStyle(text).fontSize);
+    while (container.scrollHeight > container.clientHeight && size > 8) {
+      size -= 0.5;
+      text.style.fontSize = size + 'px';
+      if (title && size < 14) title.style.fontSize = Math.max(12, size + 2) + 'px';
+    }
+    container.style.overflow = 'hidden';
+    backFace.style.backfaceVisibility = savedBfv;
+    backFace.style.visibility = savedVis;
+  }
+
+  function makeOverlayCard(card) {
+    var frontInner = card.querySelector('.idea-front .idea-card-inner');
+    var backInner = card.querySelector('.idea-back .idea-card-inner');
+    if (!frontInner || !backInner) return null;
+    var oc = document.createElement('div');
+    oc.className = 'idea-overlay-card';
+    var ff = document.createElement('div');
+    ff.className = 'idea-card-face idea-front';
+    ff.innerHTML = '<div class="idea-card-inner">' + frontInner.innerHTML + '</div>';
+    oc.appendChild(ff);
+    var bf = document.createElement('div');
+    bf.className = 'idea-card-face idea-back';
+    bf.innerHTML = '<div class="idea-card-inner">' + backInner.innerHTML + '</div>';
+    oc.appendChild(bf);
+    return oc;
+  }
+
+  function openCard(card) {
+    if (closing) return;
+    var old = overlay.querySelector('.idea-overlay-card');
+    if (old) old.remove();
+    overlay.classList.remove('active');
+    if (activeCard) activeCard.style.visibility = '';
+    activeCard = card;
+    var oc = makeOverlayCard(card);
+    if (!oc || !overlay) return;
+    overlay.appendChild(oc);
+    fitOverlayText(oc);
+    card.style.visibility = 'hidden';
+    oc.style.transition = 'none';
+    oc.offsetHeight;
+    var ocRect = oc.getBoundingClientRect();
+    var cardRect = card.getBoundingClientRect();
+    var dx = (cardRect.left + cardRect.width / 2) - (ocRect.left + ocRect.width / 2);
+    var dy = (cardRect.top + cardRect.height / 2) - (ocRect.top + ocRect.height / 2);
+    var sx = cardRect.width / ocRect.width;
+    var sy = cardRect.height / ocRect.height;
+    oc.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ') rotateY(0deg)';
+    oc.offsetHeight;
+    oc.style.transition = '';
+    oc.style.transform = 'translate(0px,0px) scale(1) rotateY(180deg)';
+    overlay.classList.add('active');
+    setTimeout(function() { fitOverlayText(oc); }, 580);
+  }
+
+  function closeOverlay(instant) {
+    var oc = overlay.querySelector('.idea-overlay-card');
+    if (!oc || closing) {
+      if (oc) oc.remove();
+      overlay.classList.remove('active');
+      if (activeCard) { activeCard.style.visibility = ''; activeCard = null; }
+      return;
+    }
+    if (instant || !activeCard) {
+      oc.remove();
+      overlay.classList.remove('active');
+      if (activeCard) { activeCard.style.visibility = ''; activeCard = null; }
+      return;
+    }
+    closing = true;
+    var cardRect = activeCard.getBoundingClientRect();
+    var ow = oc.offsetWidth;
+    var oh = oc.offsetHeight;
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    var cx = (vw - ow) / 2 + ow / 2;
+    var cy = (vh - oh) / 2 + oh / 2;
+    var dx = (cardRect.left + cardRect.width / 2) - cx;
+    var dy = (cardRect.top + cardRect.height / 2) - cy;
+    var sx = cardRect.width / ow;
+    var sy = cardRect.height / oh;
+    oc.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ') rotateY(0deg)';
+    overlay.classList.remove('active');
+    var card = activeCard;
+    oc.addEventListener('transitionend', function handler(e) {
+      if (e.target !== oc) return;
+      oc.removeEventListener('transitionend', handler);
+      oc.remove();
+      card.style.visibility = '';
+      activeCard = null;
+      closing = false;
+    });
+    setTimeout(function() {
+      if (closing) {
+        if (oc.parentNode) oc.remove();
+        card.style.visibility = '';
+        activeCard = null;
+        closing = false;
+      }
+    }, 650);
+  }
+
+  // Click any idea card in the grid → open overlay
+  document.addEventListener('click', function(e) {
+    var card = e.target.closest('.idea-card');
+    if (!card) return;
+    e.stopPropagation();
+    if (activeCard === card) { closeOverlay(); return; }
+    openCard(card);
+  });
+
+  if (overlay) {
+    overlay.addEventListener('click', function() {
+      closeOverlay();
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

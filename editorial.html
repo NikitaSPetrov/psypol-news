@@ -11,21 +11,12 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="editorial.css">
 </head>
-<body>
+<body data-page="editorial">
 
-<header>
-  <div class="masthead">
-    <h1><span>EDITORIAL</span></h1>
-    <h2><span>POLICY</span></h2>
-  </div>
-</header>
+<header></header>
+<script src="nav.js"></script>
 
 <main>
-
-  <div class="issue-bar">
-    <span><a href="index.html" style="color:inherit;text-decoration:none">&larr; Bulletin</a></span>
-    <span><a href="https://psychopolitica.com" style="color:inherit;text-decoration:none">Psychopolitica</a></span>
-  </div>
 
   <article class="editorial">
 
@@ -96,36 +87,7 @@
 
 </main>
 
-<footer>
-  <div class="issue-bar">
-    <span><a href="index.html" style="color:inherit;text-decoration:none">&larr; Bulletin</a></span>
-    <span><a href="https://psychopolitica.com" style="color:inherit;text-decoration:none">Psychopolitica</a></span>
-  </div>
-</footer>
+<footer></footer>
 
-<script>
-function fitEl(el, container) {
-  const style = getComputedStyle(container);
-  const target = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
-  let lo = 10, hi = 300;
-  while (hi - lo > 0.1) {
-    const mid = (lo + hi) / 2;
-    el.style.fontSize = mid + 'px';
-    if (el.scrollWidth <= target) lo = mid;
-    else hi = mid;
-  }
-  el.style.fontSize = lo + 'px';
-}
-
-function fitAll() {
-  const masthead = document.querySelector('.masthead');
-  fitEl(document.querySelector('.masthead h1'), masthead);
-  document.querySelectorAll('.masthead h2 span').forEach(span => {
-    fitEl(span, masthead);
-  });
-}
-document.fonts.ready.then(fitAll);
-window.addEventListener('resize', fitAll);
-</script>
 </body>
 </html>

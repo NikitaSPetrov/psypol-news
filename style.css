@@ -105,6 +105,7 @@ header {
   max-width: 1600px;
   margin-left: 50%;
   transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .masthead h1 {
@@ -114,7 +115,8 @@ header {
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
-  display: inline-block;
+  width: 100%;
+  text-align: center;
 }
 
 /* Red rules sized to the title text.
@@ -136,6 +138,15 @@ header {
 
 .title-red {
   color: var(--red);
+}
+
+.title-black {
+  color: var(--ink);
+}
+
+.masthead h1:has(.title-black)::before,
+.masthead h1:has(.title-black)::after {
+  background: var(--ink);
 }
 
 .title-top, .title-bottom {
@@ -164,6 +175,52 @@ header {
 
 .masthead-nav a:hover {
   color: var(--red);
+}
+
+.masthead-nav a.active {
+  color: var(--red);
+}
+
+.masthead-nav .nav-short {
+  display: none;
+}
+
+/* === GENRE PAGE LAYOUT === */
+.genre-page main {
+  padding: 0;
+}
+
+.genre-page .category {
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* === DREAM ARCHIVE === */
+.dream-archive .journal-module {
+  margin: 0 0 2rem;
+}
+
+.dream-archive .journal-module:first-child {
+  margin-top: 0;
+}
+
+/* === IDEA GRID === */
+.idea-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+}
+
+.idea-grid .idea-card-pair {
+  display: flex;
+  justify-content: center;
+}
+
+.idea-grid .idea-card {
+  width: 100%;
+  max-width: 320px;
 }
 
 /* === EDITOR'S NOTE === */
@@ -211,14 +268,15 @@ header {
 
 /* === CATEGORIES === */
 main {
-  padding: 0;
+  padding: 2rem 0 0;
 }
 
 .category {
-  margin-bottom: 0;
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: none;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding: 0 1.5rem 1.5rem;
+  border: 2px dotted var(--ink);
+  border-top: none;
   position: relative;
 }
 
@@ -226,10 +284,13 @@ main {
   display: none;
 }
 
-.category:first-child {
+.category:first-child,
+main > .category:first-of-type {
   padding-top: 0;
+  margin-top: 0;
 }
 
+/* legacy h2 — kept for any remaining uses */
 .category h2 {
   font-family: 'Playfair Display', 'Georgia', serif;
   font-weight: 900;
@@ -246,6 +307,35 @@ main {
   white-space: nowrap;
   display: block;
   position: relative;
+}
+
+/* === SECTION HEADER (compact label + date) === */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 -1.5rem;
+  padding: 0.6rem 1.5rem;
+  border-top: 2px dotted var(--ink);
+  border-bottom: 2px dotted var(--ink);
+}
+
+.section-header .section-title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--ink);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.section-header .section-date {
+  font-family: 'Old Standard TT', 'Georgia', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink);
+  white-space: nowrap;
 }
 
 .category h2::before {
@@ -279,8 +369,13 @@ main {
 
 .category h2 + .stories,
 .category h2 + .section-dateline + .stories,
-.category .section-epigraph + .stories {
-  padding-top: 1rem;
+.category .section-epigraph + .stories,
+.section-header + .stories {
+  padding-top: 0;
+}
+
+.section-header + .stories > .cluster-box:first-child {
+  margin-top: 0.5rem;
 }
 
 .section-epigraph {
@@ -563,18 +658,30 @@ main {
   border: none;
 }
 
+.stories li.cluster-box.cluster-winter:has(> .world-section:first-child) {
+  padding-top: 2rem;
+}
+
 .ai-section,
 .russia-section,
-.life-section {
+.life-section,
+.world-section,
+.us-section {
   position: relative;
   margin-top: 1.5rem;
   padding-top: 1.75rem;
   border-top: 2px dotted var(--ink);
 }
 
+.world-section:first-child {
+  margin-top: 0;
+}
+
 .life-section:not(:has(.cluster-title)),
 .russia-section:not(:has(.cluster-title)),
-.ai-section:not(:has(.cluster-title)) {
+.ai-section:not(:has(.cluster-title)),
+.world-section:not(:has(.cluster-title)),
+.us-section:not(:has(.cluster-title)) {
   border-top: none;
   padding-top: 0;
 }
@@ -633,7 +740,9 @@ footer .issue-bar {
     padding-top: 1.25rem;
   }
 
-  .stories li.cluster-box.cluster-winter {
+  .stories li.cluster-box.cluster-winter,
+  .stories li.cluster-box.cluster-winter:has(.cluster-columns),
+  .stories li.cluster-box.cluster-winter:has(> .world-section:first-child) {
     border: none;
     padding: 0;
   }
@@ -645,9 +754,21 @@ footer .issue-bar {
 
   .ai-section:has(.cluster-title),
   .russia-section:has(.cluster-title),
-  .life-section:has(.cluster-title) {
-    border: 2px dotted var(--ink);
-    padding: 1.75rem 1.25rem 0.5rem;
+  .life-section:has(.cluster-title),
+  .us-section:has(.cluster-title),
+  .world-section:has(.cluster-title) {
+    border: none;
+    border-top: 2px dotted var(--ink);
+    padding: 1.75rem 0 0;
+  }
+
+  .category:has(.cluster-winter) {
+    border: none;
+    padding: 0 0 1.5rem;
+  }
+
+  .section-header + .stories > .cluster-box:first-child {
+    margin-top: 1.5rem;
   }
 
   .cluster-columns .cluster-stories li > a {
@@ -705,10 +826,22 @@ footer .issue-bar {
   .title-top::before { top: 0.03em; }
   .title-bottom::after { bottom: -0.09em; }
 
+  .title-black .title-top::before,
+  .title-black .title-bottom::after {
+    background: var(--ink);
+  }
+
   .journal-header .journal-title {
     font-size: 4.5vw !important;
   }
 
+
+  .masthead-nav .nav-full {
+    display: none;
+  }
+  .masthead-nav .nav-short {
+    display: inline;
+  }
 
   footer .issue-bar {
     padding: 0.4rem 1rem;
@@ -993,11 +1126,15 @@ footer .issue-bar {
   border: 6px double var(--red);
   padding: 2rem 2.5rem;
   margin: 2rem 0;
-  text-align: center;
+  position: relative;
+  overflow: visible;
 }
 
 .journal-header {
-  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.25rem;
 }
 
 .journal-icon {
@@ -1020,10 +1157,11 @@ footer .issue-bar {
 .journal-header .journal-title {
   font-family: 'Playfair Display', 'Georgia', serif;
   font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
   color: var(--red);
   text-transform: uppercase;
-  white-space: nowrap;
-  display: inline-block;
+  display: block;
   line-height: 1;
 }
 
@@ -1052,16 +1190,23 @@ footer .issue-bar {
 }
 
 .journal-date {
-  display: block;
   font-family: 'Old Standard TT', 'Georgia', serif;
   font-style: italic;
   font-size: 0.95rem;
   color: var(--red);
+}
+
+.journal-header .journal-date {
+  white-space: nowrap;
+}
+
+.journal-entry .journal-date {
+  display: block;
   text-align: right;
   margin-top: 0.5rem;
 }
 
-.journal-date::before {
+.journal-entry .journal-date::before {
   content: '— ';
 }
 
@@ -1099,6 +1244,49 @@ footer .issue-bar {
 
   .journal-header .journal-sub {
     font-size: 0.9rem;
+  }
+}
+
+/* === INLINE IDEA CARDS === */
+.inline-card {
+  position: absolute;
+  width: clamp(150px, 15vw, 200px);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.inline-card-l {
+  left: 0;
+  transform: translateY(-50%) translateX(calc(-100% - 4rem)) rotate(-2deg);
+}
+
+.inline-card-r {
+  right: 0;
+  transform: translateY(-50%) translateX(calc(100% + 4rem)) rotate(2deg);
+}
+
+.cluster-stories .inline-card-l {
+  left: -1.25rem;
+}
+
+.cluster-stories .inline-card-r {
+  right: -1.25rem;
+}
+
+body[data-page="home"] .inline-card {
+  width: clamp(172px, 17.25vw, 230px);
+}
+
+@media (max-width: 720px) {
+  .inline-card,
+  body[data-page="home"] .inline-card {
+    position: static;
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 1rem 0;
+    transform: none;
+    padding: 0;
   }
 }
 
@@ -1185,6 +1373,10 @@ footer .issue-bar {
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  .sketch-mobile ~ .sketch-mobile {
+    display: none;
   }
 
   /* Two sketches side by side */
