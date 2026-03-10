@@ -653,12 +653,12 @@ main > .category:first-of-type {
   padding-top: 1.75rem;
 }
 
-.stories li.cluster-box.cluster-winter {
+.stories li.cluster-box.cluster-archive {
   padding-top: 0;
   border: none;
 }
 
-.stories li.cluster-box.cluster-winter:has(> .world-section:first-child) {
+.stories li.cluster-box.cluster-archive:has(> .world-section:first-child) {
   padding-top: 2rem;
 }
 
@@ -687,7 +687,7 @@ main > .category:first-of-type {
 }
 
 @media (max-width: 720px) {
-  .cluster-winter > .sketch {
+  .cluster-archive > .sketch {
     display: none;
   }
 }
@@ -740,9 +740,9 @@ footer .issue-bar {
     padding-top: 1.25rem;
   }
 
-  .stories li.cluster-box.cluster-winter,
-  .stories li.cluster-box.cluster-winter:has(.cluster-columns),
-  .stories li.cluster-box.cluster-winter:has(> .world-section:first-child) {
+  .stories li.cluster-box.cluster-archive,
+  .stories li.cluster-box.cluster-archive:has(.cluster-columns),
+  .stories li.cluster-box.cluster-archive:has(> .world-section:first-child) {
     border: none;
     padding: 0;
   }
@@ -762,7 +762,7 @@ footer .issue-bar {
     padding: 1.75rem 0 0;
   }
 
-  .category:has(.cluster-winter) {
+  .category:has(.cluster-archive) {
     border: none;
     padding: 0 0 1.5rem;
   }
