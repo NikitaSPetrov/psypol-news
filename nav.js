@@ -45,6 +45,7 @@
       } else {
         navHTML += '<a href="' + item.href + '"' + activeClass + '>' + item.label + '</a>';
       }
+      if (i === 2) navHTML += '<span class="nav-break"></span>';
     }
 
     header.innerHTML =

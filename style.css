@@ -186,6 +186,18 @@ header {
   display: none;
 }
 
+.nav-break {
+  display: none;
+}
+
+@media (max-width: 520px) {
+  .nav-break {
+    display: block;
+    width: 100%;
+    height: 0;
+  }
+}
+
 /* === GENRE PAGE LAYOUT === */
 .genre-page main {
   padding: 0;
