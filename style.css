@@ -158,7 +158,8 @@ header {
 .masthead-nav {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
   padding: 0.75rem 0 0.6rem;
   margin-top: 0.5rem;
 }
