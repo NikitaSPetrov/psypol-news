@@ -96,21 +96,17 @@ header {
 }
 
 .masthead {
-  padding: 0 3rem;
+  padding: 0;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  max-width: 1600px;
-  margin-left: 50%;
-  transform: translateX(-50%);
   pointer-events: none;
 }
 
 .masthead h1 {
   position: relative;
-  font-family: 'Playfair Display', 'Georgia', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-weight: 900;
   line-height: 1;
   text-transform: uppercase;
@@ -120,8 +116,8 @@ header {
 }
 
 /* Red rules sized to the title text.
-   Playfair Display hhea metrics: ascender 1082, descender -251, cap-height 710.
-   At line-height:1 → cap tops ~0.21em below box top, baseline ~0.08em above box bottom.
+   Cormorant Garamond used for headings (was Playfair Display).
+   At line-height:1 → Cormorant has taller ascenders than Playfair, needs different offsets.
    Offsets equalize the visual gap above caps and below baseline. */
 .masthead h1::before,
 .masthead h1::after {
@@ -133,8 +129,8 @@ header {
   background: var(--red);
 }
 
-.masthead h1::before { top: 0.05em; }
-.masthead h1::after { bottom: -0.07em; }
+.masthead h1::before { top: 0.07em; }
+.masthead h1::after { bottom: 0.04em; }
 
 .title-red {
   color: var(--red);
@@ -160,8 +156,8 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.4rem 1.5rem;
-  padding: 0.75rem 0 0.6rem;
-  margin-top: 0.5rem;
+  padding: 0.3rem 0 1rem;
+  margin-top: 0.35rem;
 }
 
 .masthead-nav a {
@@ -281,7 +277,7 @@ header {
 
 /* === CATEGORIES === */
 main {
-  padding: 2rem 0 0;
+  padding: 0;
 }
 
 .category {
@@ -305,7 +301,7 @@ main > .category:first-of-type {
 
 /* legacy h2 — kept for any remaining uses */
 .category h2 {
-  font-family: 'Playfair Display', 'Georgia', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-weight: 900;
   letter-spacing: 0.35em;
   color: var(--ink);
@@ -334,7 +330,7 @@ main > .category:first-of-type {
 }
 
 .section-header .section-title {
-  font-family: 'Playfair Display', 'Georgia', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-weight: 900;
   font-size: 0.85rem;
   letter-spacing: 0.15em;
@@ -466,6 +462,59 @@ main > .category:first-of-type {
 
 .category.category-boxed h2::after {
   display: none;
+}
+
+/* === NEWS STRIP (teletype-style inline headlines) === */
+.news-strip {
+  border: 2px dotted var(--ink);
+  position: relative;
+  overflow: visible;
+}
+
+.news-strip a.featured {
+  font-weight: 700;
+}
+
+.news-strip .section-header {
+  margin: 0;
+  padding: 0.6rem 1.5rem;
+  border-top: none;
+}
+
+.news-strip .section-title {
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+}
+
+.news-strip-body {
+  font-family: 'PT Serif', 'Georgia', serif;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  padding: 0.5rem 1.5rem 0.75rem;
+}
+
+.news-strip-label {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  margin-right: 0.3em;
+}
+
+.news-strip a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.news-strip a:hover {
+  text-decoration: underline;
+}
+
+.news-sep {
+  color: var(--red);
+  margin: 0 0.3em;
+  font-size: 0.6em;
+  vertical-align: 0.15em;
 }
 
 /* === STORIES === */
@@ -611,7 +660,7 @@ main > .category:first-of-type {
   transform: translate(-50%, -50%);
   background: var(--paper);
   padding: 0 1rem;
-  font-family: 'Playfair Display', 'Georgia', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-weight: 900;
   font-size: 1.6rem;
   letter-spacing: 0.35em;
@@ -658,14 +707,6 @@ main > .category:first-of-type {
   border-bottom: 2px dotted var(--ink);
 }
 
-/* === FRONT PAGE CLUSTER === */
-.stories li.cluster-box.cluster-front {
-  border: none;
-  border-top: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  padding-top: 1.75rem;
-}
-
 .stories li.cluster-box.cluster-archive {
   padding-top: 0;
   border: none;
@@ -705,10 +746,6 @@ main > .category:first-of-type {
   }
 }
 
-.cluster-front .cluster-stories li.featured > a::before {
-  color: var(--ink);
-}
-
 /* === RED ALERT CLUSTER === */
 .stories li.cluster-box.cluster-alert {
   border-color: var(--red);
@@ -743,13 +780,6 @@ footer .issue-bar {
 
   .stories li.cluster-box:has(.cluster-columns) {
     border: 2px dotted var(--ink);
-    padding-top: 1.25rem;
-  }
-
-  .stories li.cluster-box.cluster-front {
-    border: none;
-    border-top: 2px solid var(--ink);
-    border-bottom: 2px solid var(--ink);
     padding-top: 1.25rem;
   }
 
@@ -871,22 +901,15 @@ footer .issue-bar {
 
 /* === IDEA CAROUSEL === */
 .idea-carousel {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 1rem 2rem;
   position: relative;
+  padding: 0 0 2rem;
   z-index: 1;
 }
 
 .idea-carousel-track {
-  flex: 1;
-  min-width: 0;
-  max-width: calc(960px - 3rem);
+  width: 100%;
   overflow: hidden;
-  padding: 10px 0; /* room for hover lift without clipping */
+  padding: 10px 0 30px; /* room for hover lift + shadow without clipping */
 }
 
 .idea-carousel-inner {
@@ -900,7 +923,7 @@ footer .issue-bar {
 }
 
 /* --- Overlay (clone-to-overlay for expanded card) --- */
-.idea-carousel-overlay {
+.idea-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0);
@@ -913,7 +936,7 @@ footer .issue-bar {
   perspective: 1200px;
 }
 
-.idea-carousel-overlay.active {
+.idea-overlay.active {
   background: rgba(0, 0, 0, 0.3);
   pointer-events: auto;
 }
@@ -928,16 +951,26 @@ footer .issue-bar {
 }
 
 .carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: 2.5rem;
   line-height: 1;
   color: var(--red);
   cursor: pointer;
-  flex-shrink: 0;
-  padding: 0;
-  margin: 0 2.5rem;
+  padding: 0.5rem;
+  z-index: 2;
   transition: opacity 0.2s;
+}
+
+.carousel-prev {
+  left: -2.5rem;
+}
+
+.carousel-next {
+  right: -2.5rem;
 }
 
 .carousel-arrow:hover {
@@ -1056,9 +1089,11 @@ footer .issue-bar {
 
 .idea-card-label {
   display: block;
-  font-family: 'Literata', 'Georgia', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-weight: 700;
-  font-size: clamp(0.75rem, 3.5cqi, 1.5rem);
+  font-size: clamp(0.9rem, 4.5cqi, 1.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--ink);
   text-align: center;
   line-height: 1.2;
@@ -1070,9 +1105,9 @@ footer .issue-bar {
 /* Back — title + meta + text */
 .idea-card-title {
   display: block;
-  font-family: 'Literata', 'Georgia', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--ink);
   text-align: center;
   line-height: 1.2;
@@ -1120,17 +1155,17 @@ footer .issue-bar {
   color: var(--red);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .idea-carousel-inner .idea-card-pair {
     flex: 0 0 100%;
   }
 
-  .idea-carousel {
-    padding: 2rem 0.5rem;
+  .carousel-prev {
+    left: 0.25rem;
   }
 
-  .carousel-arrow {
-    margin: 0 0.75rem;
+  .carousel-next {
+    right: 0.25rem;
   }
 }
 
@@ -1168,10 +1203,10 @@ footer .issue-bar {
 }
 
 .journal-header .journal-title {
-  font-family: 'Playfair Display', 'Georgia', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-weight: 900;
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
   color: var(--red);
   text-transform: uppercase;
   display: block;
@@ -1191,6 +1226,7 @@ footer .issue-bar {
 }
 
 .journal-entry {
+  font-family: 'PT Serif', 'Georgia', serif;
   margin-bottom: 1.5rem;
 }
 

@@ -6,7 +6,7 @@
   <title>CONSENSUS REALITY — PSYCHOPOLITICA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700&family=Literata:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico" type="image/png">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -323,7 +323,7 @@
 <footer></footer>
 
 <!-- Inline idea card overlay support -->
-<div class="idea-carousel-overlay"></div>
+<div class="idea-overlay"></div>
 <script>
 function fitCardText(card) {
   const back = card.querySelector('.idea-back .idea-card-inner');
@@ -370,7 +370,7 @@ window.addEventListener('resize', fitAllCards);
 
 // Inline idea card overlay (no carousel)
 (function() {
-  var overlay = document.querySelector('.idea-carousel-overlay');
+  var overlay = document.querySelector('.idea-overlay');
   var activeCard = null;
   var closing = false;
 

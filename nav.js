@@ -85,21 +85,6 @@
     el.style.fontSize = lo + 'px';
   }
 
-  // Font size that PSYCHOPOLITIKA / POLITIKA would use at this width.
-  // Used as a cap so no title is ever taller than the reference.
-  function getRefFontSize(masthead, mobile) {
-    var probe = document.createElement('span');
-    probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;' +
-      'font-family:"Playfair Display","Georgia",serif;font-weight:900;' +
-      'text-transform:uppercase;line-height:1;';
-    probe.textContent = mobile ? 'POLITIKA' : 'PSYCHOPOLITIKA';
-    masthead.appendChild(probe);
-    fitEl(probe, masthead);
-    var size = parseFloat(probe.style.fontSize);
-    masthead.removeChild(probe);
-    return size;
-  }
-
   // Fit element text to a specific pixel width (binary search on font-size)
   function fitToWidth(el, targetWidth) {
     var lo = 10, hi = 300;
@@ -127,19 +112,14 @@
     // Unlock height before measuring
     masthead.style.minHeight = '';
 
-    // Get the reference font size (what PSYCHOPOLITIKA / POLITIKA would be)
-    var refSize = getRefFontSize(masthead, mobile);
-
     if (mobile && titleParts.length > 1) {
       var bottomSpan = masthead.querySelector('.title-bottom');
       var topSpan = masthead.querySelector('.title-top');
 
       h1.style.fontSize = '';
-      // Fit bottom line (POLITIKA) to masthead width, cap at ref size
+      // Fit bottom line (POLITIKA) to masthead width
       bottomSpan.style.fontSize = '';
       fitEl(bottomSpan, masthead);
-      var bottomActual = parseFloat(bottomSpan.style.fontSize);
-      if (bottomActual > refSize) bottomSpan.style.fontSize = refSize + 'px';
       // Fit top line (PSYCHO/KOSMO) to match bottom line's width exactly
       var bottomWidth = bottomSpan.scrollWidth;
       topSpan.style.fontSize = '';
@@ -147,9 +127,6 @@
     } else {
       titleParts.forEach(function(span) { span.style.fontSize = ''; });
       fitEl(h1, masthead);
-      // Cap at reference size
-      var actual = parseFloat(h1.style.fontSize);
-      if (actual > refSize) h1.style.fontSize = refSize + 'px';
     }
 
     // Lock the masthead height so it stays constant
