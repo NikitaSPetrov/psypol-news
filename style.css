@@ -517,6 +517,36 @@ main > .category:first-of-type {
   vertical-align: 0.15em;
 }
 
+/* === NEWS STRIP COLUMNS === */
+.news-strip-columns {
+  display: flex;
+  gap: 2rem;
+  padding: 0 1.5rem 0.75rem;
+}
+
+.news-strip-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.news-strip-columns .news-strip-body {
+  padding: 0.5rem 0 0;
+}
+
+.news-strip-columns .news-strip-label {
+  display: block;
+  margin-bottom: 0.15em;
+  margin-right: 0;
+}
+
+@media (max-width: 720px) {
+  .news-strip-columns {
+    flex-direction: column;
+    gap: 0;
+    padding: 0 1.5rem 0.75rem;
+  }
+}
+
 /* === STORIES === */
 .stories {
   list-style: none;
