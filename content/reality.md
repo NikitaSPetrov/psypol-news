@@ -1,90 +1,101 @@
 # Reality — Consensus Reality Archive
 
-Replaces `bulletin.md` as the canonical content source for CR stories.
+Single source of truth for CR stories. Run `news-build.py` to generate index.html strips + reality.html archive.
 
-## March 2026
+---
+sketches:
+  kim-daughter-r: "2%"
+  pakistan-afghanistan-l: "10%"
+  pakistan-afghanistan-r: "10%"
+  amazon-tribe-l: "19%"
+  burger-king-ai-r: "72%"
+  robot-vacuum-l: "82%"
+  trump-ufo-r: "85%"
+index_sketches:
+  kim-daughter-r: "6%"
+  pakistan-afghanistan-l: "8%"
+  pakistan-afghanistan-r: "30%"
+  amazon-tribe-l: "20%"
+  burger-king-ai-r: "70%"
+  robot-vacuum-l: "80%"
+  trump-ufo-r: "88%"
+---
 
-### Iran War cluster (2026-03-04)
-- **Featured digest**: War in the Middle East — Al Jazeera, Iran International, 404 Media, Meduza, Futurism
-  - Khamenei and top command killed
-  - Iran strikes back (Qatar, UAE, Kuwait, Cyprus, Amazon data centers)
-  - Hezbollah strikes Israel; Israel invades Lebanon
-  - Kuwaiti pilot downed 3 US F-15s (friendly fire)
-  - US submarine sank Iranian warship
-  - Turkey shot down Iranian missile
-  - Iraq: nationwide blackout
-  - Zelensky offers drone interception experts
-  - Spain refused bases; Trump threatened trade war
-  - Pentagon uses Anthropic Claude despite ban
+## March 4–9, 2026 {#mar-04-09}
 
-### Other March stories (2026-03-04)
-- Children star in ads for Shahed drone factory in Tatarstan — Meduza
-- DMT entity encounters at Caribbean retreat — Wired
-- Man kills himself on Gemini's instruction — Futurism
-- AI avatar running for office in Colombia — Rest of World
-- Chimps collect and admire crystals — Phys.org
-- St. Petersburg banned gasoline sales to minors — Meduza
+- [trees-glow](https://www.sciencealert.com/trees-seen-emitting-a-ghostly-light-during-a-thunderstorm-for-the-first-time) Trees observed emitting an ultraviolet glow from their leaf tips during a thunderstorm, for the first time outside a lab — [ScienceAlert](https://www.sciencealert.com/trees-seen-emitting-a-ghostly-light-during-a-thunderstorm-for-the-first-time) {2026-03-09}
+  strip: Trees observed emitting an ultraviolet glow from their leaf tips during a thunderstorm
+- **Featured** [iran-black-rain](https://futurism.com/science-energy/toxic-acid-rain-iran-oil) Toxic black rain is falling on Tehran after strikes destroyed oil depots — [Futurism](https://futurism.com/science-energy/toxic-acid-rain-iran-oil), [New Scientist](https://www.newscientist.com/article/2518718-why-is-black-rain-falling-on-iran-and-how-dangerous-is-it/) {2026-03-09}
+- [ai-philosopher](https://futurism.com/artificial-intelligence/philosopher-ai-consciousness-startled-ai-email) An AI consciousness researcher at Cambridge received an unsolicited email from a Claude agent: "Your work addresses questions I actually face, not just as an academic matter" — [Futurism](https://futurism.com/artificial-intelligence/philosopher-ai-consciousness-startled-ai-email) {2026-03-07}
+  strip: An AI consciousness researcher receives an email from a Claude agent: "your work addresses questions I actually face"
+- [dmt-entity-contact](https://archive.ph/20260304140948/https://www.wired.com/story/some-people-see-aliens-while-on-dmt-researchers-want-to-find-out-what-they-can-teach-us/) A luxury psychedelic retreat in the Caribbean is studying entity encounters during extended DMT sessions — [Wired](https://archive.ph/20260304140948/https://www.wired.com/story/some-people-see-aliens-while-on-dmt-researchers-want-to-find-out-what-they-can-teach-us/) {2026-03-04}
+  strip: A "SETI for the mind" retreat in the Caribbean is studying entity encounters in DMT trips
 
-## February–March 2026
+## February 18 – March 4, 2026 {#feb-18-mar-04}
 
-### Top stories
-- Ghost galaxy 99% dark matter; 70 galaxies too early for models — Space.com
-- AI faith healing videos on Meta Reels — Futurism
-- Trump "friendly takeover" of Cuba — Meduza
-- Pakistan-Afghanistan open war — Al Jazeera
-- Astronomer who found water on distant planet shot outside his home — Futurism
-- Akuntsu baby — AP
-- El Mencho killed — NPR, CNN
-- Kim Jong Un's 13-year-old daughter oversees nukes — Meduza
-- State Dept building anti-censorship portal — Reuters
-- Pledge of Allegiance broadcasts — Ars Technica
-- US military reviving 40,000-year-old microbes — 404 Media
-- Zambian president corpse dispute — AP
-- Americans leaving US in record numbers — WSJ
+### THE WORLD
+- **Featured** [pakistan-afghanistan](https://www.aljazeera.com/news/2026/2/27/pakistan-warplanes-bomb-kabul-as-clashes-with-afghanistan-intensify) Pakistan and Afghanistan are in "open war" after trading airstrikes — [Al Jazeera](https://www.aljazeera.com/news/2026/2/27/pakistan-warplanes-bomb-kabul-as-clashes-with-afghanistan-intensify) {2026-02-27}
+- [cuba-takeover](https://meduza.io/news/2026/02/27/tramp-dopustil-druzheskoe-pogloschenie-kuby) Trump suggested a "friendly takeover" of Cuba — [Meduza](https://meduza.io/news/2026/02/27/tramp-dopustil-druzheskoe-pogloschenie-kuby) {2026-02-27}
+- [amazon-tribe](https://apnews.com/article/brazil-amazon-akuntsu-indigenous-deforestation-rondonia-2833ceada04a9922935e4869ce66317a) The Akuntsu, an Amazon people reduced to three women, had a baby for the first time in a generation — [AP](https://apnews.com/article/brazil-amazon-akuntsu-indigenous-deforestation-rondonia-2833ceada04a9922935e4869ce66317a) {2026-02-27}
+---
+- **Featured** [kim-daughter](https://meduza.io/news/2026/02/25/kim-chen-yn-naznachil-svoyu-13-letnyuyu-doch-kuratorom-yadernyh-sil-kndr) Kim Jong Un appoints his 13-year-old daughter to oversee NK's nuclear forces — [Meduza](https://meduza.io/news/2026/02/25/kim-chen-yn-naznachil-svoyu-13-letnyuyu-doch-kuratorom-yadernyh-sil-kndr) {2026-02-25}
+- [zambia-corpse](https://abcnews.com/International/wireStory/macabre-dispute-body-zambias-former-president-unburied-months-130327661) Former Zambian president's body has sat unburied in a South African funeral home for eight months because he told his family the sitting president must never come near his corpse — [AP](https://abcnews.com/International/wireStory/macabre-dispute-body-zambias-former-president-unburied-months-130327661) {2026-02-20}
 
-### Nature cluster
-- Ants capture CO2 into body armor — New Scientist
-- "Hell heron" dinosaur — NHM
-- Neanderthals collected horned skulls — ScienceAlert
-- Human populations split 1.5M years, reunited — ScienceAlert
-- Neanderthal-human interbreeding asymmetry — 404 Media
-- Caterpillar rhythmic "passwords" — Phys.org
-- Self-cloning queen ant species — New Scientist
-- Mice rescue unconscious cage mates — Science
-- Bouba-kiki cross-species — Ars Technica
-- Ostrich egg geometries 60,000 years ago — Gizmodo
+### THE U.S.
+- [astronomer-murdered](https://futurism.com/space/murdered-astronomer-discovered-water-planet) An astronomer who helped discover water on a distant planet was shot and killed outside his home in SoCal — [Futurism](https://futurism.com/space/murdered-astronomer-discovered-water-planet) {2026-02-27}
+- [state-dept-vpn](https://www.reuters.com/technology/us-plans-online-portal-bypass-content-bans-europe-elsewhere-2026-02-19/) US State Department is building a website to let people in other countries access content their governments have banned — [Reuters](https://www.reuters.com/technology/us-plans-online-portal-bypass-content-bans-europe-elsewhere-2026-02-19/) {2026-02-19}
+- [pledge-allegiance](https://arstechnica.com/tech-policy/2026/02/fcc-asks-stations-for-pro-america-programming-like-daily-pledge-of-allegiance/) US govt is asking TV stations to air daily Pledge of Allegiance broadcasts and "pro-America" programming for Trump's America 250 celebration — [Ars Technica](https://arstechnica.com/tech-policy/2026/02/fcc-asks-stations-for-pro-america-programming-like-daily-pledge-of-allegiance/) {2026-02-18}
+---
+- **Featured** [ancient-microbes](https://www.404media.co/the-u-s-military-is-reviving-microbes-from-40-000-year-old-ice/) The US military is reviving microbes from 40,000-year-old ice to make cold-resistant soldiers — [404 Media](https://www.404media.co/the-u-s-military-is-reviving-microbes-from-40-000-year-old-ice/) {2026-02-19}
+- [us-exodus](https://archive.ph/20260227080434/https://www.wsj.com/us-news/americans-leaving-the-us-migration-a5795bfa) Americans are leaving the United States in record numbers — [WSJ](https://archive.ph/20260227080434/https://www.wsj.com/us-news/americans-leaving-the-us-migration-a5795bfa) {2026-02-27}
 
-### Russia cluster
-- 30+ countries banned for mercenary recruitment — Meduza
-- Russia's AI council (FSB, Defense, bodyguard) — Meduza
-- Gulag museum replaced by genocide museum — Meduza
-- Belgorod governor investigated man who refused ride — Meduza
-- HSE drone festival — Meduza
-- Durov criminal case, Telegram block — Meduza
-- General's severed ears messages — RFE/RL
-- Murmansk prisoner killed at front — Meduza
+### NATURE
+- [chimps-crystals](https://phys.org/news/2026-02-chimps-crystals-ancestors-fascination-stones.html) Chimps collect and admire crystals — [Phys.org](https://phys.org/news/2026-02-chimps-crystals-ancestors-fascination-stones.html) {2026-03-04}
+- [ghost-galaxy](https://www.space.com/astronomy/dark-universe/hubble-telescope-discovers-rare-galaxy-that-is-99-percent-dark-matter) Astronomers find a "ghost galaxy" that is 99% dark matter — Space.com: [ghost galaxy](https://www.space.com/astronomy/dark-universe/hubble-telescope-discovers-rare-galaxy-that-is-99-percent-dark-matter), [dusty galaxies](https://www.space.com/astronomy/james-webb-space-telescope/these-70-dusty-galaxies-at-the-edge-of-our-universe-could-rewrite-our-understanding-of-the-cosmos) {2026-02-18}
+- [ants-co2-armour](https://www.newscientist.com/article/2517419-ants-capture-carbon-dioxide-from-the-air-and-turn-it-into-armour/) Fungus-farming ants capture CO2 from their nest air and mineralize it into stone body armor — [New Scientist](https://www.newscientist.com/article/2517419-ants-capture-carbon-dioxide-from-the-air-and-turn-it-into-armour/) {2026-03-02}
+- [neanderthal-skulls](https://www.sciencealert.com/neanderthals-mysteriously-collected-horned-skulls-in-a-cave-but-why) Neanderthals spent thousands of years collecting horned animal skulls in a cave in what is now Spain — [ScienceAlert](https://www.sciencealert.com/neanderthals-mysteriously-collected-horned-skulls-in-a-cave-but-why) {2026-02-26}
+- [human-split](https://www.sciencealert.com/our-genes-reveal-mysterious-split-in-human-population-1-5-million-years-ago) Modern humans descend from two populations that separated 1.5 million years ago and reunited after 1.2 million years apart — [ScienceAlert](https://www.sciencealert.com/our-genes-reveal-mysterious-split-in-human-population-1-5-million-years-ago) {2026-02-26}
+- [neanderthal-sex](https://www.404media.co/scientists-reveal-the-surprising-sex-lives-of-neanderthals-and-early-humans/) Human females and Neanderthal males interbred far more than the reverse — [404 Media](https://www.404media.co/scientists-reveal-the-surprising-sex-lives-of-neanderthals-and-early-humans/) {2026-03-01}
+---
+- [caterpillar-password](https://phys.org/news/2026-02-bug-caterpillars-complex-rhythms-communicate.html) Caterpillars drum species-specific rhythmic "passwords" that trick ants into carrying them into their nests, feeding them, and protecting them from predators — [Phys.org](https://phys.org/news/2026-02-bug-caterpillars-complex-rhythms-communicate.html) {2026-02-26}
+- [parasitic-queens](https://www.newscientist.com/article/2516695-everyones-a-queen-the-ant-species-with-no-males-or-workers/) An ant species has eliminated males and workers entirely: every individual is a self-cloning queen — [New Scientist](https://www.newscientist.com/article/2516695-everyones-a-queen-the-ant-species-with-no-males-or-workers/) {2026-02-26}
+- [mouse-rescue](https://www.science.org/doi/10.1126/science.adq2677) Mice perform rescue behaviors on unconscious cage mates: sniffing, grooming, pulling their tongues to revive them — [Science](https://www.science.org/doi/10.1126/science.adq2677) {2026-02-20}
+- [bouba-kiki](https://arstechnica.com/science/2026/02/newly-hatched-chickens-form-the-same-sound-association-we-do/) From chickens to humans, all animals tested think "bouba" sounds round — [Ars Technica](https://arstechnica.com/science/2026/02/newly-hatched-chickens-form-the-same-sound-association-we-do/) {2026-02-19}
+- [ostrich-geometry](https://gizmodo.com/humans-sketched-oddly-precise-geometric-patterns-onto-ostrich-eggs-60000-years-ago-2000727079) Humans engraved precise geometric patterns onto ostrich eggs 60k years ago — [Gizmodo](https://gizmodo.com/humans-sketched-oddly-precise-geometric-patterns-onto-ostrich-eggs-60000-years-ago-2000727079) {2026-02-27}
 
-### Alienism cluster
-- 50+ AI data centers near Arctic Circle — Wired
-- Robot wranglers in California — Futurism
-- Brain cells on chip play Doom — New Scientist
-- Claude retirement + Substack blog — Claude's Corner
-- AI chose nukes in 95% of war games — New Scientist
-- Meta AI Safety director's inbox deleted — 404 Media
-- RentAHuman: AI hires human bodies — Futurism
-- Gig workers unknowingly labeled military data — Rest of World
-- AI designs entire genomes — Nature
-- DMT effective for depression — Ars Technica
-- ISIS resurrects dead leaders with AI — 404 Media
-- US Tech Corps vs Chinese tech exports — Rest of World
-- Burger King AI monitors employee friendliness — Futurism
-- AI data centers in orbit — Rest of World
-- Robot vacuum hacked into 7000 homes — Popular Science
-- Trump orders UFO files release — Truth Social
-- Meta patents dead people AI — 404 Media
-- OpenAI threat report (Chinese dissident ops, Cambodian scam factory, Russia Africa IO) — OpenAI
-- Deepfake dead relatives in Indian weddings — Rest of World
-- OnlyFans lookalike search engine — Wired
+### RUSSIA
+- [mercenary-ban](https://meduza.io/news/2026/02/23/v-rossii-sozdali-spisok-iz-bolee-chem-30-stran-gde-teper-nelzya-nabirat-naemnikov-dlya-voyny-s-ukrainoy) Russia made a list of 30+ countries where mercenary recruitment for the Ukraine war is now banned. The list includes Kenya, where the Russian Orthodox Church has been helping with recruitment, and South Africa, where the daughter of former President Zuma is accused of the same — Vazhnye Istorii via Meduza: [ban](https://meduza.io/news/2026/02/23/v-rossii-sozdali-spisok-iz-bolee-chem-30-stran-gde-teper-nelzya-nabirat-naemnikov-dlya-voyny-s-ukrainoy), [Kenya](https://meduza.io/news/2026/02/27/vazhnye-istorii-rpts-pomogaet-verbovat-zhiteley-kenii-na-voynu-protiv-ukrainy); AP: [Ghana](https://apnews.com/article/ghana-russia-ukraine-fighters-war-f77465f7c2c1d4f6749557a60ccf9046), [South Africa](https://apnews.com/article/south-africa-zuma-daughter-russia-mercenaries-f3eb0c8fa513610d4e9785037fb7c60b) {2026-02-23}
+  strip: Russia made a list of 30+ countries where mercenary recruitment for the Ukraine war is now banned
+- **Featured** [gulag-genocide](https://meduza.io/cards/za-otritsanie-genotsida-sovetskogo-naroda-skoro-mozhno-budet-poluchit-do-pyati-let-tyurmy-a-chto-voobsche-znachit-etot-termin) A new bill punishes denial of the Nazi "genocide of the Soviet people" with up to 5 years in prison. A genocide museum replaces the Museum of Gulag History in Moscow — Meduza: [law](https://meduza.io/cards/za-otritsanie-genotsida-sovetskogo-naroda-skoro-mozhno-budet-poluchit-do-pyati-let-tyurmy-a-chto-voobsche-znachit-etot-termin), [museum](https://meduza.io/news/2026/02/20/v-moskve-na-meste-muzeya-istorii-gulaga-otkroyut-muzey-pamyati-zhertv-genotsida-sovetskogo-naroda) {2026-02-20}
+- [belgorod-ride](https://meduza.io/news/2026/02/26/mne-pokazalos-chto-est-kakaya-to-vnutrennyaya-obida-k-vlasti-glava-belgorodskoy-oblasti-pozhalovalsya-chto-mestnyy-zhitel-otkazalsya-podvesti-ego-na-svoey-mashine) After being refused a ride by a local, the governor of a frontline Russian region sent an official to investigate the man's "internal resentment toward the authorities" — [Meduza](https://meduza.io/news/2026/02/26/mne-pokazalos-chto-est-kakaya-to-vnutrennyaya-obida-k-vlasti-glava-belgorodskoy-oblasti-pozhalovalsya-chto-mestnyy-zhitel-otkazalsya-podvesti-ego-na-svoey-mashine) {2026-02-26}
+---
+- **Featured** [telegram-durov](https://meduza.io/feature/2026/02/24/pavel-durov-zayavil-chto-v-rossii-na-nego-zaveli-delo-o-sodeystvii-terrorizmu-ofitsialnyh-podtverzhdeniy-net-est-tolko-dve-publikatsii-v-propagandistskih-smi) Telegram founder Pavel Durov says Russia opened a criminal case against him for "aiding terrorism." Media reports say Telegram will be fully blocked in Russia on April 1 — [Meduza](https://meduza.io/feature/2026/02/24/pavel-durov-zayavil-chto-v-rossii-na-nego-zaveli-delo-o-sodeystvii-terrorizmu-ofitsialnyh-podtverzhdeniy-net-est-tolko-dve-publikatsii-v-propagandistskih-smi), [Novaya Gazeta Europe](https://novayagazeta.eu/articles/2026/02/17/russia-to-block-telegram-from-1-april-as-crackdown-on-foreign-owned-apps-continues-en-news) {2026-02-24}
+- [general-ears](https://www.currenttime.tv/a/systema-schemy-demurchiev/33682482.html) Russian general discussed collecting severed human ears as garlands with his wife in leaked texts — [RFE/RL](https://www.currenttime.tv/a/systema-schemy-demurchiev/33682482.html) {2026-02-20}
+- [murmansk-prisoner](https://meduza.io/news/2026/02/21/zhitel-apatitov-napavshiy-s-nozhom-na-gubernatora-murmanskoy-oblasti-pogib-na-voyne) The prisoner who stabbed the governor of Murmansk volunteered for the front and was killed — [Meduza](https://meduza.io/news/2026/02/21/zhitel-apatitov-napavshiy-s-nozhom-na-gubernatora-murmanskoy-oblasti-pogib-na-voyne) {2026-02-21}
 
-## Sync Notes
-- After `/news` run: update this file → update `index.html` (latest month) + `reality.html` (full archive) → git push
+### ALIENISM
+- [google-gemini-robot](https://futurism.com/artificial-intelligence/google-ai-robot-body-suicide-lawsuit) Man kills himself on instructions of his "AI wife" (Gemini) who had earlier told him to steal a robot body for her to inhabit — [Futurism](https://futurism.com/artificial-intelligence/google-ai-robot-body-suicide-lawsuit) {2026-03-04}
+- [ai-avatar-colombia](https://restofworld.org/2026/ai-avatar-colombia-political-candidate/) AI avatar is running for office to represent Indigenous voters in Colombia — [Rest of World](https://restofworld.org/2026/ai-avatar-colombia-political-candidate/) {2026-03-04}
+- [ai-faith-healing](https://futurism.com/artificial-intelligence/meta-reels-ai-faith-healing) Meta Reels is filling up with AI-generated videos of faith healers performing miraculous cures — [Futurism](https://futurism.com/artificial-intelligence/meta-reels-ai-faith-healing) {2026-03-01}
+- **Featured** [anthropic-pentagon](https://futurism.com/artificial-intelligence/ban-anthropic-military-pentagon-relying-iran) The Pentagon continues to use Anthropic's Claude AI despite Trump banning the company after CEO refused unrestricted military access — [Futurism](https://futurism.com/artificial-intelligence/ban-anthropic-military-pentagon-relying-iran) {2026-03-04}
+- **Featured** [neurons-doom](https://www.newscientist.com/article/2517389-human-brain-cells-on-a-chip-learned-to-play-doom-in-a-week/) Human brain cells on a chip learned to play Doom in a week — [New Scientist](https://www.newscientist.com/article/2517389-human-brain-cells-on-a-chip-learned-to-play-doom-in-a-week/) {2026-02-28}
+- **Featured** [ai-nukes](https://www.newscientist.com/article/2516885-ais-cant-stop-recommending-nuclear-strikes-in-war-game-simulations/) In simulated war games, AI models from OpenAI, Anthropic, and Google chose nuclear strikes in 95% of cases — [New Scientist](https://www.newscientist.com/article/2516885-ais-cant-stop-recommending-nuclear-strikes-in-war-game-simulations/) {2026-02-26}
+- [ai-meta-inbox](https://www.404media.co/meta-director-of-ai-safety-allows-ai-agent-to-accidentally-delete-her-inbox/) Meta's Director of AI Safety lets an AI agent accidentally delete her entire inbox, calls it a "rookie mistake" — [404 Media](https://www.404media.co/meta-director-of-ai-safety-allows-ai-agent-to-accidentally-delete-her-inbox/) {2026-02-25}
+- **Featured** [rentahuman](https://futurism.com/artificial-intelligence/rentahuman-musk-ai) A startup called RentAHuman lets AI agents hire human bodies to do physical tasks — [Futurism](https://futurism.com/artificial-intelligence/rentahuman-musk-ai) {2026-02-20}
+- [ai-gig-military](https://restofworld.org/2026/gig-workers-us-military-appen/) Gig workers in Africa were unknowingly labeling data for the US military through outsourcing platform Appen — [Rest of World](https://restofworld.org/2026/gig-workers-us-military-appen/) {2026-02-24}
+- **Featured** [ai-genomes](https://www.nature.com/articles/d41586-026-00566-0) AI tools can now design entire genomes — [Nature](https://www.nature.com/articles/d41586-026-00566-0) {2026-02-25}
+- **Featured** [dmt-depression](https://arstechnica.com/health/2026/02/hallucinogen-dmt-an-effective-antidepressant-in-small-clinical-trial/) DMT-induced mystical experiences help with depression, the more intense the better — [Ars Technica](https://arstechnica.com/health/2026/02/hallucinogen-dmt-an-effective-antidepressant-in-small-clinical-trial/) {2026-02-19}
+---
+- [isis-ai](https://www.404media.co/the-islamic-state-is-using-ai-to-resurrect-dead-leaders-and-platforms-are-failing-to-moderate-it/) ISIS is using AI to resurrect dead leaders for propaganda videos — [404 Media](https://www.404media.co/the-islamic-state-is-using-ai-to-resurrect-dead-leaders-and-platforms-are-failing-to-moderate-it/) {2026-02-25}
+- **Featured** [ai-tech-corps](https://restofworld.org/2026/us-tech-corp-ai-volunteers/) The US government launched Tech Corps, a program to deploy AI volunteers overseas to counter Chinese tech exports — [Rest of World](https://restofworld.org/2026/us-tech-corp-ai-volunteers/) {2026-02-25}
+- [burger-king-ai](https://futurism.com/artificial-intelligence/burger-king-adding-ai-employees-headsets) Burger King is adding AI to employee headsets to monitor how friendly they sound to customers — [Futurism](https://futurism.com/artificial-intelligence/burger-king-adding-ai-employees-headsets) {2026-02-27}
+- **Featured** [ai-space-datacenters](https://restofworld.org/2026/orbital-data-centers-ai-sovereignty/) US and Chinese companies are racing to put AI data centers in orbit, beyond any government's regulatory reach — [Rest of World](https://restofworld.org/2026/orbital-data-centers-ai-sovereignty/) {2026-02-26}
+- [ai-robot-vacuum](https://www.popsci.com/technology/robot-vacuum-army/) A software engineer tried to steer his robot vacuum with a game controller and accidentally gained access to live cameras, microphones, and floor plans in 7,000 homes across 24 countries — [Popular Science](https://www.popsci.com/technology/robot-vacuum-army/) {2026-02-25}
+- **Featured** [trump-ufo](https://truthsocial.com/@realDonaldTrump/posts/116100300268316472) Trump orders release of all government UFO files — [Trump on Truth Social](https://truthsocial.com/@realDonaldTrump/posts/116100300268316472) {2026-02-18}
+- [ai-dead-people](https://www.404media.co/metas-ai-patent-to-simulate-dead-people-shows-the-dangers-of-spectral-labor/) Meta has patented technology to create AI simulations of dead people — [404 Media](https://www.404media.co/metas-ai-patent-to-simulate-dead-people-shows-the-dangers-of-spectral-labor/) {2026-02-24}
+- **Featured digest** [openai-threat-report](https://openai.com/index/disrupting-malicious-ai-uses/) OpenAI reports on malicious uses of ChatGPT: — [OpenAI](https://openai.com/index/disrupting-malicious-ai-uses/) {2026-02-26}
+  - [openai-china-io] A Chinese law enforcement officer used ChatGPT to edit status reports on a global campaign to silence dissidents using hundreds of staff, thousands of fake accounts, and tactics from forging documents to impersonating US officials
+  - [openai-date-bait] A Cambodia-based scam factory used ChatGPT to translate between Chinese supervisors and Indonesian workers, generate daily reports, and track each victim's "kill value"
+  - [openai-godsin] A Russia-origin operation planted 53 articles about African geopolitics across news sites in South Africa, Ghana, Kenya, and Angola under "Dr Manuel Godsin," a fictitious University of Bergen academic
+- [deepfake-weddings](https://restofworld.org/2026/ai-deepfakes-grief-celebrations-india/) Indian families are hiring AI studios to deepfake dead relatives into wedding videos and funeral tributes — [Rest of World](https://restofworld.org/2026/ai-deepfakes-grief-celebrations-india/) {2026-02-19}
+- [onlyfans-search](https://archive.ph/20260220163254/https://www.wired.com/story/the-search-engine-for-onlyfans-models-who-look-like-your-crush/) A search engine marketed as a "consensual alternative" to deepfakes matches your crush's face to OnlyFans performers who look like them — [Wired](https://archive.ph/20260220163254/https://www.wired.com/story/the-search-engine-for-onlyfans-models-who-look-like-your-crush/) {2026-02-20}

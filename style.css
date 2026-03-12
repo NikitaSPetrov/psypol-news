@@ -196,7 +196,7 @@ header {
 
 /* === GENRE PAGE LAYOUT === */
 .genre-page main {
-  padding: 0;
+  padding: 10px 0 0;
 }
 
 .genre-page .category {
@@ -716,18 +716,24 @@ main > .category:first-of-type {
   padding-top: 2rem;
 }
 
+.stories li.cluster-box.cluster-archive:has(> .latest-section:first-child) {
+  padding-top: 1rem;
+}
+
 .ai-section,
 .russia-section,
 .life-section,
 .world-section,
-.us-section {
+.us-section,
+.latest-section {
   position: relative;
   margin-top: 1.5rem;
   padding-top: 1.75rem;
   border-top: 2px dotted var(--ink);
 }
 
-.world-section:first-child {
+.world-section:first-child,
+.latest-section:first-child {
   margin-top: 0;
 }
 
@@ -735,7 +741,8 @@ main > .category:first-of-type {
 .russia-section:not(:has(.cluster-title)),
 .ai-section:not(:has(.cluster-title)),
 .world-section:not(:has(.cluster-title)),
-.us-section:not(:has(.cluster-title)) {
+.us-section:not(:has(.cluster-title)),
+.latest-section:not(:has(.cluster-title)) {
   border-top: none;
   padding-top: 0;
 }
@@ -799,7 +806,8 @@ footer .issue-bar {
   .russia-section:has(.cluster-title),
   .life-section:has(.cluster-title),
   .us-section:has(.cluster-title),
-  .world-section:has(.cluster-title) {
+  .world-section:has(.cluster-title),
+  .latest-section:has(.cluster-title) {
     border: none;
     border-top: 2px dotted var(--ink);
     padding: 1.75rem 0 0;

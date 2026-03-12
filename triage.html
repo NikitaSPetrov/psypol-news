@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYCHOPOLITICA — Triage</title>
+<style>
+  :root {
+    --creme: #f5f0e4;
+    --red: #c0392b;
+    --ink: #1a1a1a;
+    --green: #27ae60;
+    --yellow: #f39c12;
+    --gray: #95a5a6;
+    --card-bg: #fff;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --card-hover: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--creme);
+    color: var(--ink);
+    line-height: 1.5;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--red);
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    color: var(--red);
+    margin-bottom: 0.25rem;
+  }
+  header .subtitle {
+    font-size: 0.95rem;
+    color: var(--gray);
+  }
+  header .stats {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  /* Action bar */
+  .action-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--creme);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #d5d0c4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .action-bar .counts {
+    font-size: 0.85rem;
+    color: #666;
+  }
+  .action-bar .counts b { color: var(--ink); }
+  .send-btn {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+  .send-btn:hover { opacity: 0.9; }
+  .send-btn.sent { background: var(--green); }
+  .send-btn:disabled { opacity: 0.4; cursor: default; }
+
+  /* Locked overlay after send */
+  .locked-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(245, 240, 228, 0.75);
+    z-index: 150;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .locked-overlay.active { display: flex; }
+  .locked-overlay .lock-msg {
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .locked-overlay .refresh-btn {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+  }
+  .locked-overlay .refresh-btn:hover { opacity: 0.9; }
+
+  /* Section headers */
+  .section-header {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .section-header .count {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--gray);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* Collapsible rejected section */
+  .section-toggle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 2rem 0 0.5rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #d5d0c4;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    cursor: pointer;
+    user-select: none;
+    color: var(--gray);
+    transition: color 0.15s;
+  }
+  .section-toggle:hover { color: var(--ink); }
+  .section-toggle .arrow {
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+  .section-toggle.open .arrow { transform: rotate(90deg); }
+  .collapsed-section { display: none; }
+  .collapsed-section.open { display: block; }
+
+  /* Rejected compact card */
+  .rejected-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.85rem;
+    color: #888;
+  }
+  .rejected-row:last-child { border-bottom: none; }
+  .rejected-row .rj-headline { flex: 1; }
+  .rejected-row .rj-source { font-weight: 600; color: #999; white-space: nowrap; }
+  .rejected-row .rj-notes { font-size: 0.75rem; color: #bbb; font-style: italic; }
+  .rejected-row .btn-undo {
+    font-size: 0.7rem;
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 0.15rem 0.4rem;
+    cursor: pointer;
+    color: var(--green);
+    white-space: nowrap;
+  }
+  .rejected-row .btn-undo:hover { background: var(--green); color: #fff; border-color: var(--green); }
+
+  /* Story card */
+  .card {
+    background: var(--card-bg);
+    border-left: 4px solid transparent;
+    padding: 1rem 1.25rem;
+    padding-right: 3.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.15s, border-color 0.15s, opacity 0.15s;
+    position: relative;
+  }
+  .card[data-section="candidates"] { padding-right: 1.25rem; }
+  .card:hover { box-shadow: var(--card-hover); }
+  .card.accepted { border-left-color: var(--green); }
+  .card.maybe { border-left-color: var(--yellow); }
+  .card.promoted { border-left-color: var(--green); background: #f0faf0; }
+
+  /* Drag and drop — only on accepted list */
+  #accepted-list .card {
+    transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s, border-color 0.15s, opacity 0.15s;
+    will-change: transform;
+  }
+  .card.drag-active {
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
+    transition: none !important;
+    opacity: 0.95;
+  }
+  .card.drag-settling {
+    transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s, opacity 0.2s;
+  }
+
+  /* Card layout */
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .card-body { flex: 1; min-width: 0; }
+
+  /* Drag handle — right-side stripe */
+  .drag-handle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 2.5rem;
+    cursor: grab;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #eee;
+    color: #d0d0d0;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    line-height: 1.2;
+    overflow: hidden;
+    transition: color 0.15s, background 0.15s;
+  }
+  .drag-handle:hover {
+    background: #fafafa;
+    color: #bbb;
+  }
+  .drag-handle:active { cursor: grabbing; }
+  .drag-handle .braille {
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    pointer-events: none;
+  }
+  .card-order {
+    font-size: 0.8rem;
+    color: var(--gray);
+    min-width: 1.5rem;
+    text-align: right;
+    padding-top: 0.15rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card-headline {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: text;
+    padding: 2px 4px;
+    margin: -2px -4px;
+    border: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .card-headline:hover { border-color: #ddd; }
+  .card-headline:focus {
+    outline: none;
+    border-color: var(--red);
+    background: #fff;
+  }
+  .card-headline-ru {
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+
+  .card-meta {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.35rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .card-meta .source { font-weight: 600; color: #666; }
+  .card-meta .slug { font-family: monospace; font-size: 0.75rem; color: #aaa; }
+  .card-meta a { color: #888; text-decoration: none; }
+  .card-meta a:hover { text-decoration: underline; }
+
+  /* AI notes (read-only context) */
+  .card-ai-notes {
+    font-size: 0.78rem;
+    color: #999;
+    margin-top: 0.3rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid #e0dcd0;
+    line-height: 1.4;
+  }
+
+  /* Buttons row */
+  .card-actions {
+    display: flex;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.1s;
+  }
+  .btn:hover { background: #f5f5f5; }
+  .btn-accept { color: var(--green); }
+  .btn-accept:hover, .btn-accept.active { background: var(--green); color: #fff; border-color: var(--green); }
+  .btn-reject { color: var(--red); }
+  .btn-reject:hover, .btn-reject.active { background: var(--red); color: #fff; border-color: var(--red); }
+  .btn-maybe { color: var(--yellow); }
+  .btn-maybe:hover, .btn-maybe.active { background: var(--yellow); color: #fff; border-color: var(--yellow); }
+  .btn-featured { color: var(--red); font-weight: 700; }
+  .btn-featured.active { background: var(--red); color: #fff; border-color: var(--red); }
+  .btn-promote { color: var(--green); }
+  .btn-promote:hover { background: var(--green); color: #fff; border-color: var(--green); }
+
+  .spacer { flex: 1; }
+
+  /* Editor notes */
+  .card-editor-notes {
+    margin-top: 0.5rem;
+  }
+  .card-editor-notes textarea {
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    font-size: 0.8rem;
+    resize: vertical;
+    background: #fafafa;
+  }
+  .card-editor-notes textarea:focus { outline: none; border-color: var(--red); }
+  .card-editor-notes label {
+    font-size: 0.7rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+    display: block;
+  }
+
+  /* Filter bar for candidates */
+  .filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+  .filter-bar input {
+    flex: 1;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #ccc;
+    font-size: 0.85rem;
+    font-family: inherit;
+    background: #fff;
+  }
+  .filter-bar input:focus { outline: none; border-color: var(--red); }
+  .filter-bar select {
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 0.85rem;
+    font-family: inherit;
+    background: #fff;
+  }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 1.5rem;
+    color: #bbb;
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 200;
+  }
+  .toast.show { opacity: 1; }
+
+  /* Keyboard hint */
+  .kbd-hint {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    color: #bbb;
+  }
+  kbd {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 0 0.3rem;
+    font-family: inherit;
+    font-size: 0.7rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>PSYCHOPOLITICA</h1>
+    <div class="subtitle">Editorial Triage</div>
+    <div class="stats" id="header-stats"></div>
+  </header>
+
+  <div class="action-bar">
+    <div class="counts" id="live-counts"></div>
+    <button class="send-btn" id="send-btn" onclick="send()">SEND</button>
+  </div>
+
+  <!-- Pending: stories not yet decided -->
+  <div class="section-header">
+    Pending <span class="count" id="pending-count"></span>
+  </div>
+  <div id="pending-list"></div>
+
+  <!-- Accepted: the bulletin -->
+  <div class="section-header" style="border-bottom-color: var(--green);">
+    Accepted <span class="count" id="accepted-count"></span>
+  </div>
+  <div id="accepted-list"></div>
+
+  <!-- Rejected: collapsed archive -->
+  <div class="section-toggle" id="rejected-toggle" onclick="toggleRejected()">
+    <span>Rejected <span class="count" id="rejected-count"></span></span>
+    <span class="arrow">&#9654;</span>
+  </div>
+  <div class="collapsed-section" id="rejected-section"></div>
+
+  <!-- More candidates from the scan -->
+  <div class="section-header" style="margin-top:3rem;">
+    More Candidates <span class="count" id="candidates-count"></span>
+  </div>
+  <div class="filter-bar">
+    <input type="text" id="filter-input" placeholder="Filter by keyword..." oninput="renderCandidates()">
+    <select id="filter-source" onchange="renderCandidates()">
+      <option value="">All sources</option>
+    </select>
+  </div>
+  <div id="candidates-list"></div>
+</div>
+
+<div class="locked-overlay" id="locked-overlay">
+  <div class="lock-msg">
+    Decisions sent.<br>
+    Run <b>/news triage</b> in Claude, then click Refresh.
+  </div>
+  <button class="refresh-btn" onclick="location.reload()">REFRESH</button>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="kbd-hint"><kbd>a</kbd> accept <kbd>r</kbd> reject <kbd>m</kbd> maybe <kbd>f</kbd> feature <kbd>n</kbd> focus notes <kbd>↑↓</kbd> nav</div>
+
+<script>
+let data = { selected: [], candidates: [] };
+let focusedCard = null;
+let focusedIndex = -1;
+let focusedSection = 'pending';
+
+// Drag state
+let drag = null;
+
+async function init() {
+  try {
+    const resp = await fetch('/api/candidates');
+    data = await resp.json();
+  } catch (e) {
+    console.error('Failed to load candidates:', e);
+    return;
+  }
+
+  data.selected.forEach((s, i) => {
+    if (!s.status) s.status = 'pending';
+    if (s.order === undefined) s.order = i;
+    if (!s.editor_notes) s.editor_notes = '';
+  });
+  data.candidates.forEach(s => {
+    if (!s.status) s.status = 'pending';
+    if (!s.editor_notes) s.editor_notes = '';
+  });
+
+  document.getElementById('header-stats').innerHTML =
+    `${data.date || 'Today'} &middot; ${data.feeds_fetched || '?'} feeds &middot; ${data.total_items || '?'} items scanned`;
+
+  const sources = new Set();
+  [...data.selected, ...data.candidates].forEach(s => {
+    if (s.source_name) sources.add(s.source_name);
+  });
+  const sel = document.getElementById('filter-source');
+  [...sources].sort().forEach(src => {
+    const opt = document.createElement('option');
+    opt.value = src;
+    opt.textContent = src;
+    sel.appendChild(opt);
+  });
+
+  renderAll();
+}
+
+// ── Bucketing helpers ────────────────────────────────────────────────
+
+function getPending() {
+  return data.selected.filter(s => s.status === 'pending' || s.status === 'maybe');
+}
+
+function getAccepted() {
+  return data.selected
+    .filter(s => s.status === 'accepted')
+    .sort((a, b) => (a.order || 0) - (b.order || 0));
+}
+
+function getRejected() {
+  return data.selected.filter(s => s.status === 'rejected');
+}
+
+function renderAll() {
+  renderPending();
+  renderAccepted();
+  renderRejected();
+  renderCandidates();
+  updateCounts();
+}
+
+// ── Pending ──────────────────────────────────────────────────────────
+
+function renderPending() {
+  const list = document.getElementById('pending-list');
+  const items = getPending();
+  if (items.length === 0) {
+    list.innerHTML = '<div class="empty-state">All stories decided</div>';
+  } else {
+    list.innerHTML = items.map((story, i) => cardHTML(story, i, 'pending')).join('');
+  }
+  document.getElementById('pending-count').textContent = `(${items.length})`;
+}
+
+// ── Accepted (drag-reorderable) ──────────────────────────────────────
+
+function renderAccepted() {
+  const list = document.getElementById('accepted-list');
+  const items = getAccepted();
+  if (items.length === 0) {
+    list.innerHTML = '<div class="empty-state">No accepted stories yet</div>';
+  } else {
+    list.innerHTML = items.map((story, i) => cardHTML(story, i, 'accepted')).join('');
+    attachDragHandlers();
+  }
+  document.getElementById('accepted-count').textContent = `(${items.length})`;
+}
+
+// ── Rejected (compact, collapsed) ────────────────────────────────────
+
+function renderRejected() {
+  const section = document.getElementById('rejected-section');
+  const items = getRejected();
+  document.getElementById('rejected-count').textContent = `(${items.length})`;
+
+  if (items.length === 0) {
+    section.innerHTML = '<div class="empty-state">No rejected stories</div>';
+    return;
+  }
+
+  section.innerHTML = items.map(story => {
+    const notes = story.editor_notes ? `<span class="rj-notes">${esc(story.editor_notes)}</span>` : '';
+    return `
+      <div class="rejected-row">
+        <span class="rj-source">${esc(story.source_name || '')}</span>
+        <span class="rj-headline">${esc(story.headline)}</span>
+        ${notes}
+        <button class="btn-undo" onclick="undoReject('${esc(story.id || story.headline)}')">Undo</button>
+      </div>`;
+  }).join('');
+}
+
+function toggleRejected() {
+  const toggle = document.getElementById('rejected-toggle');
+  const section = document.getElementById('rejected-section');
+  toggle.classList.toggle('open');
+  section.classList.toggle('open');
+}
+
+function undoReject(identifier) {
+  const story = data.selected.find(s =>
+    s.status === 'rejected' && (s.id === identifier || s.headline === identifier)
+  );
+  if (story) {
+    story.status = 'pending';
+    renderAll();
+    toast('Moved back to Pending');
+  }
+}
+
+// ── Drag and drop (accepted list only) ──────────────────────────────
+
+function attachDragHandlers() {
+  const list = document.getElementById('accepted-list');
+  list.querySelectorAll('.card .drag-handle').forEach(handle => {
+    handle.addEventListener('pointerdown', onDragStart);
+  });
+}
+
+function onDragStart(e) {
+  e.preventDefault();
+  const cardEl = e.target.closest('.card');
+  if (!cardEl) return;
+
+  const list = document.getElementById('accepted-list');
+  const cards = [...list.querySelectorAll('.card')];
+  const index = cards.indexOf(cardEl);
+  if (index < 0) return;
+
+  const scrollY = window.scrollY;
+  const rects = cards.map(c => {
+    const r = c.getBoundingClientRect();
+    return { top: r.top + scrollY, bottom: r.bottom + scrollY, height: r.height };
+  });
+  const dragRect = rects[index];
+
+  const gap = index < cards.length - 1
+    ? rects[index + 1].top - rects[index].bottom
+    : 8;
+  const slotH = dragRect.height + gap;
+
+  cardEl.classList.add('drag-active');
+
+  drag = {
+    el: cardEl,
+    list,
+    cards,
+    rects,
+    index,
+    currentSlot: index,
+    startPageY: e.pageY,
+    slotH,
+    count: cards.length,
+  };
+
+  document.addEventListener('pointermove', onDragMove);
+  document.addEventListener('pointerup', onDragEnd);
+}
+
+function onDragMove(e) {
+  if (!drag) return;
+  const { el, cards, rects, index, slotH, count } = drag;
+  const deltaY = e.pageY - drag.startPageY;
+
+  el.style.transform = `translateY(${deltaY}px) scale(1.015)`;
+
+  const dragCenterY = rects[index].top + rects[index].height / 2 + deltaY;
+  let newSlot = index;
+
+  for (let i = 0; i < count; i++) {
+    if (i === index) continue;
+    const mid = rects[i].top + rects[i].height / 2;
+    if (index < i && dragCenterY > mid) newSlot = i;
+    if (index > i && dragCenterY < mid) newSlot = i;
+  }
+
+  if (newSlot !== drag.currentSlot) {
+    drag.currentSlot = newSlot;
+    cards.forEach((card, i) => {
+      if (i === index) return;
+      let shift = 0;
+      if (index < newSlot) {
+        if (i > index && i <= newSlot) shift = -slotH;
+      } else if (index > newSlot) {
+        if (i >= newSlot && i < index) shift = slotH;
+      }
+      card.style.transform = shift ? `translateY(${shift}px)` : '';
+    });
+  }
+}
+
+function onDragEnd(e) {
+  if (!drag) return;
+  document.removeEventListener('pointermove', onDragMove);
+  document.removeEventListener('pointerup', onDragEnd);
+
+  const { el, cards, index, currentSlot, slotH } = drag;
+  const finalY = (currentSlot - index) * slotH;
+
+  el.classList.remove('drag-active');
+  el.classList.add('drag-settling');
+  el.style.transform = `translateY(${finalY}px)`;
+
+  const onSettle = () => {
+    el.removeEventListener('transitionend', onSettle);
+    el.classList.remove('drag-settling');
+    cards.forEach(c => c.style.transform = '');
+
+    if (index !== currentSlot) {
+      const accepted = getAccepted();
+      const [moved] = accepted.splice(index, 1);
+      accepted.splice(currentSlot, 0, moved);
+      accepted.forEach((s, i) => s.order = i);
+    }
+
+    drag = null;
+    renderAccepted();
+    updateCounts();
+  };
+
+  el.addEventListener('transitionend', onSettle);
+  setTimeout(() => { if (drag) onSettle(); }, 350);
+}
+
+// ── Candidates ───────────────────────────────────────────────────────
+
+function renderCandidates() {
+  const list = document.getElementById('candidates-list');
+  const keyword = document.getElementById('filter-input').value.toLowerCase();
+  const source = document.getElementById('filter-source').value;
+
+  let items = data.candidates.filter(s => {
+    if (keyword && !s.headline.toLowerCase().includes(keyword) &&
+        !(s.source_name || '').toLowerCase().includes(keyword) &&
+        !(s.headline_ru || '').toLowerCase().includes(keyword) &&
+        !(s.notes || '').toLowerCase().includes(keyword)) return false;
+    if (source && s.source_name !== source) return false;
+    return true;
+  });
+
+  list.innerHTML = items.map((story, i) => cardHTML(story, i, 'candidates')).join('');
+  document.getElementById('candidates-count').textContent =
+    `(${items.length}${items.length !== data.candidates.length ? ' filtered' : ''} of ${data.candidates.length})`;
+}
+
+// ── Card rendering ───────────────────────────────────────────────────
+
+function cardHTML(story, index, section) {
+  const isAccepted = section === 'accepted';
+  const isPending = section === 'pending';
+  const isSelected = isAccepted || isPending;
+
+  const statusClass = story.status === 'accepted' ? 'accepted' :
+                      story.status === 'maybe' ? 'maybe' :
+                      story.promoted ? 'promoted' : '';
+
+  const featuredActive = story.featured ? 'active' : '';
+  const headlineRu = story.headline_ru
+    ? `<div class="card-headline-ru">${esc(story.headline_ru)}</div>` : '';
+  const slug = story.id
+    ? `<span class="slug">[${esc(story.id)}]</span>` : '';
+  const sourceUrl = story.source_url
+    ? `<a href="${esc(story.source_url)}" target="_blank" title="Open article">link</a>` : '';
+
+  const aiNotes = story.notes
+    ? `<div class="card-ai-notes">${esc(story.notes)}</div>` : '';
+
+  // Order number + drag handle (accepted only)
+  const orderNum = isAccepted
+    ? `<div class="card-order">${index + 1}</div>` : '';
+  const handle = isAccepted
+    ? `<div class="drag-handle"><span class="braille">⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿</span></div>` : '';
+
+  const actions = isSelected ? `
+    <button class="btn btn-accept ${story.status === 'accepted' ? 'active' : ''}"
+            onclick="event.stopPropagation(); setStatus('${story.id}', 'accepted')">&#10003; Accept</button>
+    <button class="btn btn-reject ${story.status === 'rejected' ? 'active' : ''}"
+            onclick="event.stopPropagation(); setStatus('${story.id}', 'rejected')">&#10007; Cut</button>
+    <button class="btn btn-maybe ${story.status === 'maybe' ? 'active' : ''}"
+            onclick="event.stopPropagation(); setStatus('${story.id}', 'maybe')">? Maybe</button>
+    <button class="btn btn-featured ${featuredActive}"
+            onclick="event.stopPropagation(); toggleFeatured('${story.id}')">&#9670; Featured</button>
+  ` : `
+    <button class="btn btn-promote"
+            onclick="event.stopPropagation(); promote(${index})">&#8593; Promote</button>
+    <button class="btn btn-reject ${story.status === 'rejected' ? 'active' : ''}"
+            onclick="event.stopPropagation(); setCandidateStatus(${index}, 'rejected')">&#10007; Skip</button>
+  `;
+
+  const editorNotesVal = story.editor_notes || '';
+
+  return `
+    <div class="card ${statusClass}" data-section="${section}" data-index="${index}"
+         data-id="${esc(story.id || '')}" onclick="focusCard(this)">
+      ${handle}
+      <div class="card-top">
+        ${orderNum}
+        <div class="card-body">
+          <div class="card-headline" contenteditable="true"
+               onblur="updateHeadline('${story.id}', this)"
+               onclick="event.stopPropagation()">${esc(story.headline)}</div>
+          ${headlineRu}
+          <div class="card-meta">
+            <span class="source">${esc(story.source_name || '')}</span>
+            <span>${esc(story.pub_date || '')}</span>
+            ${slug}
+            ${sourceUrl}
+          </div>
+          ${aiNotes}
+          <div class="card-actions">${actions}</div>
+          <div class="card-editor-notes">
+            <label>Editor notes</label>
+            <textarea placeholder="Feedback, instructions..."
+                      onclick="event.stopPropagation()"
+                      oninput="updateEditorNotes('${story.id}', this.value)">${esc(editorNotesVal)}</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function esc(str) {
+  if (!str) return '';
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ── Data operations (by story ID) ────────────────────────────────────
+
+function findStory(id) {
+  return data.selected.find(s => s.id === id);
+}
+
+function setStatus(id, status) {
+  const story = findStory(id);
+  if (!story) return;
+  // Toggle off if clicking same status
+  story.status = story.status === status ? 'pending' : status;
+  // If newly accepted, give it an order at the end
+  if (story.status === 'accepted' && story.order === undefined) {
+    story.order = getAccepted().length;
+  }
+  renderAll();
+}
+
+function toggleFeatured(id) {
+  const story = findStory(id);
+  if (!story) return;
+  story.featured = !story.featured;
+  renderAll();
+}
+
+function updateHeadline(id, el) {
+  const story = findStory(id) || data.candidates.find(s => s.id === id);
+  if (!story) return;
+  const newText = el.textContent.trim();
+  if (newText && newText !== story.headline) {
+    if (!story.original_headline) story.original_headline = story.headline;
+    story.headline = newText;
+  }
+}
+
+function updateEditorNotes(id, val) {
+  const story = findStory(id) || data.candidates.find(s => s.id === id);
+  if (story) story.editor_notes = val;
+}
+
+function setCandidateStatus(index, status) {
+  const keyword = document.getElementById('filter-input').value.toLowerCase();
+  const source = document.getElementById('filter-source').value;
+  const filtered = data.candidates.filter(s => {
+    if (keyword && !s.headline.toLowerCase().includes(keyword) &&
+        !(s.source_name || '').toLowerCase().includes(keyword) &&
+        !(s.headline_ru || '').toLowerCase().includes(keyword) &&
+        !(s.notes || '').toLowerCase().includes(keyword)) return false;
+    if (source && s.source_name !== source) return false;
+    return true;
+  });
+  const story = filtered[index];
+  if (story) {
+    story.status = story.status === status ? 'pending' : status;
+    renderCandidates();
+  }
+}
+
+function promote(index) {
+  const keyword = document.getElementById('filter-input').value.toLowerCase();
+  const source = document.getElementById('filter-source').value;
+  const filtered = data.candidates.filter(s => {
+    if (keyword && !s.headline.toLowerCase().includes(keyword) &&
+        !(s.source_name || '').toLowerCase().includes(keyword) &&
+        !(s.headline_ru || '').toLowerCase().includes(keyword) &&
+        !(s.notes || '').toLowerCase().includes(keyword)) return false;
+    if (source && s.source_name !== source) return false;
+    return true;
+  });
+  const story = filtered[index];
+  if (!story) return;
+
+  const ci = data.candidates.indexOf(story);
+  if (ci >= 0) data.candidates.splice(ci, 1);
+
+  story.status = 'pending';
+  story.promoted = true;
+  story.order = data.selected.length;
+  if (!story.id) {
+    story.id = story.headline.toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+      .slice(0, 30);
+  }
+  data.selected.push(story);
+
+  renderAll();
+  toast('Promoted to Pending');
+}
+
+function updateCounts() {
+  const pending = getPending().length;
+  const accepted = getAccepted().length;
+  const rejected = getRejected().length;
+  const featured = data.selected.filter(s => s.featured).length;
+  document.getElementById('live-counts').innerHTML =
+    `<b>${pending}</b> pending &middot; <b>${accepted}</b> accepted &middot; <b>${rejected}</b> cut &middot; <b>${featured}</b> featured`;
+}
+
+function focusCard(el) {
+  document.querySelectorAll('.card').forEach(c => c.style.outline = '');
+  el.style.outline = '2px solid var(--red)';
+  focusedCard = el;
+  focusedSection = el.dataset.section;
+  focusedIndex = parseInt(el.dataset.index);
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (!focusedCard) return;
+  if (e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+
+  const id = focusedCard.dataset.id;
+  const section = focusedSection;
+  const index = focusedIndex;
+
+  switch (e.key) {
+    case 'a':
+      if (id) setStatus(id, 'accepted');
+      break;
+    case 'r':
+      if (id) setStatus(id, 'rejected');
+      else if (section === 'candidates') setCandidateStatus(index, 'rejected');
+      break;
+    case 'm':
+      if (id) setStatus(id, 'maybe');
+      break;
+    case 'f':
+      if (id) toggleFeatured(id);
+      break;
+    case 'n':
+      e.preventDefault();
+      const ta = focusedCard.querySelector('.card-editor-notes textarea');
+      if (ta) ta.focus();
+      break;
+    case 'ArrowDown':
+      e.preventDefault();
+      navigateCard(1);
+      break;
+    case 'ArrowUp':
+      e.preventDefault();
+      navigateCard(-1);
+      break;
+  }
+});
+
+function navigateCard(direction) {
+  const cards = document.querySelectorAll('.card');
+  const arr = [...cards];
+  let current = arr.indexOf(focusedCard);
+  if (current < 0) current = 0;
+  const next = current + direction;
+  if (next >= 0 && next < arr.length) {
+    arr[next].click();
+    arr[next].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+async function send() {
+  const btn = document.getElementById('send-btn');
+  const output = {
+    date: data.date,
+    saved_at: new Date().toISOString(),
+    selected: data.selected.map((s, i) => ({
+      id: s.id,
+      headline: s.headline,
+      headline_ru: s.headline_ru || '',
+      original_headline: s.original_headline || '',
+      source_name: s.source_name,
+      source_url: s.source_url,
+      pub_date: s.pub_date,
+      featured: !!s.featured,
+      status: s.status || 'pending',
+      order: s.order || 0,
+      notes: s.notes || '',
+      editor_notes: s.editor_notes || '',
+      promoted: !!s.promoted
+    })),
+    rejected_candidates: data.candidates
+      .filter(s => s.status === 'rejected')
+      .map(s => ({
+        headline: s.headline,
+        source_name: s.source_name,
+        reason: s.editor_notes || ''
+      }))
+  };
+
+  try {
+    const resp = await fetch('/api/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(output, null, 2)
+    });
+    if (resp.ok) {
+      btn.textContent = 'SENT';
+      btn.classList.add('sent');
+      btn.disabled = true;
+      toast('Decisions sent');
+      // Lock the UI
+      document.getElementById('locked-overlay').classList.add('active');
+    }
+  } catch (e) {
+    toast('Send failed: ' + e.message);
+  }
+}
+
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2000);
+}
+
+init();
+</script>
+
+</body>
+</html>

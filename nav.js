@@ -19,7 +19,7 @@
     { label: 'Reality', href: 'reality.html', page: 'reality' },
     { label: 'Ideas', href: 'ideas.html', page: 'ideas' },
     { label: 'Dreams', href: 'dreams.html', page: 'dreams' },
-    { label: 'Kosmopolitika', short: 'KP', href: 'kosmopolitika.html', page: 'kosmopolitika' },
+    { label: 'Conversations', href: 'conversations.html', page: 'conversations' },
     { label: 'About', href: 'about.html', page: 'about' }
   ];
 

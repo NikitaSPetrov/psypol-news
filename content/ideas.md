@@ -8,7 +8,7 @@
 - **Image**: none (placeholder)
 - **Text**: Coming soon.
 
-### There's Only One War
+### One War
 - **Date**: 2026-03-04
 - **Status**: live
 - **Image**: img/one-war-r.png
@@ -17,9 +17,9 @@
 
 ### Alienism
 - **Date**: 2026-03-05
-- **Status**: coming-soon
+- **Status**: live
 - **Image**: none (placeholder)
-- **Text**: Coming soon.
+- **Text**: UFOs, DMT entities, and AI all deal with something similar: encounters with non-human intelligence that, depending on how you look at them, can seem like a nothing-burger (UFOs aren't real, DMT is hallucinations, LLMs are "stochastic parrots") or as reality-changing (aliens have been guiding human evolution, DMT is a portal to other realities inhabited by powerful beings, AI is taking over the world and may be conscious). The gap between these two readings is enormous, and there is no consensus on which is closer to the truth. Alienism is the study of this gap — and of the recurring pattern of entity encounters across radically different domains.
 
 ### Post-Consensus Reality
 - **Date**: 2026-03-05

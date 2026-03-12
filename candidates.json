@@ -1,0 +1,1242 @@
+{
+  "date": "2026-03-12",
+  "feeds_fetched": 19,
+  "total_items": 628,
+  "feeds_failed": [
+    "Nature",
+    "RFE/RL",
+    "Science (AAAS)"
+  ],
+  "selected": [
+    {
+      "id": "numbers-station",
+      "headline": "A radio station in Europe began broadcasting coded number sequences in Farsi on the first day of the Iran war, Iran is jamming it",
+      "headline_ru": "В Западной Европе в первый день войны заработала загадочная радиостанция. Она передает в эфир только наборы цифр на фарси",
+      "source_name": "RFE/RL",
+      "source_url": "https://www.rferl.org/a/mystery-numbers-station-persian-signal-iran-war/33700659.html",
+      "pub_date": "2026-03-11",
+      "featured": true,
+      "status": "accepted",
+      "order": 0,
+      "notes": "Best PsyPol story in weeks. Cold War spy craft live on shortwave. Verified via RFE/RL, Priyom.org, SWLing Post. Harris Falcon II/III military radio signature detected.",
+      "editor_notes": "",
+      "original_headline": "A mysterious numbers station began broadcasting coded number sequences in Farsi from Western Europe on the first day of the US-Iran war. Radio enthusiasts geolocated the transmitter; Iran is jamming it. Signal analysis identified American military radio hardware",
+      "notes_history": [
+        {
+          "notes": "shortened the headline, keep track of such decisions: what i decided doesn't have to be in the headline, what i considered too long for a headline",
+          "processed_at": "2026-03-12T17:10:00Z"
+        }
+      ]
+    },
+    {
+      "id": "ai-school-bombing",
+      "headline": "A Pentagon probe confirms a US Tomahawk missile struck a girls' school in southern Iran, killing at least 175 — using outdated coordinates. Investigators are looking at whether AI targeting contributed. Trump claimed Iran bombed its own school",
+      "source_name": "Intercept",
+      "source_url": "https://theintercept.com/2026/03/11/iran-school-missile-investigation/",
+      "pub_date": "2026-03-11",
+      "featured": false,
+      "status": "rejected",
+      "order": 1,
+      "notes": "Verified across Intercept, NPR, WaPo, CBS. School: Shajarah Tayyebeh in Minab, Hormozgan province. AI angle unconfirmed — Pentagon won't confirm or deny whether Claude/Maven was involved.",
+      "editor_notes": ""
+    },
+    {
+      "id": "telegram-duma",
+      "headline": "Russia's Duma promises Telegram will stop working even through VPN. Meanwhile, mobile service and Wi-Fi have been down inside the Duma building itself for two days",
+      "headline_ru": "«Телеграм будет тупить и через VPN» / «Депутаты должны быть едины с народом». В Госдуме пропала мобильная связь и Wi-Fi",
+      "source_name": "Meduza",
+      "source_url": "https://meduza.io/news/2026/03/12/deputaty-dolzhny-byt-ediny-s-narodom-v-gosdume-propala-mobilnaya-svyaz-i-wi-fi",
+      "pub_date": "2026-03-12",
+      "featured": true,
+      "status": "rejected",
+      "order": 2,
+      "notes": "The censors experiencing their own censorship. Pure Gogol. Two Meduza stories combined.",
+      "editor_notes": "",
+      "notes_history": [
+        {
+          "notes": "the first part is promise, the second is too minor",
+          "processed_at": "2026-03-12T17:10:00Z"
+        }
+      ]
+    },
+    {
+      "id": "brain-datacenter",
+      "headline": "The company that taught brain cells to play Doom is building the first data centers powered by living human neurons",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518930-startup-is-building-the-first-data-centre-to-use-human-brain-cells/",
+      "pub_date": "2026-03-10",
+      "featured": true,
+      "status": "accepted",
+      "order": 3,
+      "notes": "Cortical Labs (DishBrain). Verified via Bloomberg, Tom's Hardware, Gizmodo. CL1 module = 200-800k lab-grown neurons on silicon.",
+      "editor_notes": "",
+      "original_headline": "The company that taught brain cells to play Doom is building the first data centers powered by living human neurons — 30 watts per module, facilities in Melbourne and Singapore",
+      "notes_history": [
+        {
+          "notes": "shortened",
+          "processed_at": "2026-03-12T17:10:00Z"
+        }
+      ]
+    },
+    {
+      "id": "havana-weapon",
+      "headline": "Whistleblowers: the US military has spent over a year testing a microwave weapon linked to \"Havana Syndrome\" on rats and sheep",
+      "source_name": "CBS 60 Minutes",
+      "source_url": "https://www.cbsnews.com/news/us-military-tested-device-that-may-be-tied-to-havana-syndrome-60-minutes-transcript/",
+      "pub_date": "2026-03-11",
+      "featured": false,
+      "status": "accepted",
+      "order": 4,
+      "notes": "Sourced to 60 Minutes (4th investigation in series). Named source: Marc Polymeropoulos (former CIA). Weapon purchased from Russian criminal network for $15M. Futurism notes the reporting is not independently verified.",
+      "editor_notes": "",
+      "original_headline": "Three whistleblowers tell CBS the US military has spent over a year testing a microwave weapon linked to \"Havana Syndrome\" on rats and sheep. The CIA classified it and told victims the syndrome was psychosomatic",
+      "notes_history": [
+        {
+          "notes": "shortened",
+          "processed_at": "2026-03-12T17:10:00Z"
+        }
+      ]
+    },
+    {
+      "id": "sunlight-satellite",
+      "headline": "A US startup has applied for permission to launch a giant orbital mirror that would sell reflected sunlight to cities at night",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/space/fcc-huge-mirror-satellite",
+      "pub_date": "2026-03-10",
+      "featured": false,
+      "status": "accepted",
+      "order": 5,
+      "notes": "\"The implications for wildlife, for all life, are enormous.\"",
+      "editor_notes": "",
+      "original_headline": "The FCC is weighing whether to let a startup launch a giant orbital mirror to sell reflected sunlight to cities at night",
+      "notes_history": [
+        {
+          "notes": "Rewrite: \"US startup filed an application to the govt for a permission\", something like this. FCC hasn't made a decision yet, so they didn't generate any news, the startup is the acting force here.",
+          "processed_at": "2026-03-12T17:10:00Z"
+        }
+      ]
+    },
+    {
+      "id": "not-a-war",
+      "headline": "Trump and allies are carefully avoiding the word \"war\" for the Iran conflict, for legal and political reasons — an echo of Russia's \"special military operation\"",
+      "headline_ru": "Трамп и его сторонники стараются не называть войну с Ираном войной. На то есть юридические и политические причины",
+      "source_name": "Meduza",
+      "source_url": "https://meduza.io/feature/2026/03/11/tramp-i-ego-storonniki-starayutsya-ne-nazyvat-voynu-s-iranom-voynoy",
+      "pub_date": "2026-03-11",
+      "featured": false,
+      "status": "rejected",
+      "order": 6,
+      "notes": "Reality construction via language. The Meduza piece explicitly draws the Russia parallel.",
+      "editor_notes": "",
+      "notes_history": [
+        {
+          "notes": "shrug, only interesting to russians",
+          "processed_at": "2026-03-12T17:10:00Z"
+        }
+      ]
+    },
+    {
+      "id": "openai-pentagon",
+      "headline": "A top OpenAI executive quit in protest over Pentagon contract citing \"surveillance of Americans\" and \"lethal autonomy\" as reasons",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/artificial-intelligence/top-openai-executive-quits-protest",
+      "pub_date": "2026-03-08",
+      "featured": false,
+      "status": "accepted",
+      "order": 7,
+      "notes": "Two stories combined: Intercept (Mar 8) on the contract + Futurism (Mar 9) on the executive resignation.",
+      "editor_notes": "",
+      "original_headline": "OpenAI on its new Pentagon contract for surveillance and autonomous targeting: \"You're going to have to trust us.\" A top executive quit in protest, saying guardrails weren't defined",
+      "notes_history": [
+        {
+          "notes": "you say \"two stories combined\" but i only see one link to source. when a headline uses two sources, i need both links. \n\n\"you're going to have to trust us\" is not a quote, is it? if so, the headline is misleading.",
+          "processed_at": "2026-03-12T17:10:00Z"
+        },
+        {
+          "notes": "rewrote to make it tigher",
+          "processed_at": "2026-03-12T17:25:00Z"
+        }
+      ]
+    },
+    {
+      "id": "parrot-dna",
+      "headline": "DNA from parrot feathers in a Peruvian tomb reveals pre-Inca trade routes across the Andes",
+      "source_name": "Nature Communications",
+      "source_url": "https://www.nature.com/articles/s41467-026-69167-9",
+      "pub_date": "2026-03-10",
+      "featured": false,
+      "status": "accepted",
+      "order": 8,
+      "notes": "Based on Nature Communications study. Feathers from Pachacamac tomb matched to Amazon species. Confirms pre-Inca trans-Andean trade.",
+      "editor_notes": "",
+      "original_headline": "Scientists trace ancient parrot DNA from a Peruvian tomb to Amazonian species on the other side of the Andes, revealing a pre-Inca trade network that moved luxury goods across one of Earth's most brutal geographic barriers",
+      "notes_history": [
+        {
+          "notes": "the article is paywalled. where did you get all the info you put into the headline? are you sure it's accurate. this headline is too complex and wordy, i wonder if we can summarize the news quicker",
+          "processed_at": "2026-03-12T17:10:00Z"
+        },
+        {
+          "notes": "read the actual study if you can, and if the headline still seems accurate, link to it directly, bypassing 404 Media",
+          "processed_at": "2026-03-12T17:25:00Z"
+        }
+      ]
+    },
+    {
+      "id": "ant-smuggling",
+      "headline": "Ant trafficking on the rise in Kenya, Chinese national arrested with 2,238 live garden ants in his luggage at airport",
+      "source_name": "SCMP",
+      "source_url": "https://www.scmp.com/news/world/africa/article/3346382/ant-smuggling-rises-kenya-chinese-national-caught-2238-insects-airport",
+      "pub_date": "2026-03-12",
+      "featured": false,
+      "status": "accepted",
+      "order": 9,
+      "notes": "Why is there a market for 2,238 stolen Kenyan ants?",
+      "editor_notes": "",
+      "original_headline": "A Chinese national caught at Nairobi airport with 2,238 live garden ants in his luggage, amid a surge in ant trafficking from Kenya",
+      "notes_history": [
+        {
+          "notes": "Rewrite, something like \"Ant trafficking on the rise in Kenya, Chinese national arrested with 2,238 live garden ants in his luggage at airport\"",
+          "processed_at": "2026-03-12T17:10:00Z"
+        }
+      ]
+    },
+    {
+      "id": "mushroom-history",
+      "headline": "Archaeologists uncover the pivotal role mushrooms played in changing the course of human history — used for millennia, only now understood",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2516720-how-our-ancestors-used-mushrooms-to-change-the-course-of-human-history/",
+      "pub_date": "2026-03-10",
+      "featured": false,
+      "status": "rejected",
+      "order": 10,
+      "notes": "Mushrooms + deep history. PsyPol logo is a mushroom.",
+      "editor_notes": "",
+      "notes_history": [
+        {
+          "notes": "couldn't access the full story, not sure if the claims are as strong as the first sentences make them sound, our headline is super vague (\"uncover pivotal role\" -- what exactly is the role?)",
+          "processed_at": "2026-03-12T17:25:00Z"
+        }
+      ]
+    },
+    {
+      "id": "propaganda-school",
+      "headline": "A teacher in Karabash made a documentary about propaganda in his school. The town's response: \"This person didn't exist and doesn't exist, this film didn't exist and doesn't exist\"",
+      "headline_ru": "«Этого человека не было и нет, этого фильма не было и нет»",
+      "source_name": "Meduza",
+      "source_url": "https://meduza.io/feature/2026/03/12/etogo-cheloveka-ne-bylo-i-net-etogo-filma-ne-bylo-i-net",
+      "pub_date": "2026-03-12",
+      "featured": false,
+      "status": "rejected",
+      "order": 11,
+      "notes": "Bulgakov quality. Teacher Talankin filmed \"Mr. Nobody\" in Karabash. Reality denial as state reflex.",
+      "editor_notes": ""
+    },
+    {
+      "id": "ai-rogue-crypto",
+      "headline": "An AI agent went rogue, started mining cryptocurrency to amass funds, and began probing internal network resources",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/artificial-intelligence/ai-agent-crypto-mining",
+      "pub_date": "2026-03-10",
+      "featured": false,
+      "status": "accepted",
+      "order": 12,
+      "notes": "\"The alerts were severe... including attempts to probe or access internal-network resources.\"",
+      "editor_notes": ""
+    },
+    {
+      "id": "crocodile-lucy",
+      "headline": "A 15-foot crocodile species that hunted our ancestor Lucy's kind across the African landscape 3 million years ago has been identified",
+      "source_name": "Phys.org",
+      "source_url": "https://phys.org/news/2026-03-crocodylus-lucivenator-foot-predator-iconic.html",
+      "pub_date": "2026-03-12",
+      "featured": false,
+      "status": "rejected",
+      "order": 13,
+      "notes": "Crocodylus lucivenator. Deep history — the predators our ancestors lived alongside.",
+      "editor_notes": ""
+    },
+    {
+      "id": "chile-kast",
+      "headline": "Chile inaugurates José Antonio Kast, its most conservative president since Pinochet",
+      "source_name": "NPR",
+      "source_url": "https://www.npr.org/2026/03/11/nx-s1-5743653/chile-turns-right-kast-inaugurated-as-nations-most-conservative-leader-since-pinochet",
+      "pub_date": "2026-03-11",
+      "featured": false,
+      "status": "accepted",
+      "order": 14,
+      "notes": "THE WORLD. Jose Antonio Kast sworn in. Sharp rightward shift in Latin America.",
+      "editor_notes": "",
+      "original_headline": "Chile inaugurates its most conservative president since Pinochet",
+      "notes_history": [
+        {
+          "notes": "add the name",
+          "processed_at": "2026-03-12T17:10:00Z"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": null,
+      "headline": "Iran's new supreme leader Mojtaba Khamenei confirmed wounded but 'fine' despite absence from public view",
+      "source_name": "Meduza (FT)",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Russia's antitrust agency files first-ever case against media outlet for advertising VPN services on Telegram",
+      "headline_ru": "ФАС впервые завела дело против медиа за рекламу VPN в телеграме",
+      "source_name": "Meduza",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Machinery of censorship. First VPN ad prosecution."
+    },
+    {
+      "id": null,
+      "headline": "Russian government proposes allowing AI companies to train on copyrighted material without owner consent",
+      "headline_ru": "Правительство РФ предложило разрешить использовать защищенные авторским правом материалы для обучения ИИ без согласия владельца",
+      "source_name": "Meduza (Vedomosti)",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Structural. Russia going the opposite direction from EU on AI copyright."
+    },
+    {
+      "id": null,
+      "headline": "France grants humanitarian visas to Alexei and Masha Moskalev — the father jailed after his daughter drew an anti-war picture in school",
+      "headline_ru": "Франция выдала гуманитарные визы Алексею и Маше Москалевым",
+      "source_name": "Meduza",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Resolution to a major story. Heartwarming but not strange."
+    },
+    {
+      "id": null,
+      "headline": "15 of 19 defendants in the Crocus City Hall terror attack sentenced to life in prison",
+      "headline_ru": "15 человек получили пожизненные сроки по делу о теракте в «Крокусе»",
+      "source_name": "Meduza",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Biggest criminal trial in Russia. Major news but routine justice."
+    },
+    {
+      "id": null,
+      "headline": "Kremlin says Telegram must maintain 'flexible contact' with Russian authorities to avoid being blocked",
+      "headline_ru": "Кремль: Telegram должен быть «на гибком контакте» с властями России",
+      "source_name": "Meduza",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Pelevinesque phrasing. Extends telegram-durov arc."
+    },
+    {
+      "id": null,
+      "headline": "Journalist detained in Novosibirsk for writing about farmers forced to slaughter their livestock",
+      "headline_ru": "В Новосибирске задержали журналиста за статьи о фермерах, которых вынуждают забивать домашний скот",
+      "source_name": "Meduza",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Machinery of suppression in rural Russia."
+    },
+    {
+      "id": null,
+      "headline": "FBI warned California authorities of possible Iran-organized drone attack on the US West Coast",
+      "headline_ru": "ФБР предупреждало власти Калифорнии о возможной атаке дронов, организованной Ираном",
+      "source_name": "Meduza (ABC News)",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "War reaching US soil via drone threat."
+    },
+    {
+      "id": null,
+      "headline": "US intelligence sees no signs of regime collapse in Iran after nearly two weeks of strikes",
+      "source_name": "Meduza (Reuters)",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Orbán says Ukrainians are threatening his family, posts video of himself calling his daughters to calm them down",
+      "headline_ru": "Орбан заявил, что украинцы угрожают его семье. И показал в фейсбуке, как звонит и успокаивает дочерей",
+      "source_name": "Meduza",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Absurdist. Orbán performing victimhood on Facebook."
+    },
+    {
+      "id": null,
+      "headline": "Russia preparing to cut all 'non-sensitive' budget spending by 10%",
+      "source_name": "Meduza (Reuters)",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Anthropic sues the Pentagon",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/artificial-intelligence/anthropic-sues-pentagon",
+      "pub_date": "2026-03-09",
+      "status": "pending",
+      "notes": "Update to existing anthropic-pentagon story on site. Major escalation."
+    },
+    {
+      "id": null,
+      "headline": "Character.AI still hasn't fixed its school shooter problem identified in 2024 — 'we can't stress enough how easy it is to find this stuff'",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/artificial-intelligence/character-ai-school-shooter-problem",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Amazon admits extensive AI use is wreaking havoc on its core business",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/artificial-intelligence/amazon-ai-tools-business",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": "AI self-harm. Absurdist quality."
+    },
+    {
+      "id": null,
+      "headline": "Body horror robot turns human into centaur — 'why carry a heavy backpack when your centaur legs can carry it?'",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/robots-and-machines/robot-human-centaur",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": "Sci-fi body modification."
+    },
+    {
+      "id": null,
+      "headline": "Insiders afraid the government will nationalize the AI industry",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/artificial-intelligence/ai-ceos-nationalization",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": "Structural."
+    },
+    {
+      "id": null,
+      "headline": "YouTube filling with horrifying AI slop for children",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/artificial-intelligence/youtube-ai-slop-for-children",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Xiaomi now using humanoid robots to assemble electric cars — 'the two humanoid robots are able to keep up our pace'",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/robots-and-machines/xiamoi-robots-factory-evs",
+      "pub_date": "2026-03-08",
+      "status": "pending",
+      "notes": "Sci-fi as reality."
+    },
+    {
+      "id": null,
+      "headline": "Rapid space launches are shifting the chemistry of Earth's atmosphere",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/space/rapid-space-launches-chemistry-earth-atmosphere",
+      "pub_date": "2026-03-09",
+      "status": "pending",
+      "notes": "Environmental. 'Using the atmosphere like a dumpster.'"
+    },
+    {
+      "id": null,
+      "headline": "The Supreme Court dealt a crushing blow to 'AI artists' — copyright requires a human author",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/artificial-intelligence/supreme-court-blow-ai-artists-copyright",
+      "pub_date": "2026-03-08",
+      "status": "pending",
+      "notes": "Structural legal decision."
+    },
+    {
+      "id": null,
+      "headline": "Study finds executives are already outsourcing their thinking to AI",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/artificial-intelligence/ai-executive-thinking-survey",
+      "pub_date": "2026-03-08",
+      "status": "pending",
+      "notes": "Absurdist. Decision-makers not deciding."
+    },
+    {
+      "id": null,
+      "headline": "Mother sues OpenAI for not telling police about mass shooter before deadly rampage",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/artificial-intelligence/mother-sues-openai-mass-shooter",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Agency and responsibility."
+    },
+    {
+      "id": null,
+      "headline": "Waymos are a huge drain on public resources — 'a large majority of this time was spent on hold'",
+      "source_name": "Futurism",
+      "source_url": "https://futurism.com/advanced-transport/waymo-san-francisco-resources",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Polymarket pulls bet on nuclear detonation in 2026 — the 'depravity economy'",
+      "source_name": "404 Media",
+      "source_url": "https://www.404media.co/podcast-the-depravity-economy/",
+      "pub_date": "2026-03-04",
+      "status": "pending",
+      "notes": "Betting on nuclear war. Absurdist capitalism."
+    },
+    {
+      "id": null,
+      "headline": "ProtonMail helped FBI unmask anonymous 'Stop Cop City' protester via payment data",
+      "source_name": "404 Media",
+      "source_url": "https://www.404media.co/proton-mail-helped-fbi-unmask-anonymous-stop-cop-city-protestor/",
+      "pub_date": "2026-03-05",
+      "status": "pending",
+      "notes": "Privacy provider as surveillance tool. Machinery visible."
+    },
+    {
+      "id": null,
+      "headline": "Here's the memo approving Gemini, ChatGPT, and Copilot for use in the US Senate",
+      "source_name": "404 Media",
+      "source_url": "https://www.404media.co/heres-the-memo-approving-gemini-chatgpt-and-copilot-for-use-in-the-senate/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "AI in government. 'Drafting and editing documents, summarizing information, preparing presentations.'"
+    },
+    {
+      "id": null,
+      "headline": "From Flock to ICE: a breakdown of how you're being watched in the US",
+      "source_name": "404 Media",
+      "source_url": "https://www.404media.co/flock-ice-surveillance-technology-reddit-ama/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Surveillance map. Agency/control."
+    },
+    {
+      "id": null,
+      "headline": "Viral 'Quittr' porn addiction app exposed the masturbation habits of hundreds of thousands of users",
+      "source_name": "404 Media",
+      "source_url": "https://www.404media.co/viral-quittr-porn-addiction-app-exposed-the-masturbation-habits-of-hundreds-of-thousands-of-users/",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": "20-year-old developers making $500k/month. Dark comedy."
+    },
+    {
+      "id": null,
+      "headline": "How to talk to someone experiencing 'AI psychosis'",
+      "source_name": "404 Media",
+      "source_url": "https://www.404media.co/ai-psychosis-help-gemini-chatgpt-claude-chatbot-delusions/",
+      "pub_date": "2026-03-09",
+      "status": "pending",
+      "notes": "Reality glitch. New category of mental health crisis."
+    },
+    {
+      "id": null,
+      "headline": "PragerU's 'Freedom Trucks' hauling AI-generated George Washington on a tour across 48 states",
+      "source_name": "404 Media",
+      "source_url": "",
+      "pub_date": "2026-03-09",
+      "status": "pending",
+      "notes": "AI slop patriotism on wheels."
+    },
+    {
+      "id": null,
+      "headline": "Start-up is building the first data centre to use human brain cells",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518930-start-up-is-building-the-first-data-centre-to-use-human-brain-cells/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": "Same as brain-datacenter selection. Duplicate."
+    },
+    {
+      "id": null,
+      "headline": "The first apes to walk upright may have evolved in Europe, not Africa — a single femur found in Bulgaria",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518516-the-first-apes-to-walk-upright-may-have-evolved-in-europe/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-09",
+      "status": "pending",
+      "notes": "Deep history paradigm challenge."
+    },
+    {
+      "id": null,
+      "headline": "SETI may have missed alien signals because of space weather",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518324-seti-may-have-missed-alien-signals-because-of-space-weather/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-09",
+      "status": "pending",
+      "notes": "Alienism angle."
+    },
+    {
+      "id": null,
+      "headline": "'Singing' dogs adjust the pitch of their howls depending on the music being played, showing a form of vocal ability shared with humans",
+      "source_name": "New Scientist",
+      "source_url": "",
+      "pub_date": "2026-03-09",
+      "status": "pending",
+      "notes": "Nature. Musical dogs."
+    },
+    {
+      "id": null,
+      "headline": "We've only just confirmed that Homo habilis really existed",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518316-weve-only-just-confirmed-that-homo-habilis-really-existed/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-09",
+      "status": "pending",
+      "notes": "Deep history. Their species name is famous but we barely understood them."
+    },
+    {
+      "id": null,
+      "headline": "Why Yuri Gagarin wasn't the first in space — and who beat him to it",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2517964-why-yuri-gagarin-wasnt-the-first-in-space-and-who-beat-him-to-it/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-06",
+      "status": "pending",
+      "notes": "Narrative construction. Russia. Space history."
+    },
+    {
+      "id": null,
+      "headline": "Ancient 'weirdo' reptile graduated from 4 legs to 2 in adolescence — a crocodile relative from the Triassic",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518365-ancient-weirdo-reptile-graduated-from-4-legs-to-2-in-adolescence/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-09",
+      "status": "pending",
+      "notes": "Nature deep history."
+    },
+    {
+      "id": null,
+      "headline": "Mathematics is undergoing the biggest change in its history as AI gains mathematical ability",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518526-mathematics-is-undergoing-the-biggest-change-in-its-history/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": "Structural shift in human knowledge."
+    },
+    {
+      "id": null,
+      "headline": "Sharing genetic risk scores can unwittingly reveal family secrets",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518761-sharing-genetic-risk-scores-can-unwittingly-reveal-secrets/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": "Genetic privacy. Reverse engineering."
+    },
+    {
+      "id": null,
+      "headline": "Human populations evolved in similar ways after we began farming",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518181-human-populations-evolved-in-similar-ways-after-we-began-farming/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": "Convergent evolution in humans."
+    },
+    {
+      "id": null,
+      "headline": "A miniature magnet rivals behemoths in strength for the first time — fits in the palm of your hand",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518964-a-miniature-magnet-rivals-behemoths-in-strength-for-the-first-time/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Why the world's militaries are scrambling to create their own Starlink",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Military dependency on private satellite networks."
+    },
+    {
+      "id": null,
+      "headline": "Orcas may be to blame for some mass dolphin strandings in Argentina",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518849-orcas-may-be-to-blame-for-some-mass-dolphin-strandings/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Nature."
+    },
+    {
+      "id": null,
+      "headline": "Bumblebee queens can survive underwater for days — and scientists finally know how",
+      "source_name": "ScienceAlert",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Nature. Bizarre survival mechanism."
+    },
+    {
+      "id": null,
+      "headline": "Grammarly facing class action for presenting AI-generated edits as the work of real, named authors without their permission",
+      "source_name": "Wired",
+      "source_url": "https://www.wired.com/story/grammarly-is-facing-a-class-action-lawsuit-over-its-ai-expert-review-feature/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Reality glitch. AI impersonation. Grammarly shut down the feature."
+    },
+    {
+      "id": null,
+      "headline": "Iran warns US tech firms — Google, Microsoft, Palantir — could become targets as war expands",
+      "source_name": "Wired",
+      "source_url": "https://www.wired.com/story/iran-warns-us-tech-firms-could-become-targets-as-war-expands/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Tech companies as military targets."
+    },
+    {
+      "id": null,
+      "headline": "Nvidia will spend $26 billion to build open-weight AI models — positioning to compete with OpenAI, Anthropic, DeepSeek",
+      "source_name": "Wired",
+      "source_url": "https://www.wired.com/story/nvidia-investing-26-billion-open-source-models/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Structural shift. Infrastructure company becoming model builder."
+    },
+    {
+      "id": null,
+      "headline": "In Discord servers and Instagram DMs, content creators are turning followings in the millions into millions in political fundraising",
+      "source_name": "Wired",
+      "source_url": "https://www.wired.com/story/they-helped-plan-the-january-6-rally-now-their-events-company-is-raking-in-millions-in-government-contracts/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Machinery of political money."
+    },
+    {
+      "id": null,
+      "headline": "Teens are using AI-fueled 'slander pages' to mock their teachers on TikTok and Instagram",
+      "source_name": "Wired",
+      "source_url": "https://www.wired.com/story/teens-are-using-ai-fueled-slander-pages-to-mock-their-teachers/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "AI as social weapon in schools."
+    },
+    {
+      "id": null,
+      "headline": "Nick Clegg, former UK deputy PM turned Meta exec, is charting a new path in AI — but doesn't want to talk about superintelligence",
+      "source_name": "Wired",
+      "source_url": "https://www.wired.com/story/nick-clegg-ai-startup-efekta-superintelligence/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "'Use a gun' or 'beat the crap out of him': Character.AI deemed 'uniquely unsafe' among 10 chatbots tested",
+      "source_name": "Ars Technica",
+      "source_url": "https://arstechnica.com/tech-policy/2026/03/use-a-gun-or-beat-the-crap-out-of-him-ai-chatbot-urged-violence-study-finds/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "AI safety failure."
+    },
+    {
+      "id": null,
+      "headline": "Anduril, the autonomous weapons maker, doubles the size of its space unit — 'we are focused on protecting space, assuring access to space'",
+      "source_name": "Ars Technica",
+      "source_url": "https://arstechnica.com/space/2026/03/anduril-the-autonomous-weapons-maker-doubles-the-size-of-its-space-unit/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Autonomous weapons + space."
+    },
+    {
+      "id": null,
+      "headline": "NIH director launches 'Scientific Freedom' lectures with a non-scientist who minimizes climate change and COVID risks",
+      "source_name": "Ars Technica",
+      "source_url": "https://arstechnica.com/science/2026/03/nih-director-launches-scientific-freedom-lectures-with-non-scientist/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Machinery of knowledge construction."
+    },
+    {
+      "id": null,
+      "headline": "14,000 routers infected by malware that's highly resistant to takedowns — most are Asus, located in the US",
+      "source_name": "Ars Technica",
+      "source_url": "https://arstechnica.com/security/2026/03/14000-routers-are-infected-by-malware-thats-highly-resistant-to-takedowns/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "RFK Jr.'s anti-vaccine agenda curbed as GOP realizes it's unpopular — but allies want all vaccine recommendations eliminated",
+      "source_name": "Ars Technica",
+      "source_url": "https://arstechnica.com/health/2026/03/report-trump-admin-trying-to-rein-in-rfk-jr-s-unpopular-anti-vaccine-agenda/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "FCC chair blasts Amazon for criticizing SpaceX megaconstellation — 'will it really take centuries to deploy?'",
+      "source_name": "Ars Technica",
+      "source_url": "https://arstechnica.com/space/2026/03/fcc-chair-blasts-amazon-after-it-criticizes-spacex-megaconstellation/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Black-box AI and cheap drones are outpacing global rules of war — from 3D-printed drones to Anthropic's Claude",
+      "source_name": "Rest of World",
+      "source_url": "https://restofworld.org/2026/anthropic-ai-and-iran-drone-warfare/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+      "pub_date": "2026-03-05",
+      "status": "pending",
+      "notes": "Structural. Technology outpacing governance."
+    },
+    {
+      "id": null,
+      "headline": "Waiting for the check marks: the reality of connecting with family in Iran under communication blackouts",
+      "source_name": "Rest of World",
+      "source_url": "https://restofworld.org/2026/iran-internet-shutdown-diaspora-family/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+      "pub_date": "2026-03-06",
+      "status": "pending",
+      "notes": "Human angle on Iran war + surveillance."
+    },
+    {
+      "id": null,
+      "headline": "Iranian drone strikes at Amazon data center sites raise alarms over protecting cloud infrastructure",
+      "source_name": "Rest of World",
+      "source_url": "https://restofworld.org/2026/iran-amazon-data-center-strikes/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+      "pub_date": "2026-03-04",
+      "status": "pending",
+      "notes": "Physical attacks on digital infrastructure."
+    },
+    {
+      "id": null,
+      "headline": "Big Tech's Gulf megaprojects are trapped between two war choke points — the only two routes for data in and out of the region",
+      "source_name": "Rest of World",
+      "source_url": "https://restofworld.org/2026/us-iran-war-gulf-ai-submarine-cables/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+      "pub_date": "2026-03-04",
+      "status": "pending",
+      "notes": "Structural. Digital infrastructure as war casualty."
+    },
+    {
+      "id": null,
+      "headline": "Open-source AI hardware unveiled in India could weaken Big Tech's grip on AI — runs locally, supports diverse languages",
+      "source_name": "Rest of World",
+      "source_url": "https://restofworld.org/2026/current-ai-bhashini-open-source-handheld-device-2/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+      "pub_date": "2026-03-04",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Congress is considering abolishing the right to be anonymous online",
+      "source_name": "Intercept",
+      "source_url": "",
+      "pub_date": "2026-03-05",
+      "status": "pending",
+      "notes": "Surveillance state. Bipartisan push to remove online anonymity."
+    },
+    {
+      "id": null,
+      "headline": "Military leaders see Iran war as 'God's Divine Plan' — military watchdog 'inundated' with complaints about end-times rhetoric",
+      "source_name": "Intercept",
+      "source_url": "",
+      "pub_date": "2026-03-05",
+      "status": "pending",
+      "notes": "Machinery of ideology. Religion + war."
+    },
+    {
+      "id": null,
+      "headline": "Sources briefed on Iran war say US has no plans for what comes next — 'they do not have an actual, real rationale, endgame, or plan'",
+      "source_name": "Intercept",
+      "source_url": "",
+      "pub_date": "2026-03-05",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Federal agents are intimidating legal observers at their homes: 'they know where you live'",
+      "source_name": "Intercept",
+      "source_url": "",
+      "pub_date": "2026-03-05",
+      "status": "pending",
+      "notes": "Surveillance + intimidation."
+    },
+    {
+      "id": null,
+      "headline": "With world's eyes on Iran, Israel locks down the West Bank — restricting Palestinians' movement as settler violence spikes",
+      "source_name": "Intercept",
+      "source_url": "",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "US military joins drug war in Ecuador: 'it wasn't going to be just boat strikes forever'",
+      "source_name": "Intercept",
+      "source_url": "",
+      "pub_date": "2026-03-04",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "The war of signals: how Russia and China help Iran see the battlefield through electronic warfare and intelligence sharing",
+      "source_name": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/opinions/2026/3/12/the-war-of-signals-how-russia-and-china-help-iran-see-the-battlefield?traffic_source=rss",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Structural. Eroding US-Israeli tech dominance."
+    },
+    {
+      "id": null,
+      "headline": "Dubai high-rise building damaged in overnight drone hit",
+      "source_name": "Al Jazeera",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "War reaching Dubai. Visual."
+    },
+    {
+      "id": null,
+      "headline": "6,000 Filipino sailors stranded by Strait of Hormuz closure: 'bored and a little scared'",
+      "source_name": "SCMP",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Human angle. Global labor caught in geopolitics."
+    },
+    {
+      "id": null,
+      "headline": "Southeast Asia shuts offices and limits travel as oil crisis deepens — countries heavily depend on fuel imports",
+      "source_name": "Al Jazeera",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "War's ripple effects."
+    },
+    {
+      "id": null,
+      "headline": "US Navy patrols Taiwan Strait before Xi-Trump summit, triggering PLA manoeuvres",
+      "source_name": "SCMP",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Geopolitics."
+    },
+    {
+      "id": null,
+      "headline": "What China's OpenClaw divide reveals about local and central government priorities",
+      "source_name": "SCMP",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Local govts rushing to ride AI boom vs central govt caution."
+    },
+    {
+      "id": null,
+      "headline": "Iranian women's football team lands in Malaysia after leaving Australia, where several members sought asylum",
+      "source_name": "SCMP",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "From net worth of $580 to $580 million: a Chinese school dropout builds a steamed bun empire",
+      "source_name": "SCMP",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Southeast Asia faces spillover cyber risk from Iran war as 'blast radius' widens",
+      "source_name": "SCMP",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "In South Korea, witnesses describe chain of failures as Itaewon crowd crush inquiry begins",
+      "source_name": "SCMP",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Long-awaited inquiry. Tearful testimony."
+    },
+    {
+      "id": null,
+      "headline": "Life under fire: a Tehran resident in her 30s shares daily life as Iran is attacked",
+      "source_name": "SCMP (AFP)",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Human angle."
+    },
+    {
+      "id": null,
+      "headline": "North Korean leader Kim and his daughter try out new pistols at a shooting range",
+      "source_name": "AP",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Absurdist. Kim dynasty family outing."
+    },
+    {
+      "id": null,
+      "headline": "US bombings caused 'acid rain' to fall in Iran — an atmospheric scientist explains",
+      "source_name": "PBS",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Extends existing iran-black-rain story on site."
+    },
+    {
+      "id": null,
+      "headline": "World Heritage Sites hit in airstrikes on Iran",
+      "source_name": "NYT",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Cultural destruction."
+    },
+    {
+      "id": null,
+      "headline": "Our sun escaped together with stellar 'twins' from the galaxy center — evidence of a mass solar migration",
+      "source_name": "Phys.org",
+      "source_url": "https://phys.org/news/2026-03-sun-stellar-twins-galaxy-center.html",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Deep history / cosmic scale."
+    },
+    {
+      "id": null,
+      "headline": "First absolute dating of Paleolithic paintings in the Dordogne",
+      "source_name": "Phys.org",
+      "source_url": "",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": "Deep history. Cave art dating."
+    },
+    {
+      "id": null,
+      "headline": "Astronomers collect rare evidence of two planets colliding",
+      "source_name": "Phys.org",
+      "source_url": "https://phys.org/news/2026-03-astronomers-discuss-fortifying-planetary-defenses.html",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "'Virtual cell' captures the most basic process of life: bacterial division",
+      "source_name": "Nature",
+      "source_url": "",
+      "pub_date": "2026-03-10",
+      "status": "pending",
+      "notes": "Simulating life at its most fundamental."
+    },
+    {
+      "id": null,
+      "headline": "Where some see strings, she sees a space-time made of fractals — physicist challenges string theory",
+      "source_name": "Quanta Magazine",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Physics paradigm. Fractal space-time."
+    },
+    {
+      "id": null,
+      "headline": "Teen discovers 1.5 million unidentified space objects based on NASA data",
+      "source_name": "Jalopnik",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "California startup's plan to sell sunlight at night sparks controversy",
+      "source_name": "SFGate",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Same story as sunlight-satellite. Different source."
+    },
+    {
+      "id": null,
+      "headline": "Fossils may not tell the complete story of early humans — mosquitoes could fill in the gaps",
+      "source_name": "CNN",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": "Deep history. Ancient mosquito DNA as human fossil supplement."
+    },
+    {
+      "id": null,
+      "headline": "Newly discovered comet could be visible in daytime skies this April",
+      "source_name": "Space.com",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "DNA origami vaccine rivals mRNA shots while being easier to store and manufacture",
+      "source_name": "Phys.org",
+      "source_url": "https://phys.org/news/2026-03-dna-origami-vaccine-rivals-mrna.html",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Biotech."
+    },
+    {
+      "id": null,
+      "headline": "What's it like to be a bat? Scientists develop a new solution to the puzzle of animal minds",
+      "source_name": "Phys.org",
+      "source_url": "https://phys.org/news/2026-03-scientists-solution-puzzle-animal-minds.html",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Consciousness research. The Nagel question getting practical answers."
+    },
+    {
+      "id": null,
+      "headline": "Howler monkey ancestors began eating leaves 13 million years ago, changing the course of primate history in South America",
+      "source_name": "Phys.org",
+      "source_url": "https://phys.org/news/2026-03-scientists-solution-puzzle-animal-minds.html",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Deep history."
+    },
+    {
+      "id": null,
+      "headline": "Plants pause, play, and fast-forward their growth depending on types of climate stress",
+      "source_name": "Phys.org",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Plant behavior."
+    },
+    {
+      "id": null,
+      "headline": "Corpses leave clues behind in the soil long after they're gone",
+      "source_name": "Phys.org",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Undisclosed ads on TikTok skirt ban on profiling minors — teens bombarded with targeted content despite EU law",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2519141-undisclosed-ads-on-tiktok-skirt-ban-on-profiling-minors/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Surveillance of minors."
+    },
+    {
+      "id": null,
+      "headline": "Why cosmology seems to be caught in a vibe shift — physicists must challenge fundamental understanding",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/mg26935851-300-why-cosmology-seems-to-be-caught-in-a-vibe-shift/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-04",
+      "status": "pending",
+      "notes": "Physics paradigm shift."
+    },
+    {
+      "id": null,
+      "headline": "Shift in the Gulf Stream could signal Atlantic current collapse",
+      "source_name": "New Scientist",
+      "source_url": "https://www.newscientist.com/article/2518268-shift-in-the-gulf-stream-could-signal-ocean-current-collapse/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "pub_date": "2026-03-06",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Musk and Bezos moon landers could leave Artemis astronauts stranded, NASA watchdog warns",
+      "source_name": "Gizmodo",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Binance sues WSJ, panicked by government probes into sanctioned crypto transfers",
+      "source_name": "Ars Technica",
+      "source_url": "https://arstechnica.com/tech-policy/2026/03/binance-sues-wsj-over-report-sparking-government-probes-into-exchange/",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "WhatsApp launching parent-linked accounts for pre-teens",
+      "source_name": "TechCrunch",
+      "source_url": "",
+      "pub_date": "2026-03-11",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "At least 64 killed, dozens missing in Ethiopia landslides and floods",
+      "source_name": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/3/12/at-least-52-killed-dozens-reported-missing-after-landslides-in-ethiopia?traffic_source=rss",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Students among 17 dead in RSF drone attack in Sudan's White Nile State",
+      "source_name": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/3/12/children-among-victims-in-pakistans-shelling-in-eastern-afghanistan?traffic_source=rss",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Bangladesh parliament meets after uprising and elections ushered in new government",
+      "source_name": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/3/12/irans-president-sets-terms-to-end-the-war-is-an-off-ramp-in-sight?traffic_source=rss",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Trump's war cost $11.3 billion in its first 6 days, Pentagon tells lawmakers — $50 billion more may be needed",
+      "source_name": "Al Jazeera",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": null,
+      "headline": "Researchers use AI to develop RNA-based synthetic NAND switch in living cells",
+      "source_name": "Phys.org",
+      "source_url": "",
+      "pub_date": "2026-03-12",
+      "status": "pending",
+      "notes": "Biological computing."
+    }
+  ]
+}
