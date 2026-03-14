@@ -405,6 +405,37 @@
     font-style: italic;
   }
 
+  /* Toolbar */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #d5d0c4;
+    margin-bottom: 0.5rem;
+  }
+  .toolbar-btn {
+    background: var(--ink);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: opacity 0.15s, background 0.15s, color 0.15s;
+    text-transform: uppercase;
+    min-width: 6rem;
+    text-align: center;
+  }
+  .toolbar-btn:hover:not(:disabled) { opacity: 0.85; }
+  .toolbar-btn:disabled { opacity: 0.35; cursor: default; }
+  .toolbar-btn.running { background: var(--yellow); color: var(--ink); }
+  .toolbar-btn.success { background: var(--green); }
+  .toolbar-btn.error { background: var(--red); }
+  .toolbar-status { font-size: 0.8rem; color: #888; }
+  .toolbar-status .err { color: var(--red); }
+
   /* Toast */
   .toast {
     position: fixed;
@@ -447,6 +478,12 @@
     <div class="subtitle">Editorial Triage</div>
     <div class="stats" id="header-stats"></div>
   </header>
+
+  <div class="toolbar">
+    <button class="toolbar-btn" id="scan-btn" onclick="runScan()">SCAN</button>
+    <button class="toolbar-btn" id="filter-btn" onclick="runFilter()">FILTER</button>
+    <span class="toolbar-status" id="toolbar-status"></span>
+  </div>
 
   <div class="action-bar">
     <div class="counts" id="live-counts"></div>
@@ -524,8 +561,13 @@ async function init() {
     if (!s.editor_notes) s.editor_notes = '';
   });
 
-  document.getElementById('header-stats').innerHTML =
-    `${data.date || 'Today'} &middot; ${data.feeds_fetched || '?'} feeds &middot; ${data.total_items || '?'} items scanned`;
+  if (!data.date && data.selected.length === 0 && data.candidates.length === 0) {
+    document.getElementById('header-stats').innerHTML =
+      'No data loaded. Click <b>SCAN</b> then <b>FILTER</b> to get started.';
+  } else {
+    document.getElementById('header-stats').innerHTML =
+      `${data.date || 'Today'} &middot; ${data.feeds_fetched || '?'} feeds &middot; ${data.total_items || '?'} items scanned`;
+  }
 
   const sources = new Set();
   [...data.selected, ...data.candidates].forEach(s => {
@@ -1065,6 +1107,96 @@ function toast(msg) {
   el.textContent = msg;
   el.classList.add('show');
   setTimeout(() => el.classList.remove('show'), 2000);
+}
+
+// ── Scan & Filter ─────────────────────────────────────────────────
+
+async function runScan() {
+  const btn = document.getElementById('scan-btn');
+  const status = document.getElementById('toolbar-status');
+  btn.disabled = true;
+  btn.classList.add('running');
+  btn.textContent = 'SCANNING\u2026';
+  status.textContent = 'Fetching RSS feeds\u2026';
+
+  try {
+    const resp = await fetch('/api/scan', { method: 'POST' });
+    const result = await resp.json();
+    if (result.ok) {
+      btn.classList.remove('running');
+      btn.classList.add('success');
+      btn.textContent = 'SCANNED';
+      status.textContent =
+        result.new_count + ' new from ' + result.feeds_fetched + '/' +
+        result.feeds_total + ' feeds \u00b7 ' +
+        result.duplicates_removed + ' dupes removed';
+      setTimeout(() => {
+        btn.classList.remove('success');
+        btn.textContent = 'SCAN';
+        btn.disabled = false;
+      }, 3000);
+    } else {
+      btn.classList.remove('running');
+      btn.classList.add('error');
+      btn.textContent = 'FAILED';
+      status.innerHTML = '<span class="err">' + esc(result.error) + '</span>';
+      setTimeout(() => {
+        btn.classList.remove('error');
+        btn.textContent = 'SCAN';
+        btn.disabled = false;
+      }, 5000);
+    }
+  } catch (e) {
+    btn.classList.remove('running');
+    btn.textContent = 'SCAN';
+    btn.disabled = false;
+    status.innerHTML = '<span class="err">Network error: ' + esc(e.message) + '</span>';
+  }
+}
+
+async function runFilter() {
+  const btn = document.getElementById('filter-btn');
+  const status = document.getElementById('toolbar-status');
+  btn.disabled = true;
+  btn.classList.add('running');
+  btn.textContent = 'FILTERING\u2026';
+  status.textContent = 'Running Claude filter\u2026';
+
+  try {
+    const resp = await fetch('/api/filter', { method: 'POST' });
+    const result = await resp.json();
+    if (result.ok) {
+      btn.classList.remove('running');
+      btn.classList.add('success');
+      btn.textContent = 'FILTERED';
+      status.textContent =
+        result.selected_count + ' selected \u00b7 ' +
+        result.candidates_count + ' candidates \u00b7 ' +
+        result.model;
+      // Reload UI with new candidates
+      await init();
+      setTimeout(() => {
+        btn.classList.remove('success');
+        btn.textContent = 'FILTER';
+        btn.disabled = false;
+      }, 3000);
+    } else {
+      btn.classList.remove('running');
+      btn.classList.add('error');
+      btn.textContent = 'FAILED';
+      status.innerHTML = '<span class="err">' + esc(result.error) + '</span>';
+      setTimeout(() => {
+        btn.classList.remove('error');
+        btn.textContent = 'FILTER';
+        btn.disabled = false;
+      }, 5000);
+    }
+  } catch (e) {
+    btn.classList.remove('running');
+    btn.textContent = 'FILTER';
+    btn.disabled = false;
+    status.innerHTML = '<span class="err">Network error: ' + esc(e.message) + '</span>';
+  }
 }
 
 init();
