@@ -7,7 +7,8 @@
 
 /* === PAGE === */
 :root {
-  --paper: #f5f0e4;
+  --paper: #fff;
+  --creme: #f5f0e4;
   --ink: #1a1a1a;
   --red: #c41e1e;
   --grey: #6b6560;
@@ -779,11 +780,7 @@ main > .category:first-of-type {
 
 @media (max-width: 720px) {
   .cluster-archive > .sketch {
-    position: static;
-    width: 100%;
-    height: auto;
-    transform: none;
-    margin: 0.75rem 0;
+    display: none;
   }
 }
 
@@ -1077,7 +1074,7 @@ footer .issue-bar {
   backface-visibility: hidden;
   border: 3px solid var(--ink);
   border-radius: 12px;
-  background: var(--paper);
+  background: var(--creme);
   overflow: hidden;
 }
 
