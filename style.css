@@ -779,7 +779,11 @@ main > .category:first-of-type {
 
 @media (max-width: 720px) {
   .cluster-archive > .sketch {
-    display: none;
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none;
+    margin: 0.75rem 0;
   }
 }
 
