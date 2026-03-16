@@ -27,11 +27,17 @@
   var header = document.querySelector('header');
   if (header) {
     var colorClass = (titleColor === 'black') ? 'title-black' : 'title-red';
-    var titleHTML =
-      '<span class="' + colorClass + '">' +
-        '<span class="title-top">' + titleTop + '</span>' +
-        '<span class="title-bottom">' + titleBottom + '</span>' +
-      '</span>';
+    var isDefaultTitle = (titleTop === 'PSYCHO' && titleBottom === 'POLITIKA');
+    var titleHTML;
+    if (isDefaultTitle) {
+      titleHTML = '<img src="img/logo.png" alt="PSYCHOPOLITICA" class="masthead-logo">';
+    } else {
+      titleHTML =
+        '<span class="' + colorClass + '">' +
+          '<span class="title-top">' + titleTop + '</span>' +
+          '<span class="title-bottom">' + titleBottom + '</span>' +
+        '</span>';
+    }
 
     // Build nav links
     var navHTML = '';
@@ -48,11 +54,32 @@
       if (i === 2) navHTML += '<span class="nav-break"></span>';
     }
 
-    header.innerHTML =
-      '<div class="masthead">' +
-        '<h1>' + titleHTML + '</h1>' +
-      '</div>' +
-      '<nav class="masthead-nav">' + navHTML + '</nav>';
+    if (isDefaultTitle) {
+      // Logo sits inside the nav bar, left-aligned
+      header.innerHTML =
+        '<nav class="masthead-nav has-logo">' +
+          '<img src="img/logo.png" alt="PSYCHOPOLITICA" class="masthead-logo">' +
+          '<button class="nav-burger" aria-label="Menu">&#9776;</button>' +
+          '<div class="nav-links">' + navHTML + '</div>' +
+        '</nav>';
+    } else {
+      header.innerHTML =
+        '<div class="masthead">' +
+          '<button class="nav-burger" aria-label="Menu">&#9776;</button>' +
+          '<h1>' + titleHTML + '</h1>' +
+        '</div>' +
+        '<nav class="masthead-nav">' +
+          '<div class="nav-links">' + navHTML + '</div>' +
+        '</nav>';
+    }
+
+    // Hamburger toggle
+    var burger = header.querySelector('.nav-burger');
+    var navLinks = header.querySelector('.nav-links');
+    burger.addEventListener('click', function() {
+      navLinks.classList.toggle('nav-open');
+      burger.classList.toggle('nav-open');
+    });
 
   }
 
@@ -107,6 +134,10 @@
     if (!masthead) return;
     var h1 = masthead.querySelector('h1');
     if (!h1) return;
+
+    // Logo image — no text fitting needed
+    if (h1.querySelector('.masthead-logo')) return;
+
     var titleParts = masthead.querySelectorAll('.title-top, .title-bottom');
 
     // Unlock height before measuring
