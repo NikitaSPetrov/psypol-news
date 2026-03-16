@@ -43,7 +43,7 @@ SCAN_SCRIPT = SCRIPT_DIR / "news-scan.py"
 EDITORIAL_LESSONS = Path.home() / ".claude" / "skills" / "news" / "editorial-lessons.md"
 
 PORT = 8080
-MODEL = os.environ.get("PSYPOL_MODEL", "claude-sonnet-4-6")
+MODEL = os.environ.get("PSYPOL_MODEL", "claude-opus-4-6")
 
 # ---------------------------------------------------------------------------
 # Filter prompt (extracted from SKILL.md)
