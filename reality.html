@@ -706,7 +706,7 @@ window.addEventListener('resize', fitAllCards);
 
   // Inline idea cards → overlay behavior
   document.addEventListener('click', function(e) {
-    var card = e.target.closest('.inline-card.idea-card');
+    var card = e.target.closest('.idea-card');
     if (!card) return;
     e.stopPropagation();
     if (activeCard === card) { closeOverlay(); return; }
