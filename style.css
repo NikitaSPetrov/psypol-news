@@ -8,7 +8,7 @@
 /* === PAGE === */
 :root {
   --paper: #fff;
-  --creme: #f6efe3;
+  --creme: #f7f3ef;
   --ink: #1a1a1a;
   --red: #c41e1e;
   --grey: #6b6560;
@@ -1235,7 +1235,7 @@ footer .issue-bar {
   height: 100%;
   backface-visibility: hidden;
   border: 1.5px solid var(--red);
-  border-radius: 0;
+  border-radius: 4px;
   background: var(--creme);
   overflow: hidden;
 }
@@ -1676,6 +1676,35 @@ body[data-page="home"] .inline-card {
   margin: 2rem auto;
   width: 100%;
   height: auto;
+}
+
+.divider-wrapper {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.divider-wrapper .sketch-divider {
+  margin: 0;
+}
+
+.divider-card {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%) rotate(3deg);
+  width: 220px;
+  z-index: 2;
+}
+
+.divider-card .idea-card {
+  max-width: 220px;
+  width: 220px;
+}
+
+@media (max-width: 720px) {
+  .divider-card {
+    display: none;
+  }
 }
 
 /* === INSET SKETCH === */
