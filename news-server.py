@@ -7,8 +7,11 @@ Replaces news-triage.py with integrated RSS scanning and Claude API filtering.
 Endpoints:
   GET  /               → triage UI
   GET  /api/candidates → candidates.json (empty structure if none exists)
+  GET  /api/archive    → published + rejected stories from bulletin.md
   POST /api/scan       → run news-scan.py, return summary
   POST /api/filter     → filter scan.json via Claude API, write candidates.json
+  POST /api/scan-and-filter → scan + filter in one call
+  POST /api/review     → process editor feedback via Claude API
   POST /api/save       → save triage decisions to triage.json
 
 Requirements:
@@ -41,9 +44,29 @@ TRIAGE_OUT = SCRIPT_DIR / "triage.json"
 TRIAGE_HTML = SCRIPT_DIR / "triage.html"
 SCAN_SCRIPT = SCRIPT_DIR / "news-scan.py"
 EDITORIAL_LESSONS = Path.home() / ".claude" / "skills" / "news" / "editorial-lessons.md"
+BULLETIN_MD = Path.home() / ".claude" / "skills" / "news" / "bulletin.md"
 
 PORT = 8080
 MODEL = os.environ.get("PSYPOL_MODEL", "claude-opus-4-6")
+
+
+def _read_existing_stories() -> str:
+    """Extract story IDs and headlines from bulletin.md for dedup."""
+    if not BULLETIN_MD.exists():
+        return ""
+    lines = []
+    for line in BULLETIN_MD.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line.startswith("- `") and "` " in line:
+            # Format: - `slug` — headline — Source
+            parts = line.split("`", 2)
+            if len(parts) >= 3:
+                slug = parts[1]
+                rest = parts[2].lstrip(" —\u2014")
+                headline = rest.split(" — ")[0] if " — " in rest else rest
+                lines.append(f"- {slug}: {headline}")
+    return "\n".join(lines)
+
 
 # ---------------------------------------------------------------------------
 # Filter prompt (extracted from SKILL.md)
@@ -159,6 +182,8 @@ class DashboardHandler(http.server.BaseHTTPRequestHandler):
                 self._json_response({
                     "date": "", "selected": [], "candidates": []
                 })
+        elif self.path == "/api/archive":
+            self._handle_archive()
         else:
             self.send_error(404)
 
@@ -167,8 +192,14 @@ class DashboardHandler(http.server.BaseHTTPRequestHandler):
             self._handle_scan()
         elif self.path == "/api/filter":
             self._handle_filter()
+        elif self.path == "/api/scan-and-filter":
+            self._handle_scan_and_filter()
+        elif self.path == "/api/review":
+            self._handle_review()
         elif self.path == "/api/save":
             self._handle_save()
+        elif self.path == "/api/build":
+            self._handle_build()
         else:
             self.send_error(404)
 
@@ -250,6 +281,17 @@ class DashboardHandler(http.server.BaseHTTPRequestHandler):
 
             # Build system prompt
             system_prompt = FILTER_SYSTEM
+
+            # Dedup: inject existing stories so the model skips them
+            existing = _read_existing_stories()
+            if existing:
+                system_prompt += (
+                    "\n\n## Already on the site (DO NOT recommend these)\n\n"
+                    "These stories are already published. Skip any scan item "
+                    "that covers the same event, even if the headline differs:\n\n"
+                    + existing
+                )
+
             if EDITORIAL_LESSONS.exists():
                 try:
                     lessons = EDITORIAL_LESSONS.read_text(encoding="utf-8")
@@ -421,6 +463,283 @@ class DashboardHandler(http.server.BaseHTTPRequestHandler):
             traceback.print_exc()
             self._json_response({"ok": False, "error": str(exc)}, 500)
 
+    # ── Scan + Filter (combined) ─────────────────────────────────────
+
+    def _handle_scan_and_filter(self):
+        """Run scan then filter in one call."""
+        # Step 1: scan
+        if not SCAN_SCRIPT.exists():
+            self._json_response({
+                "ok": False, "error": f"news-scan.py not found"
+            }, 500)
+            return
+
+        try:
+            result = subprocess.run(
+                [sys.executable, str(SCAN_SCRIPT)],
+                capture_output=True, text=True, timeout=120,
+                cwd=str(SCRIPT_DIR),
+            )
+            if result.returncode != 0:
+                self._json_response({
+                    "ok": False,
+                    "error": "Scan failed: " + (result.stderr.strip() or "unknown"),
+                }, 500)
+                return
+
+            print("  Scan complete, starting filter...")
+        except subprocess.TimeoutExpired:
+            self._json_response({"ok": False, "error": "Scan timed out"}, 500)
+            return
+        except Exception as exc:
+            self._json_response({"ok": False, "error": str(exc)}, 500)
+            return
+
+        # Step 2: filter (reuse existing method logic)
+        self._handle_filter()
+
+    # ── Review (process editor feedback) ──────────────────────────────
+
+    def _handle_review(self):
+        """Process editor notes via Claude API."""
+        try:
+            import anthropic
+        except ImportError:
+            self._json_response({
+                "ok": False, "error": "anthropic not installed",
+            }, 500)
+            return
+
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            self._json_response({
+                "ok": False, "error": "ANTHROPIC_API_KEY not set",
+            }, 500)
+            return
+
+        # Read current candidates and save the incoming triage state first
+        length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(length) if length else b""
+
+        if body:
+            try:
+                incoming = json.loads(body)
+                # Update candidates.json with current triage state
+                CANDIDATES.write_text(
+                    json.dumps(incoming, indent=2, ensure_ascii=False),
+                    encoding="utf-8",
+                )
+            except Exception:
+                pass
+
+        if not CANDIDATES.exists():
+            self._json_response({
+                "ok": False, "error": "No candidates.json"
+            }, 400)
+            return
+
+        try:
+            cdata = json.loads(CANDIDATES.read_text(encoding="utf-8"))
+
+            # Find stories with editor notes that need processing
+            to_review = []
+            for s in cdata.get("selected", []):
+                notes = (s.get("editor_notes") or "").strip()
+                if notes:
+                    to_review.append(s)
+
+            if not to_review:
+                self._json_response({
+                    "ok": True,
+                    "message": "No editor notes to process",
+                    "reviewed": 0,
+                })
+                return
+
+            # Build prompt for Claude
+            review_items = []
+            for s in to_review:
+                entry = (
+                    f"ID: {s.get('id', '?')}\n"
+                    f"Headline: {s.get('headline', '')}\n"
+                    f"Source: {s.get('source_name', '')} — {s.get('source_url', '')}\n"
+                    f"Status: {s.get('status', 'pending')}\n"
+                    f"Editor notes: {s.get('editor_notes', '')}"
+                )
+                review_items.append(entry)
+
+            review_text = "\n\n---\n\n".join(review_items)
+
+            system = (
+                "You are an editorial assistant for Psychopolitica news. "
+                "The editor has left notes on stories. Process each one:\n"
+                "- If the editor asks a question, answer it concisely.\n"
+                "- If the editor requests an edit (headline rewrite, etc), "
+                "provide the corrected version.\n"
+                "- If the editor says 'shrug' or rejects with a brief note, "
+                "just acknowledge.\n"
+                "- If the editor asks you to check something (URL, source, "
+                "duplicate), do your best to verify.\n\n"
+                "Respond using the tool with one entry per story."
+            )
+
+            tool = {
+                "name": "submit_reviews",
+                "description": "Submit review responses for each story",
+                "input_schema": {
+                    "type": "object",
+                    "properties": {
+                        "reviews": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "description": "Story ID",
+                                    },
+                                    "response": {
+                                        "type": "string",
+                                        "description": "Response to editor notes",
+                                    },
+                                    "updated_headline": {
+                                        "type": "string",
+                                        "description": "New headline if edited, empty otherwise",
+                                    },
+                                    "recommended_status": {
+                                        "type": "string",
+                                        "description": "Suggested status change (or empty to keep current)",
+                                        "enum": ["", "accepted", "rejected", "maybe", "pending"],
+                                    },
+                                },
+                                "required": ["id", "response"],
+                            },
+                        },
+                    },
+                    "required": ["reviews"],
+                },
+            }
+
+            print(f"  Review: processing {len(to_review)} stories with editor notes...")
+            client = anthropic.Anthropic(api_key=api_key)
+            response = client.messages.create(
+                model=MODEL,
+                max_tokens=4096,
+                system=system,
+                messages=[{
+                    "role": "user",
+                    "content": f"Process these {len(to_review)} stories:\n\n{review_text}",
+                }],
+                tools=[tool],
+                tool_choice={"type": "tool", "name": "submit_reviews"},
+            )
+
+            # Parse response
+            tool_input = None
+            for block in response.content:
+                if block.type == "tool_use":
+                    tool_input = block.input
+                    break
+
+            reviews_by_id = {}
+            if tool_input and "reviews" in tool_input:
+                for r in tool_input["reviews"]:
+                    reviews_by_id[r["id"]] = r
+
+            # Apply reviews to candidates
+            for s in cdata.get("selected", []):
+                sid = s.get("id", "")
+                if sid in reviews_by_id:
+                    r = reviews_by_id[sid]
+                    # Store AI response
+                    s["ai_response"] = r.get("response", "")
+                    # Apply headline update if provided
+                    if r.get("updated_headline"):
+                        if not s.get("original_headline"):
+                            s["original_headline"] = s["headline"]
+                        s["headline"] = r["updated_headline"]
+                    # Archive editor notes into history
+                    if s.get("editor_notes"):
+                        if "notes_history" not in s:
+                            s["notes_history"] = []
+                        s["notes_history"].append({
+                            "editor": s["editor_notes"],
+                            "ai": r.get("response", ""),
+                        })
+                        s["editor_notes"] = ""
+
+            # Write back
+            CANDIDATES.write_text(
+                json.dumps(cdata, indent=2, ensure_ascii=False),
+                encoding="utf-8",
+            )
+
+            print(f"  Review complete: {len(reviews_by_id)} stories processed")
+            self._json_response({
+                "ok": True,
+                "reviewed": len(reviews_by_id),
+                "model": MODEL,
+            })
+
+        except Exception as exc:
+            traceback.print_exc()
+            self._json_response({"ok": False, "error": str(exc)}, 500)
+
+    # ── Archive ───────────────────────────────────────────────────────
+
+    def _handle_archive(self):
+        """Return published + rejected stories."""
+        published = []
+        rejected = []
+
+        # Published from bulletin.md
+        if BULLETIN_MD.exists():
+            current_section = ""
+            for line in BULLETIN_MD.read_text(encoding="utf-8").splitlines():
+                stripped = line.strip()
+                if stripped.startswith("**") and stripped.endswith("**"):
+                    current_section = stripped.strip("*").strip(": ")
+                elif stripped.startswith("- `") and "` " in stripped:
+                    parts = stripped.split("`", 2)
+                    if len(parts) >= 3:
+                        slug = parts[1]
+                        rest = parts[2].lstrip(" —\u2014")
+                        # Parse "headline — Source" or "◆ headline — Source"
+                        featured = "◆" in rest
+                        rest = rest.replace("◆ ", "").replace("◆", "")
+                        if " — " in rest:
+                            headline, source = rest.rsplit(" — ", 1)
+                        else:
+                            headline, source = rest, ""
+                        published.append({
+                            "id": slug,
+                            "headline": headline.strip(),
+                            "source": source.strip(),
+                            "section": current_section,
+                            "featured": featured,
+                        })
+
+        # Rejected from candidates.json
+        if CANDIDATES.exists():
+            try:
+                cdata = json.loads(CANDIDATES.read_text(encoding="utf-8"))
+                for s in cdata.get("selected", []):
+                    if s.get("status") == "rejected":
+                        rejected.append({
+                            "id": s.get("id", ""),
+                            "headline": s.get("headline", ""),
+                            "source": s.get("source_name", ""),
+                            "notes": s.get("editor_notes", ""),
+                            "ai_notes": s.get("notes", ""),
+                        })
+            except Exception:
+                pass
+
+        self._json_response({
+            "published": published,
+            "rejected": rejected,
+        })
+
     # ── Save ──────────────────────────────────────────────────────────
 
     def _handle_save(self):
@@ -435,6 +754,53 @@ class DashboardHandler(http.server.BaseHTTPRequestHandler):
             )
             self._json_response({"ok": True})
             print(f"  Saved triage decisions → {TRIAGE_OUT}")
+        except Exception as exc:
+            self._json_response({"ok": False, "error": str(exc)}, 500)
+
+    # ── Build (git commit + push) ───────────────────────────────────
+
+    def _handle_build(self):
+        """Commit and push the PsyPol news site."""
+        repo_dir = SCRIPT_DIR
+        try:
+            # Stage site files
+            subprocess.run(
+                ["git", "add", "index.html", "reality.html", "style.css",
+                 "editorial.html", "editorial.css", "img/"],
+                cwd=str(repo_dir), check=True,
+                capture_output=True, text=True,
+            )
+            # Check if there's anything to commit
+            status = subprocess.run(
+                ["git", "diff", "--cached", "--quiet"],
+                cwd=str(repo_dir), capture_output=True,
+            )
+            if status.returncode == 0:
+                self._json_response({
+                    "ok": True, "message": "Nothing to commit — site is up to date",
+                })
+                return
+
+            # Commit
+            date_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+            subprocess.run(
+                ["git", "commit", "-m", f"PsyPol news update {date_str}"],
+                cwd=str(repo_dir), check=True,
+                capture_output=True, text=True,
+            )
+            # Push
+            result = subprocess.run(
+                ["git", "push"],
+                cwd=str(repo_dir), check=True,
+                capture_output=True, text=True, timeout=30,
+            )
+            print(f"  Build: committed and pushed")
+            self._json_response({
+                "ok": True, "message": "Committed and pushed to production",
+            })
+        except subprocess.CalledProcessError as exc:
+            err = exc.stderr.strip() if exc.stderr else str(exc)
+            self._json_response({"ok": False, "error": err}, 500)
         except Exception as exc:
             self._json_response({"ok": False, "error": str(exc)}, 500)
 

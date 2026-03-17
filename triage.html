@@ -4,337 +4,262 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PSYCHOPOLITICA — Triage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700;900&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --creme: #f5f0e4;
-    --red: #c0392b;
+    --paper: #fff;
+    --creme: #f7f3ef;
+    --red: #c41e1e;
     --ink: #1a1a1a;
     --green: #27ae60;
     --yellow: #f39c12;
-    --gray: #95a5a6;
-    --card-bg: #fff;
-    --card-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    --card-hover: 0 2px 8px rgba(0,0,0,0.12);
+    --gray: #6b6560;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--creme);
+    font-family: 'PT Serif', 'Georgia', serif;
+    background: var(--paper);
     color: var(--ink);
-    line-height: 1.5;
-    padding: 2rem 1rem;
+    line-height: 1.6;
   }
-  .container { max-width: 800px; margin: 0 auto; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 2rem; }
 
   /* Header */
   header {
     text-align: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 3px solid var(--red);
+    padding: 1.5rem 0 0.75rem;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 0;
   }
   header h1 {
-    font-size: 2rem;
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 2.5rem;
     font-weight: 900;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     color: var(--red);
-    margin-bottom: 0.25rem;
+    text-transform: uppercase;
   }
   header .subtitle {
-    font-size: 0.95rem;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.85rem;
+    font-style: italic;
     color: var(--gray);
   }
   header .stats {
-    margin-top: 0.75rem;
-    font-size: 0.85rem;
-    color: #666;
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--gray);
+    font-family: 'Old Standard TT', 'Georgia', serif;
   }
 
-  /* Action bar */
-  .action-bar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--creme);
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #d5d0c4;
+  /* Tabs */
+  .tabs {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0;
   }
-  .action-bar .counts {
-    font-size: 0.85rem;
-    color: #666;
-  }
-  .action-bar .counts b { color: var(--ink); }
-  .send-btn {
-    background: var(--red);
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1.5rem;
-    font-size: 0.9rem;
-    font-weight: 600;
+  .tab {
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    padding: 0.6rem 1.25rem;
     cursor: pointer;
-    letter-spacing: 0.05em;
-  }
-  .send-btn:hover { opacity: 0.9; }
-  .send-btn.sent { background: var(--green); }
-  .send-btn:disabled { opacity: 0.4; cursor: default; }
-
-  /* Locked overlay after send */
-  .locked-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(245, 240, 228, 0.75);
-    z-index: 150;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .locked-overlay.active { display: flex; }
-  .locked-overlay .lock-msg {
-    font-size: 1rem;
-    color: #666;
-    text-align: center;
-    line-height: 1.6;
-  }
-  .locked-overlay .refresh-btn {
-    background: var(--red);
-    color: #fff;
-    border: none;
-    padding: 0.75rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: 0.08em;
-  }
-  .locked-overlay .refresh-btn:hover { opacity: 0.9; }
-
-  /* Section headers */
-  .section-header {
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    border-bottom: 2px solid transparent;
+    color: var(--gray);
+    transition: color 0.15s, border-color 0.15s;
     text-transform: uppercase;
-    margin: 2rem 0 1rem;
-    padding-bottom: 0.5rem;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab.active { color: var(--ink); border-bottom-color: var(--red); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Toolbar */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+  }
+  .toolbar-btn {
+    background: var(--ink);
+    color: #fff;
+    border: none;
+    padding: 0.4rem 1rem;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: opacity 0.15s, background 0.15s;
+    text-transform: uppercase;
+    min-width: 5rem;
+    text-align: center;
+  }
+  .toolbar-btn:hover:not(:disabled) { opacity: 0.85; }
+  .toolbar-btn:disabled { opacity: 0.35; cursor: default; }
+  .toolbar-btn.running { background: var(--yellow); color: var(--ink); }
+  .toolbar-btn.success { background: var(--green); }
+  .toolbar-btn.error { background: var(--red); }
+  .toolbar-btn.review-btn { background: var(--red); }
+  .toolbar-btn.send-btn { background: var(--green); }
+  .toolbar-spacer { flex: 1; }
+  .toolbar-status {
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.75rem;
+    color: var(--gray);
+    flex-basis: 100%;
+    margin-top: 0.25rem;
+  }
+  .toolbar-status:empty { display: none; }
+  .toolbar-status .err { color: var(--red); }
+
+  /* Counts bar */
+  .counts-bar {
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.75rem;
+    color: var(--gray);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  .counts-bar b { color: var(--ink); }
+
+  /* Section header */
+  .section-header {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 1.25rem 0 0.5rem;
+    padding-bottom: 0.3rem;
     border-bottom: 2px solid var(--ink);
     display: flex;
     justify-content: space-between;
     align-items: baseline;
   }
   .section-header .count {
-    font-size: 0.8rem;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.7rem;
     font-weight: 400;
     color: var(--gray);
     text-transform: none;
     letter-spacing: 0;
   }
 
-  /* Collapsible rejected section */
-  .section-toggle {
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 2rem 0 0.5rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #d5d0c4;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    cursor: pointer;
-    user-select: none;
-    color: var(--gray);
-    transition: color 0.15s;
-  }
-  .section-toggle:hover { color: var(--ink); }
-  .section-toggle .arrow {
-    font-size: 0.7rem;
-    transition: transform 0.2s;
-    display: inline-block;
-  }
-  .section-toggle.open .arrow { transform: rotate(90deg); }
-  .collapsed-section { display: none; }
-  .collapsed-section.open { display: block; }
-
-  /* Rejected compact card */
-  .rejected-row {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding: 0.35rem 0;
-    border-bottom: 1px solid #eee;
-    font-size: 0.85rem;
-    color: #888;
-  }
-  .rejected-row:last-child { border-bottom: none; }
-  .rejected-row .rj-headline { flex: 1; }
-  .rejected-row .rj-source { font-weight: 600; color: #999; white-space: nowrap; }
-  .rejected-row .rj-notes { font-size: 0.75rem; color: #bbb; font-style: italic; }
-  .rejected-row .btn-undo {
-    font-size: 0.7rem;
-    border: 1px solid #ddd;
-    background: #fff;
-    padding: 0.15rem 0.4rem;
-    cursor: pointer;
-    color: var(--green);
-    white-space: nowrap;
-  }
-  .rejected-row .btn-undo:hover { background: var(--green); color: #fff; border-color: var(--green); }
-
-  /* Story card */
+  /* Card */
   .card {
-    background: var(--card-bg);
-    border-left: 4px solid transparent;
-    padding: 1rem 1.25rem;
-    padding-right: 3.5rem;
-    margin-bottom: 0.5rem;
-    box-shadow: var(--card-shadow);
+    background: var(--creme);
+    border-left: 3px solid transparent;
+    padding: 0.6rem 0.9rem;
+    margin-bottom: 0.3rem;
     transition: box-shadow 0.15s, border-color 0.15s, opacity 0.15s;
     position: relative;
   }
-  .card[data-section="candidates"] { padding-right: 1.25rem; }
-  .card:hover { box-shadow: var(--card-hover); }
+  .card:hover { box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
   .card.accepted { border-left-color: var(--green); }
+  .card.rejected { border-left-color: var(--red); opacity: 0.4; }
+  .card.rejected:hover { opacity: 0.65; }
   .card.maybe { border-left-color: var(--yellow); }
-  .card.promoted { border-left-color: var(--green); background: #f0faf0; }
-
-  /* Drag and drop — only on accepted list */
-  #accepted-list .card {
-    transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s, border-color 0.15s, opacity 0.15s;
-    will-change: transform;
-  }
-  .card.drag-active {
-    position: relative;
-    z-index: 100;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
-    transition: none !important;
-    opacity: 0.95;
-  }
-  .card.drag-settling {
-    transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s, opacity 0.2s;
-  }
-
-  /* Card layout */
-  .card-top {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-  .card-body { flex: 1; min-width: 0; }
-
-  /* Drag handle — right-side stripe */
-  .drag-handle {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 2.5rem;
-    cursor: grab;
-    user-select: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-left: 1px solid #eee;
-    color: #d0d0d0;
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-    line-height: 1.2;
-    overflow: hidden;
-    transition: color 0.15s, background 0.15s;
-  }
-  .drag-handle:hover {
-    background: #fafafa;
-    color: #bbb;
-  }
-  .drag-handle:active { cursor: grabbing; }
-  .drag-handle .braille {
-    writing-mode: vertical-lr;
-    text-orientation: mixed;
-    white-space: nowrap;
-    font-size: 0.85rem;
-    line-height: 1;
-    letter-spacing: 0.1em;
-    pointer-events: none;
-  }
-  .card-order {
-    font-size: 0.8rem;
-    color: var(--gray);
-    min-width: 1.5rem;
-    text-align: right;
-    padding-top: 0.15rem;
-    font-variant-numeric: tabular-nums;
-  }
+  .card.promoted { border-left-color: var(--green); background: #f2faf2; }
 
   .card-headline {
-    font-size: 1rem;
-    font-weight: 600;
+    font-family: 'PT Serif', 'Georgia', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
     line-height: 1.4;
     cursor: text;
-    padding: 2px 4px;
-    margin: -2px -4px;
+    padding: 1px 3px;
+    margin: -1px -3px;
     border: 1px solid transparent;
     transition: border-color 0.15s;
   }
   .card-headline:hover { border-color: #ddd; }
-  .card-headline:focus {
-    outline: none;
-    border-color: var(--red);
-    background: #fff;
-  }
+  .card-headline:focus { outline: none; border-color: var(--red); background: #fff; }
   .card-headline-ru {
-    font-size: 0.85rem;
-    color: #888;
+    font-family: 'PT Serif', 'Georgia', serif;
+    font-size: 0.8rem;
+    color: var(--gray);
     font-style: italic;
-    margin-top: 0.2rem;
+    margin-top: 0.1rem;
   }
 
   .card-meta {
-    font-size: 0.8rem;
-    color: #888;
-    margin-top: 0.35rem;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.72rem;
+    color: var(--gray);
+    margin-top: 0.2rem;
     display: flex;
-    gap: 0.75rem;
+    gap: 0.6rem;
     align-items: center;
     flex-wrap: wrap;
   }
-  .card-meta .source { font-weight: 600; color: #666; }
-  .card-meta .slug { font-family: monospace; font-size: 0.75rem; color: #aaa; }
-  .card-meta a { color: #888; text-decoration: none; }
-  .card-meta a:hover { text-decoration: underline; }
+  .card-meta .source { font-weight: 700; color: var(--ink); }
+  .card-meta .slug { font-family: monospace; font-size: 0.65rem; color: #aaa; }
+  .card-meta a { color: var(--gray); text-decoration: none; }
+  .card-meta a:hover { color: var(--red); }
 
-  /* AI notes (read-only context) */
   .card-ai-notes {
-    font-size: 0.78rem;
-    color: #999;
-    margin-top: 0.3rem;
-    padding-left: 0.5rem;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--gray);
+    margin-top: 0.2rem;
+    padding-left: 0.4rem;
     border-left: 2px solid #e0dcd0;
     line-height: 1.4;
   }
 
-  /* Buttons row */
+  /* AI response from review */
+  .card-ai-response {
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.72rem;
+    color: var(--green);
+    margin-top: 0.2rem;
+    padding: 0.3rem 0.4rem;
+    background: #f4faf4;
+    border-left: 2px solid var(--green);
+    line-height: 1.4;
+  }
+
+  /* Notes history */
+  .notes-history {
+    margin-top: 0.2rem;
+    font-size: 0.68rem;
+    color: var(--gray);
+  }
+  .notes-history .nh-editor { font-style: italic; }
+  .notes-history .nh-ai { color: var(--green); margin-left: 0.5rem; }
+  .notes-history details { margin-bottom: 0.15rem; }
+  .notes-history summary {
+    cursor: pointer;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.65rem;
+    color: #bbb;
+  }
+
+  /* Buttons */
   .card-actions {
     display: flex;
-    gap: 0.35rem;
-    margin-top: 0.5rem;
+    gap: 0.25rem;
+    margin-top: 0.35rem;
     align-items: center;
     flex-wrap: wrap;
   }
   .btn {
-    border: 1px solid #ddd;
-    background: #fff;
-    padding: 0.25rem 0.6rem;
-    font-size: 0.75rem;
+    border: 1px solid #d5d0c4;
+    background: var(--paper);
+    padding: 0.15rem 0.45rem;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.65rem;
     cursor: pointer;
-    font-weight: 500;
     transition: all 0.1s;
   }
-  .btn:hover { background: #f5f5f5; }
+  .btn:hover { background: #f5f0e8; }
   .btn-accept { color: var(--green); }
   .btn-accept:hover, .btn-accept.active { background: var(--green); color: #fff; border-color: var(--green); }
   .btn-reject { color: var(--red); }
@@ -346,95 +271,121 @@
   .btn-promote { color: var(--green); }
   .btn-promote:hover { background: var(--green); color: #fff; border-color: var(--green); }
 
-  .spacer { flex: 1; }
-
   /* Editor notes */
-  .card-editor-notes {
-    margin-top: 0.5rem;
-  }
+  .card-editor-notes { margin-top: 0.3rem; }
   .card-editor-notes textarea {
     width: 100%;
-    min-height: 2.5rem;
-    padding: 0.4rem 0.5rem;
-    border: 1px solid #ddd;
-    font-family: inherit;
-    font-size: 0.8rem;
+    min-height: 1.8rem;
+    padding: 0.3rem 0.4rem;
+    border: 1px solid #d5d0c4;
+    font-family: 'PT Serif', 'Georgia', serif;
+    font-size: 0.72rem;
     resize: vertical;
-    background: #fafafa;
+    background: var(--paper);
   }
   .card-editor-notes textarea:focus { outline: none; border-color: var(--red); }
   .card-editor-notes label {
-    font-size: 0.7rem;
-    color: #aaa;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.6rem;
+    color: var(--gray);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.2rem;
-    display: block;
+    letter-spacing: 0.06em;
   }
 
-  /* Filter bar for candidates */
+  /* Filter bar */
   .filter-bar {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     align-items: center;
   }
   .filter-bar input {
     flex: 1;
-    padding: 0.4rem 0.75rem;
-    border: 1px solid #ccc;
-    font-size: 0.85rem;
-    font-family: inherit;
-    background: #fff;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #d5d0c4;
+    font-family: 'PT Serif', 'Georgia', serif;
+    font-size: 0.75rem;
+    background: var(--paper);
   }
   .filter-bar input:focus { outline: none; border-color: var(--red); }
   .filter-bar select {
-    padding: 0.4rem 0.5rem;
-    border: 1px solid #ccc;
-    font-size: 0.85rem;
-    font-family: inherit;
-    background: #fff;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #d5d0c4;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.75rem;
+    background: var(--paper);
   }
 
-  /* Empty state */
   .empty-state {
     text-align: center;
-    padding: 1.5rem;
-    color: #bbb;
+    padding: 2rem;
+    color: var(--gray);
+    font-family: 'Old Standard TT', 'Georgia', serif;
     font-size: 0.85rem;
     font-style: italic;
   }
 
-  /* Toolbar */
-  .toolbar {
-    display: flex;
+  /* Locked overlay */
+  .locked-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 150;
+    justify-content: center;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #d5d0c4;
-    margin-bottom: 0.5rem;
+    flex-direction: column;
+    gap: 1rem;
   }
-  .toolbar-btn {
-    background: var(--ink);
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1.25rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    transition: opacity 0.15s, background 0.15s, color 0.15s;
-    text-transform: uppercase;
-    min-width: 6rem;
+  .locked-overlay.active { display: flex; }
+  .locked-overlay .lock-msg {
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.95rem;
+    color: var(--gray);
     text-align: center;
+    line-height: 1.6;
   }
-  .toolbar-btn:hover:not(:disabled) { opacity: 0.85; }
-  .toolbar-btn:disabled { opacity: 0.35; cursor: default; }
-  .toolbar-btn.running { background: var(--yellow); color: var(--ink); }
-  .toolbar-btn.success { background: var(--green); }
-  .toolbar-btn.error { background: var(--red); }
-  .toolbar-status { font-size: 0.8rem; color: #888; }
-  .toolbar-status .err { color: var(--red); }
+  .locked-overlay .lock-msg .spinner {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 2px solid #ddd;
+    border-top-color: var(--red);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Archive styles */
+  .archive-section { margin-top: 1rem; }
+  .archive-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #f0ece4;
+    font-size: 0.8rem;
+  }
+  .archive-row:last-child { border-bottom: none; }
+  .archive-row .ar-source {
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: var(--gray);
+    min-width: 5rem;
+  }
+  .archive-row .ar-headline { flex: 1; font-family: 'PT Serif', 'Georgia', serif; }
+  .archive-row .ar-section {
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.65rem;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .archive-row.featured .ar-headline { font-weight: 700; }
+  .archive-row.rejected-row { color: #aaa; }
 
   /* Toast */
   .toast {
@@ -444,8 +395,9 @@
     transform: translateX(-50%);
     background: var(--ink);
     color: #fff;
-    padding: 0.5rem 1.5rem;
-    font-size: 0.85rem;
+    padding: 0.4rem 1.25rem;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.8rem;
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
@@ -453,20 +405,20 @@
   }
   .toast.show { opacity: 1; }
 
-  /* Keyboard hint */
   .kbd-hint {
     position: fixed;
-    bottom: 1rem;
+    bottom: 0.75rem;
     right: 1rem;
-    font-size: 0.7rem;
-    color: #bbb;
+    font-family: 'Old Standard TT', 'Georgia', serif;
+    font-size: 0.6rem;
+    color: #ccc;
   }
   kbd {
-    background: #eee;
-    border: 1px solid #ccc;
-    padding: 0 0.3rem;
+    background: #f5f0e8;
+    border: 1px solid #d5d0c4;
+    padding: 0 0.25rem;
     font-family: inherit;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
 </style>
 </head>
@@ -479,75 +431,72 @@
     <div class="stats" id="header-stats"></div>
   </header>
 
-  <div class="toolbar">
-    <button class="toolbar-btn" id="scan-btn" onclick="runScan()">SCAN</button>
-    <button class="toolbar-btn" id="filter-btn" onclick="runFilter()">FILTER</button>
-    <span class="toolbar-status" id="toolbar-status"></span>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('triage')">Triage</div>
+    <div class="tab" onclick="switchTab('archive')">Archive</div>
   </div>
 
-  <div class="action-bar">
-    <div class="counts" id="live-counts"></div>
-    <button class="send-btn" id="send-btn" onclick="send()">SEND</button>
+  <!-- TRIAGE TAB -->
+  <div class="tab-panel active" id="tab-triage">
+    <div class="toolbar">
+      <button class="toolbar-btn" id="scan-btn" onclick="scanAndFilter()">SCAN</button>
+      <button class="toolbar-btn review-btn" id="review-btn" onclick="review()">REVIEW</button>
+      <div class="toolbar-spacer"></div>
+      <button class="toolbar-btn send-btn" id="send-btn" onclick="send()">SEND</button>
+      <button class="toolbar-btn" id="build-btn" onclick="build()" style="background:var(--gray)">BUILD</button>
+      <span class="toolbar-status" id="toolbar-status"></span>
+    </div>
+
+    <div class="counts-bar" id="counts-bar"></div>
+
+    <div class="section-header">
+      Stories <span class="count" id="stories-count"></span>
+    </div>
+    <div id="stories-list"></div>
+
+    <div class="section-header" style="margin-top: 2rem;">
+      More Candidates <span class="count" id="candidates-count"></span>
+    </div>
+    <div class="filter-bar">
+      <input type="text" id="filter-input" placeholder="Filter by keyword..." oninput="renderCandidates()">
+      <select id="filter-source" onchange="renderCandidates()">
+        <option value="">All sources</option>
+      </select>
+    </div>
+    <div id="candidates-list"></div>
   </div>
 
-  <!-- Pending: stories not yet decided -->
-  <div class="section-header">
-    Pending <span class="count" id="pending-count"></span>
-  </div>
-  <div id="pending-list"></div>
+  <!-- ARCHIVE TAB -->
+  <div class="tab-panel" id="tab-archive">
+    <div class="section-header" style="margin-top:1rem;">Published <span class="count" id="pub-count"></span></div>
+    <div id="published-list" class="archive-section"></div>
 
-  <!-- Accepted: the bulletin -->
-  <div class="section-header" style="border-bottom-color: var(--green);">
-    Accepted <span class="count" id="accepted-count"></span>
+    <div class="section-header" style="margin-top:1.5rem;">Rejected <span class="count" id="rej-count"></span></div>
+    <div id="rejected-list" class="archive-section"></div>
   </div>
-  <div id="accepted-list"></div>
-
-  <!-- Rejected: collapsed archive -->
-  <div class="section-toggle" id="rejected-toggle" onclick="toggleRejected()">
-    <span>Rejected <span class="count" id="rejected-count"></span></span>
-    <span class="arrow">&#9654;</span>
-  </div>
-  <div class="collapsed-section" id="rejected-section"></div>
-
-  <!-- More candidates from the scan -->
-  <div class="section-header" style="margin-top:3rem;">
-    More Candidates <span class="count" id="candidates-count"></span>
-  </div>
-  <div class="filter-bar">
-    <input type="text" id="filter-input" placeholder="Filter by keyword..." oninput="renderCandidates()">
-    <select id="filter-source" onchange="renderCandidates()">
-      <option value="">All sources</option>
-    </select>
-  </div>
-  <div id="candidates-list"></div>
 </div>
 
 <div class="locked-overlay" id="locked-overlay">
-  <div class="lock-msg">
-    Decisions sent.<br>
-    Run <b>/news triage</b> in Claude, then click Refresh.
+  <div class="lock-msg" id="lock-msg">
+    <span class="spinner"></span> Processing editor feedback...
   </div>
-  <button class="refresh-btn" onclick="location.reload()">REFRESH</button>
 </div>
 
 <div class="toast" id="toast"></div>
-<div class="kbd-hint"><kbd>a</kbd> accept <kbd>r</kbd> reject <kbd>m</kbd> maybe <kbd>f</kbd> feature <kbd>n</kbd> focus notes <kbd>↑↓</kbd> nav</div>
+<div class="kbd-hint"><kbd>a</kbd> accept <kbd>r</kbd> reject <kbd>m</kbd> maybe <kbd>f</kbd> feature <kbd>n</kbd> notes <kbd>↑↓</kbd> nav</div>
 
 <script>
 let data = { selected: [], candidates: [] };
 let focusedCard = null;
-let focusedIndex = -1;
-let focusedSection = 'pending';
 
-// Drag state
-let drag = null;
+// ── Init ──────────────────────────────────────────────────────────────
 
 async function init() {
   try {
     const resp = await fetch('/api/candidates');
     data = await resp.json();
   } catch (e) {
-    console.error('Failed to load candidates:', e);
+    console.error('Failed to load:', e);
     return;
   }
 
@@ -561,544 +510,440 @@ async function init() {
     if (!s.editor_notes) s.editor_notes = '';
   });
 
-  if (!data.date && data.selected.length === 0 && data.candidates.length === 0) {
+  if (data.selected.length === 0 && data.candidates.length === 0) {
     document.getElementById('header-stats').innerHTML =
-      'No data loaded. Click <b>SCAN</b> then <b>FILTER</b> to get started.';
+      'No data loaded. Click <b>SCAN</b> to get started.';
   } else {
     document.getElementById('header-stats').innerHTML =
-      `${data.date || 'Today'} &middot; ${data.feeds_fetched || '?'} feeds &middot; ${data.total_items || '?'} items scanned`;
+      `${data.date || 'Today'} · ${data.feeds_fetched || '?'} feeds · ${data.total_items || '?'} items`;
   }
 
+  // Populate source filter
   const sources = new Set();
   [...data.selected, ...data.candidates].forEach(s => {
     if (s.source_name) sources.add(s.source_name);
   });
   const sel = document.getElementById('filter-source');
+  sel.innerHTML = '<option value="">All sources</option>';
   [...sources].sort().forEach(src => {
     const opt = document.createElement('option');
-    opt.value = src;
-    opt.textContent = src;
+    opt.value = src; opt.textContent = src;
     sel.appendChild(opt);
   });
 
   renderAll();
 }
 
-// ── Bucketing helpers ────────────────────────────────────────────────
-
-function getPending() {
-  return data.selected.filter(s => s.status === 'pending' || s.status === 'maybe');
-}
-
-function getAccepted() {
-  return data.selected
-    .filter(s => s.status === 'accepted')
-    .sort((a, b) => (a.order || 0) - (b.order || 0));
-}
-
-function getRejected() {
-  return data.selected.filter(s => s.status === 'rejected');
-}
+// ── Rendering ─────────────────────────────────────────────────────────
 
 function renderAll() {
-  renderPending();
-  renderAccepted();
-  renderRejected();
+  renderStories();
   renderCandidates();
   updateCounts();
 }
 
-// ── Pending ──────────────────────────────────────────────────────────
-
-function renderPending() {
-  const list = document.getElementById('pending-list');
-  const items = getPending();
-  if (items.length === 0) {
-    list.innerHTML = '<div class="empty-state">All stories decided</div>';
+function renderStories() {
+  const list = document.getElementById('stories-list');
+  // Hide rejected stories — they go to the Archive tab
+  const visible = data.selected.filter(s => s.status !== 'rejected');
+  const rejected = data.selected.filter(s => s.status === 'rejected').length;
+  if (visible.length === 0) {
+    list.innerHTML = '<div class="empty-state">No stories yet. Click SCAN to fetch and filter feeds.</div>';
   } else {
-    list.innerHTML = items.map((story, i) => cardHTML(story, i, 'pending')).join('');
+    list.innerHTML = visible.map((s, i) => cardHTML(s, i, 'stories')).join('');
   }
-  document.getElementById('pending-count').textContent = `(${items.length})`;
+  const a = visible.filter(s => s.status === 'accepted').length;
+  const p = visible.filter(s => s.status === 'pending' || s.status === 'maybe').length;
+  document.getElementById('stories-count').textContent =
+    `(${a} ✓ · ${p} ? · ${rejected} cut → Archive)`;
 }
-
-// ── Accepted (drag-reorderable) ──────────────────────────────────────
-
-function renderAccepted() {
-  const list = document.getElementById('accepted-list');
-  const items = getAccepted();
-  if (items.length === 0) {
-    list.innerHTML = '<div class="empty-state">No accepted stories yet</div>';
-  } else {
-    list.innerHTML = items.map((story, i) => cardHTML(story, i, 'accepted')).join('');
-    attachDragHandlers();
-  }
-  document.getElementById('accepted-count').textContent = `(${items.length})`;
-}
-
-// ── Rejected (compact, collapsed) ────────────────────────────────────
-
-function renderRejected() {
-  const section = document.getElementById('rejected-section');
-  const items = getRejected();
-  document.getElementById('rejected-count').textContent = `(${items.length})`;
-
-  if (items.length === 0) {
-    section.innerHTML = '<div class="empty-state">No rejected stories</div>';
-    return;
-  }
-
-  section.innerHTML = items.map(story => {
-    const notes = story.editor_notes ? `<span class="rj-notes">${esc(story.editor_notes)}</span>` : '';
-    return `
-      <div class="rejected-row">
-        <span class="rj-source">${esc(story.source_name || '')}</span>
-        <span class="rj-headline">${esc(story.headline)}</span>
-        ${notes}
-        <button class="btn-undo" onclick="undoReject('${esc(story.id || story.headline)}')">Undo</button>
-      </div>`;
-  }).join('');
-}
-
-function toggleRejected() {
-  const toggle = document.getElementById('rejected-toggle');
-  const section = document.getElementById('rejected-section');
-  toggle.classList.toggle('open');
-  section.classList.toggle('open');
-}
-
-function undoReject(identifier) {
-  const story = data.selected.find(s =>
-    s.status === 'rejected' && (s.id === identifier || s.headline === identifier)
-  );
-  if (story) {
-    story.status = 'pending';
-    renderAll();
-    toast('Moved back to Pending');
-  }
-}
-
-// ── Drag and drop (accepted list only) ──────────────────────────────
-
-function attachDragHandlers() {
-  const list = document.getElementById('accepted-list');
-  list.querySelectorAll('.card .drag-handle').forEach(handle => {
-    handle.addEventListener('pointerdown', onDragStart);
-  });
-}
-
-function onDragStart(e) {
-  e.preventDefault();
-  const cardEl = e.target.closest('.card');
-  if (!cardEl) return;
-
-  const list = document.getElementById('accepted-list');
-  const cards = [...list.querySelectorAll('.card')];
-  const index = cards.indexOf(cardEl);
-  if (index < 0) return;
-
-  const scrollY = window.scrollY;
-  const rects = cards.map(c => {
-    const r = c.getBoundingClientRect();
-    return { top: r.top + scrollY, bottom: r.bottom + scrollY, height: r.height };
-  });
-  const dragRect = rects[index];
-
-  const gap = index < cards.length - 1
-    ? rects[index + 1].top - rects[index].bottom
-    : 8;
-  const slotH = dragRect.height + gap;
-
-  cardEl.classList.add('drag-active');
-
-  drag = {
-    el: cardEl,
-    list,
-    cards,
-    rects,
-    index,
-    currentSlot: index,
-    startPageY: e.pageY,
-    slotH,
-    count: cards.length,
-  };
-
-  document.addEventListener('pointermove', onDragMove);
-  document.addEventListener('pointerup', onDragEnd);
-}
-
-function onDragMove(e) {
-  if (!drag) return;
-  const { el, cards, rects, index, slotH, count } = drag;
-  const deltaY = e.pageY - drag.startPageY;
-
-  el.style.transform = `translateY(${deltaY}px) scale(1.015)`;
-
-  const dragCenterY = rects[index].top + rects[index].height / 2 + deltaY;
-  let newSlot = index;
-
-  for (let i = 0; i < count; i++) {
-    if (i === index) continue;
-    const mid = rects[i].top + rects[i].height / 2;
-    if (index < i && dragCenterY > mid) newSlot = i;
-    if (index > i && dragCenterY < mid) newSlot = i;
-  }
-
-  if (newSlot !== drag.currentSlot) {
-    drag.currentSlot = newSlot;
-    cards.forEach((card, i) => {
-      if (i === index) return;
-      let shift = 0;
-      if (index < newSlot) {
-        if (i > index && i <= newSlot) shift = -slotH;
-      } else if (index > newSlot) {
-        if (i >= newSlot && i < index) shift = slotH;
-      }
-      card.style.transform = shift ? `translateY(${shift}px)` : '';
-    });
-  }
-}
-
-function onDragEnd(e) {
-  if (!drag) return;
-  document.removeEventListener('pointermove', onDragMove);
-  document.removeEventListener('pointerup', onDragEnd);
-
-  const { el, cards, index, currentSlot, slotH } = drag;
-  const finalY = (currentSlot - index) * slotH;
-
-  el.classList.remove('drag-active');
-  el.classList.add('drag-settling');
-  el.style.transform = `translateY(${finalY}px)`;
-
-  const onSettle = () => {
-    el.removeEventListener('transitionend', onSettle);
-    el.classList.remove('drag-settling');
-    cards.forEach(c => c.style.transform = '');
-
-    if (index !== currentSlot) {
-      const accepted = getAccepted();
-      const [moved] = accepted.splice(index, 1);
-      accepted.splice(currentSlot, 0, moved);
-      accepted.forEach((s, i) => s.order = i);
-    }
-
-    drag = null;
-    renderAccepted();
-    updateCounts();
-  };
-
-  el.addEventListener('transitionend', onSettle);
-  setTimeout(() => { if (drag) onSettle(); }, 350);
-}
-
-// ── Candidates ───────────────────────────────────────────────────────
 
 function renderCandidates() {
   const list = document.getElementById('candidates-list');
-  const keyword = document.getElementById('filter-input').value.toLowerCase();
-  const source = document.getElementById('filter-source').value;
+  const kw = document.getElementById('filter-input').value.toLowerCase();
+  const src = document.getElementById('filter-source').value;
 
   let items = data.candidates.filter(s => {
-    if (keyword && !s.headline.toLowerCase().includes(keyword) &&
-        !(s.source_name || '').toLowerCase().includes(keyword) &&
-        !(s.headline_ru || '').toLowerCase().includes(keyword) &&
-        !(s.notes || '').toLowerCase().includes(keyword)) return false;
-    if (source && s.source_name !== source) return false;
+    if (kw && !s.headline.toLowerCase().includes(kw) &&
+        !(s.source_name || '').toLowerCase().includes(kw) &&
+        !(s.headline_ru || '').toLowerCase().includes(kw)) return false;
+    if (src && s.source_name !== src) return false;
     return true;
   });
 
-  list.innerHTML = items.map((story, i) => cardHTML(story, i, 'candidates')).join('');
+  list.innerHTML = items.map((s, i) => cardHTML(s, i, 'candidates')).join('');
   document.getElementById('candidates-count').textContent =
     `(${items.length}${items.length !== data.candidates.length ? ' filtered' : ''} of ${data.candidates.length})`;
 }
 
-// ── Card rendering ───────────────────────────────────────────────────
+function updateCounts() {
+  const a = data.selected.filter(s => s.status === 'accepted').length;
+  const p = data.selected.filter(s => s.status === 'pending' || s.status === 'maybe').length;
+  const r = data.selected.filter(s => s.status === 'rejected').length;
+  const f = data.selected.filter(s => s.featured).length;
+  const hasNotes = data.selected.filter(s => (s.editor_notes || '').trim()).length;
+  document.getElementById('counts-bar').innerHTML =
+    `<b>${a}</b> accepted · <b>${p}</b> pending · <b>${r}</b> cut · <b>${f}</b> featured` +
+    (hasNotes ? ` · <b>${hasNotes}</b> with notes` : '');
+}
+
+// ── Card HTML ─────────────────────────────────────────────────────────
 
 function cardHTML(story, index, section) {
-  const isAccepted = section === 'accepted';
-  const isPending = section === 'pending';
-  const isSelected = isAccepted || isPending;
+  const isStories = section === 'stories';
+  const cls = story.status === 'accepted' ? 'accepted' :
+              story.status === 'rejected' ? 'rejected' :
+              story.status === 'maybe' ? 'maybe' :
+              story.promoted ? 'promoted' : '';
 
-  const statusClass = story.status === 'accepted' ? 'accepted' :
-                      story.status === 'maybe' ? 'maybe' :
-                      story.promoted ? 'promoted' : '';
-
-  const featuredActive = story.featured ? 'active' : '';
-  const headlineRu = story.headline_ru
+  const ruLine = story.headline_ru
     ? `<div class="card-headline-ru">${esc(story.headline_ru)}</div>` : '';
-  const slug = story.id
-    ? `<span class="slug">[${esc(story.id)}]</span>` : '';
-  const sourceUrl = story.source_url
-    ? `<a href="${esc(story.source_url)}" target="_blank" title="Open article">link</a>` : '';
-
-  const aiNotes = story.notes
+  const slug = story.id ? `<span class="slug">[${esc(story.id)}]</span>` : '';
+  const link = story.source_url
+    ? `<a href="${esc(story.source_url)}" target="_blank">↗</a>` : '';
+  const ai = story.notes
     ? `<div class="card-ai-notes">${esc(story.notes)}</div>` : '';
 
-  // Order number + drag handle (accepted only)
-  const orderNum = isAccepted
-    ? `<div class="card-order">${index + 1}</div>` : '';
-  const handle = isAccepted
-    ? `<div class="drag-handle"><span class="braille">⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿</span></div>` : '';
+  // AI review response
+  const aiResp = story.ai_response
+    ? `<div class="card-ai-response">${esc(story.ai_response)}</div>` : '';
 
-  const actions = isSelected ? `
+  // Notes history
+  let historyHTML = '';
+  if (story.notes_history && story.notes_history.length > 0) {
+    const entries = story.notes_history.map(h => {
+      if (typeof h === 'string') return `<div class="nh-editor">${esc(h)}</div>`;
+      return `<div><span class="nh-editor">${esc(h.editor || '')}</span><span class="nh-ai">${esc(h.ai || '')}</span></div>`;
+    }).join('');
+    historyHTML = `<div class="notes-history"><details><summary>Previous notes</summary>${entries}</details></div>`;
+  }
+
+  const actions = isStories ? `
     <button class="btn btn-accept ${story.status === 'accepted' ? 'active' : ''}"
-            onclick="event.stopPropagation(); setStatus('${story.id}', 'accepted')">&#10003; Accept</button>
+            onclick="event.stopPropagation(); setStatus('${esc(story.id)}', 'accepted')">✓</button>
     <button class="btn btn-reject ${story.status === 'rejected' ? 'active' : ''}"
-            onclick="event.stopPropagation(); setStatus('${story.id}', 'rejected')">&#10007; Cut</button>
+            onclick="event.stopPropagation(); setStatus('${esc(story.id)}', 'rejected')">✗</button>
     <button class="btn btn-maybe ${story.status === 'maybe' ? 'active' : ''}"
-            onclick="event.stopPropagation(); setStatus('${story.id}', 'maybe')">? Maybe</button>
-    <button class="btn btn-featured ${featuredActive}"
-            onclick="event.stopPropagation(); toggleFeatured('${story.id}')">&#9670; Featured</button>
+            onclick="event.stopPropagation(); setStatus('${esc(story.id)}', 'maybe')">?</button>
+    <button class="btn btn-featured ${story.featured ? 'active' : ''}"
+            onclick="event.stopPropagation(); toggleFeatured('${esc(story.id)}')">◆</button>
   ` : `
-    <button class="btn btn-promote"
-            onclick="event.stopPropagation(); promote(${index})">&#8593; Promote</button>
+    <button class="btn btn-promote" onclick="event.stopPropagation(); promote(${index})">↑ Promote</button>
     <button class="btn btn-reject ${story.status === 'rejected' ? 'active' : ''}"
-            onclick="event.stopPropagation(); setCandidateStatus(${index}, 'rejected')">&#10007; Skip</button>
+            onclick="event.stopPropagation(); setCandidateStatus(${index}, 'rejected')">✗ Skip</button>
   `;
-
-  const editorNotesVal = story.editor_notes || '';
 
   return `
-    <div class="card ${statusClass}" data-section="${section}" data-index="${index}"
+    <div class="card ${cls}" data-section="${section}" data-index="${index}"
          data-id="${esc(story.id || '')}" onclick="focusCard(this)">
-      ${handle}
-      <div class="card-top">
-        ${orderNum}
-        <div class="card-body">
-          <div class="card-headline" contenteditable="true"
-               onblur="updateHeadline('${story.id}', this)"
-               onclick="event.stopPropagation()">${esc(story.headline)}</div>
-          ${headlineRu}
-          <div class="card-meta">
-            <span class="source">${esc(story.source_name || '')}</span>
-            <span>${esc(story.pub_date || '')}</span>
-            ${slug}
-            ${sourceUrl}
-          </div>
-          ${aiNotes}
-          <div class="card-actions">${actions}</div>
-          <div class="card-editor-notes">
-            <label>Editor notes</label>
-            <textarea placeholder="Feedback, instructions..."
-                      onclick="event.stopPropagation()"
-                      oninput="updateEditorNotes('${story.id}', this.value)">${esc(editorNotesVal)}</textarea>
-          </div>
-        </div>
+      <div class="card-headline" contenteditable="true"
+           onblur="updateHeadline('${esc(story.id)}', this)"
+           onclick="event.stopPropagation()">${esc(story.headline)}</div>
+      ${ruLine}
+      <div class="card-meta">
+        <span class="source">${esc(story.source_name || '')}</span>
+        <span>${esc(story.pub_date || '')}</span>
+        ${slug} ${link}
       </div>
-    </div>
-  `;
+      ${ai}${aiResp}${historyHTML}
+      <div class="card-actions">${actions}</div>
+      <div class="card-editor-notes">
+        <label>Notes</label>
+        <textarea placeholder="Feedback, instructions..."
+                  onclick="event.stopPropagation()"
+                  oninput="updateEditorNotes('${esc(story.id)}', this.value)">${esc(story.editor_notes || '')}</textarea>
+      </div>
+    </div>`;
 }
 
 function esc(str) {
   if (!str) return '';
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
 }
 
-// ── Data operations (by story ID) ────────────────────────────────────
+// ── Data operations ───────────────────────────────────────────────────
 
-function findStory(id) {
-  return data.selected.find(s => s.id === id);
-}
+function findStory(id) { return data.selected.find(s => s.id === id); }
 
 function setStatus(id, status) {
-  const story = findStory(id);
-  if (!story) return;
-  // Toggle off if clicking same status
-  story.status = story.status === status ? 'pending' : status;
-  // If newly accepted, give it an order at the end
-  if (story.status === 'accepted' && story.order === undefined) {
-    story.order = getAccepted().length;
-  }
+  const s = findStory(id);
+  if (!s) return;
+  s.status = s.status === status ? 'pending' : status;
+  if (s.status === 'accepted' && s.order === undefined) s.order = data.selected.filter(x => x.status === 'accepted').length;
   renderAll();
 }
 
 function toggleFeatured(id) {
-  const story = findStory(id);
-  if (!story) return;
-  story.featured = !story.featured;
-  renderAll();
+  const s = findStory(id);
+  if (s) { s.featured = !s.featured; renderAll(); }
 }
 
 function updateHeadline(id, el) {
-  const story = findStory(id) || data.candidates.find(s => s.id === id);
-  if (!story) return;
-  const newText = el.textContent.trim();
-  if (newText && newText !== story.headline) {
-    if (!story.original_headline) story.original_headline = story.headline;
-    story.headline = newText;
+  const s = findStory(id) || data.candidates.find(x => x.id === id);
+  if (!s) return;
+  const txt = el.textContent.trim();
+  if (txt && txt !== s.headline) {
+    if (!s.original_headline) s.original_headline = s.headline;
+    s.headline = txt;
   }
 }
 
 function updateEditorNotes(id, val) {
-  const story = findStory(id) || data.candidates.find(s => s.id === id);
-  if (story) story.editor_notes = val;
+  const s = findStory(id) || data.candidates.find(x => x.id === id);
+  if (s) s.editor_notes = val;
 }
 
 function setCandidateStatus(index, status) {
-  const keyword = document.getElementById('filter-input').value.toLowerCase();
-  const source = document.getElementById('filter-source').value;
+  const kw = document.getElementById('filter-input').value.toLowerCase();
+  const src = document.getElementById('filter-source').value;
   const filtered = data.candidates.filter(s => {
-    if (keyword && !s.headline.toLowerCase().includes(keyword) &&
-        !(s.source_name || '').toLowerCase().includes(keyword) &&
-        !(s.headline_ru || '').toLowerCase().includes(keyword) &&
-        !(s.notes || '').toLowerCase().includes(keyword)) return false;
-    if (source && s.source_name !== source) return false;
+    if (kw && !s.headline.toLowerCase().includes(kw) && !(s.source_name || '').toLowerCase().includes(kw)) return false;
+    if (src && s.source_name !== src) return false;
     return true;
   });
-  const story = filtered[index];
-  if (story) {
-    story.status = story.status === status ? 'pending' : status;
-    renderCandidates();
-  }
+  const s = filtered[index];
+  if (s) { s.status = s.status === status ? 'pending' : status; renderCandidates(); }
 }
 
 function promote(index) {
-  const keyword = document.getElementById('filter-input').value.toLowerCase();
-  const source = document.getElementById('filter-source').value;
+  const kw = document.getElementById('filter-input').value.toLowerCase();
+  const src = document.getElementById('filter-source').value;
   const filtered = data.candidates.filter(s => {
-    if (keyword && !s.headline.toLowerCase().includes(keyword) &&
-        !(s.source_name || '').toLowerCase().includes(keyword) &&
-        !(s.headline_ru || '').toLowerCase().includes(keyword) &&
-        !(s.notes || '').toLowerCase().includes(keyword)) return false;
-    if (source && s.source_name !== source) return false;
+    if (kw && !s.headline.toLowerCase().includes(kw) && !(s.source_name || '').toLowerCase().includes(kw)) return false;
+    if (src && s.source_name !== src) return false;
     return true;
   });
   const story = filtered[index];
   if (!story) return;
-
   const ci = data.candidates.indexOf(story);
   if (ci >= 0) data.candidates.splice(ci, 1);
-
   story.status = 'pending';
   story.promoted = true;
   story.order = data.selected.length;
   if (!story.id) {
-    story.id = story.headline.toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '')
-      .slice(0, 30);
+    story.id = story.headline.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 30);
   }
   data.selected.push(story);
-
   renderAll();
-  toast('Promoted to Pending');
-}
-
-function updateCounts() {
-  const pending = getPending().length;
-  const accepted = getAccepted().length;
-  const rejected = getRejected().length;
-  const featured = data.selected.filter(s => s.featured).length;
-  document.getElementById('live-counts').innerHTML =
-    `<b>${pending}</b> pending &middot; <b>${accepted}</b> accepted &middot; <b>${rejected}</b> cut &middot; <b>${featured}</b> featured`;
+  toast('Promoted');
 }
 
 function focusCard(el) {
   document.querySelectorAll('.card').forEach(c => c.style.outline = '');
   el.style.outline = '2px solid var(--red)';
   focusedCard = el;
-  focusedSection = el.dataset.section;
-  focusedIndex = parseInt(el.dataset.index);
 }
 
-// Keyboard shortcuts
+// ── Keyboard shortcuts ────────────────────────────────────────────────
+
 document.addEventListener('keydown', e => {
   if (!focusedCard) return;
   if (e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
-
   const id = focusedCard.dataset.id;
-  const section = focusedSection;
-  const index = focusedIndex;
+  const section = focusedCard.dataset.section;
+  const index = parseInt(focusedCard.dataset.index);
 
   switch (e.key) {
-    case 'a':
-      if (id) setStatus(id, 'accepted');
-      break;
+    case 'a': if (id) setStatus(id, 'accepted'); break;
     case 'r':
       if (id) setStatus(id, 'rejected');
       else if (section === 'candidates') setCandidateStatus(index, 'rejected');
       break;
-    case 'm':
-      if (id) setStatus(id, 'maybe');
-      break;
-    case 'f':
-      if (id) toggleFeatured(id);
-      break;
+    case 'm': if (id) setStatus(id, 'maybe'); break;
+    case 'f': if (id) toggleFeatured(id); break;
     case 'n':
       e.preventDefault();
-      const ta = focusedCard.querySelector('.card-editor-notes textarea');
+      const ta = focusedCard.querySelector('textarea');
       if (ta) ta.focus();
       break;
-    case 'ArrowDown':
+    case 'ArrowDown': case 'ArrowUp':
       e.preventDefault();
-      navigateCard(1);
-      break;
-    case 'ArrowUp':
-      e.preventDefault();
-      navigateCard(-1);
+      const cards = [...document.querySelectorAll('.card')];
+      let cur = cards.indexOf(focusedCard);
+      const next = cur + (e.key === 'ArrowDown' ? 1 : -1);
+      if (next >= 0 && next < cards.length) {
+        cards[next].click();
+        cards[next].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
       break;
   }
 });
 
-function navigateCard(direction) {
-  const cards = document.querySelectorAll('.card');
-  const arr = [...cards];
-  let current = arr.indexOf(focusedCard);
-  if (current < 0) current = 0;
-  const next = current + direction;
-  if (next >= 0 && next < arr.length) {
-    arr[next].click();
-    arr[next].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+// ── Tabs ──────────────────────────────────────────────────────────────
+
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`.tab-panel#tab-${name}`).classList.add('active');
+  event.target.classList.add('active');
+  if (name === 'archive') loadArchive();
+}
+
+async function loadArchive() {
+  try {
+    const resp = await fetch('/api/archive');
+    const arch = await resp.json();
+
+    const pubList = document.getElementById('published-list');
+    document.getElementById('pub-count').textContent = `(${arch.published.length})`;
+    pubList.innerHTML = arch.published.length === 0
+      ? '<div class="empty-state">No published stories</div>'
+      : arch.published.map(s =>
+          `<div class="archive-row ${s.featured ? 'featured' : ''}">
+            <span class="ar-source">${esc(s.source)}</span>
+            <span class="ar-headline">${s.featured ? '◆ ' : ''}${esc(s.headline)}</span>
+            <span class="ar-section">${esc(s.section)}</span>
+          </div>`).join('');
+
+    const rejList = document.getElementById('rejected-list');
+    document.getElementById('rej-count').textContent = `(${arch.rejected.length})`;
+    rejList.innerHTML = arch.rejected.length === 0
+      ? '<div class="empty-state">No rejected stories</div>'
+      : arch.rejected.map(s =>
+          `<div class="archive-row rejected-row">
+            <span class="ar-source">${esc(s.source)}</span>
+            <span class="ar-headline">${esc(s.headline)}</span>
+          </div>`).join('');
+  } catch (e) {
+    console.error('Archive load failed:', e);
   }
 }
 
+// ── Actions ───────────────────────────────────────────────────────────
+
+async function scanAndFilter() {
+  const btn = document.getElementById('scan-btn');
+  const status = document.getElementById('toolbar-status');
+  btn.disabled = true;
+  btn.classList.add('running');
+  btn.textContent = 'SCANNING…';
+  status.textContent = 'Fetching feeds and filtering…';
+
+  try {
+    const resp = await fetch('/api/scan-and-filter', { method: 'POST' });
+    const result = await resp.json();
+    if (result.ok) {
+      btn.classList.remove('running');
+      btn.classList.add('success');
+      btn.textContent = 'DONE';
+      status.textContent = `${result.selected_count} selected · ${result.candidates_count} candidates · ${result.model}`;
+      await init();
+      setTimeout(() => { btn.classList.remove('success'); btn.textContent = 'SCAN'; btn.disabled = false; }, 3000);
+    } else {
+      btn.classList.remove('running'); btn.classList.add('error'); btn.textContent = 'FAILED';
+      status.innerHTML = `<span class="err">${esc(result.error)}</span>`;
+      setTimeout(() => { btn.classList.remove('error'); btn.textContent = 'SCAN'; btn.disabled = false; }, 5000);
+    }
+  } catch (e) {
+    btn.classList.remove('running'); btn.textContent = 'SCAN'; btn.disabled = false;
+    status.innerHTML = `<span class="err">${esc(e.message)}</span>`;
+  }
+}
+
+async function review() {
+  const hasNotes = data.selected.some(s => (s.editor_notes || '').trim());
+  if (!hasNotes) { toast('No editor notes to review'); return; }
+
+  const overlay = document.getElementById('locked-overlay');
+  const lockMsg = document.getElementById('lock-msg');
+  overlay.classList.add('active');
+  lockMsg.innerHTML = '<span class="spinner"></span> Processing editor feedback…';
+
+  const btn = document.getElementById('review-btn');
+  btn.disabled = true;
+
+  try {
+    // Send current state along with review request
+    const payload = {
+      date: data.date,
+      selected: data.selected,
+      candidates: data.candidates,
+      feeds_fetched: data.feeds_fetched,
+      total_items: data.total_items,
+      new_count: data.new_count,
+    };
+    const resp = await fetch('/api/review', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload, null, 2),
+    });
+    const result = await resp.json();
+
+    if (result.ok) {
+      lockMsg.innerHTML = `✓ Processed ${result.reviewed} stories. Reloading…`;
+      await init();
+      setTimeout(() => { overlay.classList.remove('active'); }, 1000);
+    } else {
+      lockMsg.innerHTML = `<span style="color:var(--red)">Error: ${esc(result.error)}</span>`;
+      setTimeout(() => { overlay.classList.remove('active'); }, 3000);
+    }
+  } catch (e) {
+    lockMsg.innerHTML = `<span style="color:var(--red)">${esc(e.message)}</span>`;
+    setTimeout(() => { overlay.classList.remove('active'); }, 3000);
+  }
+
+  btn.disabled = false;
+}
+
 async function send() {
-  const btn = document.getElementById('send-btn');
   const output = {
     date: data.date,
     saved_at: new Date().toISOString(),
-    selected: data.selected.map((s, i) => ({
-      id: s.id,
-      headline: s.headline,
-      headline_ru: s.headline_ru || '',
+    selected: data.selected.map(s => ({
+      id: s.id, headline: s.headline, headline_ru: s.headline_ru || '',
       original_headline: s.original_headline || '',
-      source_name: s.source_name,
-      source_url: s.source_url,
-      pub_date: s.pub_date,
-      featured: !!s.featured,
-      status: s.status || 'pending',
-      order: s.order || 0,
-      notes: s.notes || '',
-      editor_notes: s.editor_notes || '',
-      promoted: !!s.promoted
+      source_name: s.source_name, source_url: s.source_url, pub_date: s.pub_date,
+      featured: !!s.featured, status: s.status || 'pending',
+      order: s.order || 0, notes: s.notes || '',
+      editor_notes: s.editor_notes || '', promoted: !!s.promoted,
+      ai_response: s.ai_response || '',
     })),
-    rejected_candidates: data.candidates
-      .filter(s => s.status === 'rejected')
-      .map(s => ({
-        headline: s.headline,
-        source_name: s.source_name,
-        reason: s.editor_notes || ''
-      }))
   };
 
   try {
     const resp = await fetch('/api/save', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(output, null, 2)
+      body: JSON.stringify(output, null, 2),
     });
     if (resp.ok) {
-      btn.textContent = 'SENT';
-      btn.classList.add('sent');
-      btn.disabled = true;
-      toast('Decisions sent');
-      // Lock the UI
-      document.getElementById('locked-overlay').classList.add('active');
+      const btn = document.getElementById('send-btn');
+      btn.textContent = 'SENT ✓';
+      setTimeout(() => { btn.textContent = 'SEND'; }, 2000);
+      toast('Saved to triage.json');
+    }
+  } catch (e) { toast('Send failed: ' + e.message); }
+}
+
+async function build() {
+  const btn = document.getElementById('build-btn');
+  btn.disabled = true;
+  btn.classList.add('running');
+  btn.textContent = 'BUILDING…';
+
+  try {
+    const resp = await fetch('/api/build', { method: 'POST' });
+    const result = await resp.json();
+    if (result.ok) {
+      btn.classList.remove('running');
+      btn.classList.add('success');
+      btn.textContent = 'BUILT ✓';
+      toast(result.message || 'Site built');
+      setTimeout(() => { btn.classList.remove('success'); btn.textContent = 'BUILD'; btn.disabled = false; }, 3000);
+    } else {
+      btn.classList.remove('running');
+      btn.classList.add('error');
+      btn.textContent = 'FAILED';
+      toast(result.error || 'Build failed');
+      setTimeout(() => { btn.classList.remove('error'); btn.textContent = 'BUILD'; btn.disabled = false; }, 5000);
     }
   } catch (e) {
-    toast('Send failed: ' + e.message);
+    btn.classList.remove('running');
+    btn.textContent = 'BUILD';
+    btn.disabled = false;
+    toast('Build error: ' + e.message);
   }
 }
 
@@ -1107,96 +952,6 @@ function toast(msg) {
   el.textContent = msg;
   el.classList.add('show');
   setTimeout(() => el.classList.remove('show'), 2000);
-}
-
-// ── Scan & Filter ─────────────────────────────────────────────────
-
-async function runScan() {
-  const btn = document.getElementById('scan-btn');
-  const status = document.getElementById('toolbar-status');
-  btn.disabled = true;
-  btn.classList.add('running');
-  btn.textContent = 'SCANNING\u2026';
-  status.textContent = 'Fetching RSS feeds\u2026';
-
-  try {
-    const resp = await fetch('/api/scan', { method: 'POST' });
-    const result = await resp.json();
-    if (result.ok) {
-      btn.classList.remove('running');
-      btn.classList.add('success');
-      btn.textContent = 'SCANNED';
-      status.textContent =
-        result.new_count + ' new from ' + result.feeds_fetched + '/' +
-        result.feeds_total + ' feeds \u00b7 ' +
-        result.duplicates_removed + ' dupes removed';
-      setTimeout(() => {
-        btn.classList.remove('success');
-        btn.textContent = 'SCAN';
-        btn.disabled = false;
-      }, 3000);
-    } else {
-      btn.classList.remove('running');
-      btn.classList.add('error');
-      btn.textContent = 'FAILED';
-      status.innerHTML = '<span class="err">' + esc(result.error) + '</span>';
-      setTimeout(() => {
-        btn.classList.remove('error');
-        btn.textContent = 'SCAN';
-        btn.disabled = false;
-      }, 5000);
-    }
-  } catch (e) {
-    btn.classList.remove('running');
-    btn.textContent = 'SCAN';
-    btn.disabled = false;
-    status.innerHTML = '<span class="err">Network error: ' + esc(e.message) + '</span>';
-  }
-}
-
-async function runFilter() {
-  const btn = document.getElementById('filter-btn');
-  const status = document.getElementById('toolbar-status');
-  btn.disabled = true;
-  btn.classList.add('running');
-  btn.textContent = 'FILTERING\u2026';
-  status.textContent = 'Running Claude filter\u2026';
-
-  try {
-    const resp = await fetch('/api/filter', { method: 'POST' });
-    const result = await resp.json();
-    if (result.ok) {
-      btn.classList.remove('running');
-      btn.classList.add('success');
-      btn.textContent = 'FILTERED';
-      status.textContent =
-        result.selected_count + ' selected \u00b7 ' +
-        result.candidates_count + ' candidates \u00b7 ' +
-        result.model;
-      // Reload UI with new candidates
-      await init();
-      setTimeout(() => {
-        btn.classList.remove('success');
-        btn.textContent = 'FILTER';
-        btn.disabled = false;
-      }, 3000);
-    } else {
-      btn.classList.remove('running');
-      btn.classList.add('error');
-      btn.textContent = 'FAILED';
-      status.innerHTML = '<span class="err">' + esc(result.error) + '</span>';
-      setTimeout(() => {
-        btn.classList.remove('error');
-        btn.textContent = 'FILTER';
-        btn.disabled = false;
-      }, 5000);
-    }
-  } catch (e) {
-    btn.classList.remove('running');
-    btn.textContent = 'FILTER';
-    btn.disabled = false;
-    status.innerHTML = '<span class="err">Network error: ' + esc(e.message) + '</span>';
-  }
 }
 
 init();
