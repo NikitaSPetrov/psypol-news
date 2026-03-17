@@ -1687,18 +1687,39 @@ body[data-page="home"] .inline-card {
   margin: 0;
 }
 
+.sketch-caption {
+  font-family: 'PT Serif', Georgia, serif;
+  font-size: 0.65rem;
+  color: #999;
+  text-align: center;
+  margin: 0.4rem 0 0;
+  line-height: 1.4;
+}
+
+.sketch-caption a,
+.stories .sketch-caption a,
+.stories li .sketch-caption a {
+  color: #999;
+  text-decoration: underline;
+  font-size: 0.65rem !important;
+  font-family: 'PT Serif', Georgia, serif;
+  font-weight: 400;
+  display: inline !important;
+  line-height: inherit;
+}
+
 .divider-card {
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translate(50%, -50%) rotate(3deg);
-  width: 220px;
+  transform: translate(70%, -50%) rotate(3deg);
+  width: 250px;
   z-index: 2;
 }
 
 .divider-card .idea-card {
-  max-width: 220px;
-  width: 220px;
+  max-width: 250px;
+  width: 250px;
 }
 
 @media (max-width: 720px) {
