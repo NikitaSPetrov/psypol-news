@@ -21,6 +21,25 @@ index_sketches:
   trump-ufo-r: "88%"
 ---
 
+## March 20 – April 7, 2026 {#mar-20-apr-07}
+
+### THE WORLD
+- **Featured** [iran-human-chains](https://meduza.io/news/2026/04/07/vlasti-irana-prizvali-molodezh-i-sportsmenov-vystroitsya-zhivoy-tsepyu-vokrug-elektrostantsiy-iz-za-ugroz-amerikanskih-udarov) Iran calls on young people and athletes to form human chains around power plants ahead of US bombing deadline — [Meduza](https://meduza.io/news/2026/04/07/vlasti-irana-prizvali-molodezh-i-sportsmenov-vystroitsya-zhivoy-tsepyu-vokrug-elektrostantsiy-iz-za-ugroz-amerikanskih-udarov) {2026-04-07}
+  strip: Iran calls on young people to form human chains around power plants ahead of US bombing deadline
+- [orban-mouse-lion](https://meduza.io/news/2026/04/07/bloomberg-orban-v-razgovore-s-putinym-sravnil-sebya-s-myshyu-osvobozhdayuschey-lva-iz-setey) Orbán compared himself to a mouse freeing a lion from a net in a phone call with Putin — [Meduza](https://meduza.io/news/2026/04/07/bloomberg-orban-v-razgovore-s-putinym-sravnil-sebya-s-myshyu-osvobozhdayuschey-lva-iz-setey) {2026-04-07}
+- [vietnam-supreme-leader](https://www.scmp.com/news/asia/southeast-asia/article/3349235/lam-emerges-vietnams-supreme-leader-after-being-elected-president) To Lam consolidates power as Vietnam's "supreme leader" after being elected president while already ruling as party chief — [SCMP](https://www.scmp.com/news/asia/southeast-asia/article/3349235/lam-emerges-vietnams-supreme-leader-after-being-elected-president) {2026-04-07}
+
+### NATURE
+- **Featured** [psychedelic-plant](https://www.404media.co/scientists-create-plant-that-produces-ayahuasca-shrooms-and-toad-psychedelics-all-at-once/) Scientists engineer a single tobacco plant that produces ayahuasca, psilocybin, mescaline, 5-MeO-DMT, and ibogaine — [404 Media](https://www.404media.co/scientists-create-plant-that-produces-ayahuasca-shrooms-and-toad-psychedelics-all-at-once/) {2026-04-01}
+- **Featured** [mammal-brain-preserved](https://www.newscientist.com/article/2520204-major-leap-towards-reanimation-after-death-as-mammals-brain-preserved/) Major leap toward reanimation after death as researchers preserve a mammal's brain with recoverable function — [New Scientist](https://www.newscientist.com/article/2520204-major-leap-towards-reanimation-after-death-as-mammals-brain-preserved/) {2026-03-20}
+- [antimatter-road-delivery](https://www.newscientist.com/article/2520548-antimatter-has-been-transported-by-road-for-the-first-time/) Antimatter has been transported by road for the first time — [New Scientist](https://www.newscientist.com/article/2520548-antimatter-has-been-transported-by-road-for-the-first-time/) {2026-03-24}
+- [firefly-plants-china](https://futurism.com/science-energy/bioengineering-plants-glow-light-cities) Chinese scientists are engineering plants with firefly genes to glow, aiming to light cities at night — [Futurism](https://futurism.com/science-energy/bioengineering-plants-glow-light-cities) {2026-04-04}
+
+### ALIENISM
+- [clone-body-startup](https://futurism.com/health-medicine/startup-pitching-cloned-human-bodies) A startup has been quietly pitching cloned human bodies as vessels for brain transfer — [Futurism](https://futurism.com/health-medicine/startup-pitching-cloned-human-bodies) {2026-03-31}
+- [robotaxi-freeze-china](https://futurism.com/advanced-transport/robotaxis-stopped-highways-crashes) Dozens of robotaxis in China stop dead in the middle of roads and highways, causing crashes — [Futurism](https://futurism.com/advanced-transport/robotaxis-stopped-highways-crashes) {2026-04-03}
+- [tesla-workers-robotaxi](https://futurism.com/advanced-transport/tesla-robotaxis-driven-remotely) Tesla workers are secretly seizing manual control of robotaxis when they get stuck — [Futurism](https://futurism.com/advanced-transport/tesla-robotaxis-driven-remotely) {2026-03-31}
+
 ## March 4–9, 2026 {#mar-04-09}
 
 - [trees-glow](https://www.sciencealert.com/trees-seen-emitting-a-ghostly-light-during-a-thunderstorm-for-the-first-time) Trees observed emitting an ultraviolet glow from their leaf tips during a thunderstorm, for the first time outside a lab — [ScienceAlert](https://www.sciencealert.com/trees-seen-emitting-a-ghostly-light-during-a-thunderstorm-for-the-first-time) {2026-03-09}
