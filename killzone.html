@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Kill Zone — Dmitry Kuznets · Quote Collection</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #16130f;
+    --muted: #6b6258;
+    --faint: #9a9087;
+    --accent: #b23a22;
+    --rule: #e3ddd3;
+    --panel: #faf8f4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 20px/1.65 "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    padding: 3.5rem 1.25rem 6rem;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header.top { border-bottom: 2px solid var(--accent); padding-bottom: 1.4rem; margin-bottom: 1rem; }
+  .kicker { font: 600 13px/1 ui-monospace, monospace; letter-spacing:.22em; text-transform:uppercase; color: var(--accent); margin-bottom:.9rem; }
+  h1 { font-size: 2.5rem; margin: 0 0 .5rem; font-weight: 600; letter-spacing:-.01em; }
+  .sub { color: var(--muted); font-size: 1.05rem; max-width: 72ch; }
+  .sub .star { color: var(--accent); font-weight:600; }
+
+  .toc { margin: 2rem 0 2.5rem; padding: 1.2rem 1.4rem; background: var(--panel); border:1px solid var(--rule); border-radius:8px; }
+  .toc h2 { font:600 12px/1 ui-monospace,monospace; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin:0 0 .8rem; }
+  .toc ol { margin:0; padding-left:1.4rem; }
+  .toc li { margin:.4rem 0; }
+  .toc a { color: var(--ink); text-decoration: none; border-bottom:1px solid var(--rule); }
+  .toc a:hover { color: var(--accent); border-color: var(--accent); }
+  .toc .date { color: var(--faint); font:600 13px/1 ui-monospace,monospace; }
+
+  .ep { margin: 3.4rem 0 0; scroll-margin-top: 1rem; }
+  .ep > h2 { font-size: 1.7rem; font-weight:600; margin: 0 0 .15rem; border-left: 3px solid var(--accent); padding-left:.8rem; }
+  .ep .epmeta { color: var(--muted); font:600 13px/1.4 ui-monospace,monospace; letter-spacing:.04em; padding-left:1.1rem; margin-bottom:1.6rem; }
+  .ep .epmeta a { color: var(--muted); }
+
+  .quote { margin: 0 0 2.2rem; }
+  .quote.star .cols { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(178,58,34,.18); }
+  .qhead { display:flex; align-items:center; gap:.7rem; margin-bottom:.7rem; flex-wrap: wrap; }
+  .ts { font:600 14px/1 ui-monospace,monospace; color:#fff; background:var(--muted); padding:.34rem .52rem; border-radius:3px; }
+  .star .ts { background: var(--accent); }
+  .label { font:600 13px/1.3 ui-monospace,monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .starmark { color: var(--accent); font-size: 1rem; letter-spacing:.1em; }
+
+  /* English prioritized: wider, full size. Russian: narrower, smaller, fainter. */
+  .cols { display:grid; grid-template-columns: 1.35fr 1fr; gap:1.9rem; background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:1.5rem 1.7rem; }
+  .colhead { font:600 11px/1 ui-monospace,monospace; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin-bottom:.7rem; }
+  .cols .ru { border-left:1px solid var(--rule); padding-left:1.9rem; color: var(--faint); font-size: .8em; line-height:1.55; }
+  .cols .en { font-size: 1.06em; }
+  p.line { margin:0 0 .85rem; } p.line:last-child{ margin-bottom:0; }
+  .en strong { color: var(--accent); font-weight: 700; }
+  .ru strong { color: var(--muted); font-weight: 700; }
+  .note { font-size:.9rem; color:var(--muted); border-left:2px solid var(--rule); padding-left:1rem; margin-top:.85rem; font-style:italic; }
+
+  .summary { margin: 2.4rem 0 0; padding: 1.6rem 1.8rem; background: var(--panel); border:1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 8px; }
+  .summary h2 { font:600 12px/1 ui-monospace,monospace; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin:0 0 1rem; }
+  .summary p { margin: 0 0 1rem; font-size: 1.04rem; }
+  .summary p:last-child { margin-bottom: 0; }
+  .summary .cite { font: 600 12px/1 ui-monospace, monospace; color: var(--accent); text-decoration: none; white-space: nowrap; }
+  .summary .cite:hover { text-decoration: underline; }
+  .summary .caveat { font-style: italic; color: var(--muted); font-size: .98rem; }
+  footer { margin-top:3.5rem; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:1.25rem; }
+  footer code { color: var(--ink); font-size:.92em; }
+  @media (max-width:760px){
+    .cols{ grid-template-columns:1fr; }
+    .cols .ru{ border-left:none; border-top:1px solid var(--rule); padding-left:0; padding-top:1.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="kicker">Video digest · Dmitry Kuznets / Meduza</div>
+    <h1>The Logistics of the Kill Zone</h1>
+    <div class="sub">How the war collapsed into "radio-controlled little men": tiny assault groups (twos and threes) directed by a commander over the radio through a drone's camera, and the drone-operator hunt for soldiers inside the kill radius. Quotes from four episodes, May 2026. <span class="star">★ = the most striking passages.</span></div>
+  </header>
+
+  <section class="summary">
+    <h2>The picture across five episodes</h2>
+    <p>The front line is no longer held by mass; it is held by a "drone wall" or "kill zone" that is <strong>deepening</strong> — Ukrainian and Russian drones now reach up to 30 km into the near rear <a class="cite" href="#ep0514">[14 May · 05:37]</a>. Because supply across that zone has become so hard, neither side can keep many people on the line, so assault formations have collapsed in size: from groups of seven or ten in early 2025 down to <strong>two people</strong> by the second half of the year <a class="cite" href="#ep0509">[9 May · 33:42]</a> — "where they used to send 10 groups of 10 men, they now send 10 groups of two" <a class="cite" href="#ep0514">[14 May · 28:14]</a>.</p>
+    <p>These tiny groups infiltrate and then wait — "sometimes for months" — in ruined buildings and basements, resupplied by drone, surfacing only "at the necessary moment" <a class="cite" href="#ep0430">[30 Apr · 16:05]</a>; encircled pockets can be fed by a "Baba Yaga" drone indefinitely <a class="cite" href="#ep0526">[26 May · 41:57]</a>. On the line itself, the soldiers are <strong>directed in real time by a commander over the radio who watches them through a drone's camera</strong> — Kuznets calls them "pairs of radio-controlled little men" <a class="cite" href="#ep0526">[26 May · 35:31]</a>. Drones then hunt them individually — "individual stormtroopers, or groups of two, rarely three" <a class="cite" href="#ep0509">[9 May · 48:11]</a> — on a strict economy of "one drone per man" <a class="cite" href="#ep0526">[26 May · 73:26]</a>.</p>
+    <p>The drone operators are themselves the prize target: knock them out and you can advance, but only ~10 km before you hit the enemy's next operators and must rebuild the whole system over weeks <a class="cite" href="#ep0430">[30 Apr · 12:06]</a>. Their behavior is shaped by a gamified <strong>"e-points" marketplace</strong>, where operators earn points for hitting valuable targets and trade them for equipment <a class="cite" href="#ep0430">[30 Apr · 37:50]</a>. The net result, in Kuznets's account, is the absence of breakthroughs — a stalemate built out of drones, not trenches <a class="cite" href="#ep0526">[26 May · 35:31]</a>.</p>
+    <p class="caveat">Caveat, on the record: the vivid "radio-controlled little men… watched through a drone camera" image is Kuznets's own phrasing and he says <em>pairs</em>, not a "2–5" range; and across all five episodes there is <strong>no</strong> enumerated list of spoken commands ("crawl here, go there"). Every claim above is tied to a quote below.</p>
+  </section>
+
+  <nav class="toc">
+    <h2>Episodes</h2>
+    <ol>
+      <li><a href="#ep0526">War at a stalemate? Why are there no breakthroughs?</a> <span class="date">· 26 May 2026</span></li>
+      <li><a href="#ep0518">Strikes on Moscow and Kyiv</a> <span class="date">· 18 May 2026</span></li>
+      <li><a href="#ep0514">Why does the Kremlin believe Ukraine's defense is about to collapse?</a> <span class="date">· 14 May 2026</span></li>
+      <li><a href="#ep0509">Russia's losses over four years of war</a> <span class="date">· 9 May 2026</span></li>
+      <li><a href="#ep0430">What will Russia's big summer offensive look like?</a> <span class="date">· 30 Apr 2026</span></li>
+    </ol>
+  </nav>
+
+  <!-- ===================== EP 2026-05-26 ===================== -->
+  <section class="ep" id="ep0526">
+    <h2>War at a stalemate? Why are there no breakthroughs?</h2>
+    <div class="epmeta">26 May 2026 · <a href="https://youtu.be/MSvV4U6bW_c">youtu.be/MSvV4U6bW_c</a></div>
+
+    <div class="quote star">
+      <div class="qhead"><span class="ts">35:31 → 36:21</span><span class="starmark">★ ★</span><span class="label">"Radio-controlled little men"</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">What has actually become the basis of combat units now is this: you push a small number of stormtroopers up to the line — often a very small number. That is, you literally get <strong>these pairs of radio-controlled little figures, directed by the battalion commander over the radio, who watches them through a drone's camera.</strong> And all of this has been working for a long time now.</p>
+          <p class="line">The enemy had a strong desire to hit both the people sitting in a warm command post and the ones loading quad bikes with supplies and then sending them <strong>across this kill zone up to the front line.</strong></p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">То, что на самом деле теперь является основой боевых подразделений, — это когда на линию выдвигают небольшое количество штурмовиков, а часто совсем небольшое. То есть действительно вот эти самые <strong>пары радиоуправляемых человечков, которыми комбат руководит по радио и которые смотрят на них через камеру дронов.</strong> И это всё работает уже давно.</p>
+          <p class="line">У противника было большое желание поражать и тех, кто сидит в тёплом штабе, и людей, которые загружают квадроциклы предметами снабжения и отправляют их потом <strong>через эту килзону на передовую.</strong></p>
+        </div>
+      </div>
+      <div class="note">"Radio-controlled little men" (радиоуправляемые человечки) is Kuznets's own phrase — the video-game image is implicit in it. He says <em>pairs</em>, not a specific "2–5."</div>
+    </div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">40:23</span><span class="label">Infiltration by small groups — smaller than a platoon, even a squad</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">On the line of contact you have literally separate small units — smaller than a platoon, even smaller than a squad — across a fairly wide stretch. In 2025 the Russian command actively used this <strong>infiltration by small groups, by a large number of small groups.</strong> Naturally, some of those groups never made it anywhere and were killed, which drove up casualties — quite substantially.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">На линии соприкосновения действуют буквально отдельные небольшие подразделения — размером меньше, чем взвод, и даже меньше, чем отделение, — на довольно обширном участке. В 25-м году российское командование активно применяло это <strong>просачивание малыми группами, большим количеством малых групп.</strong> Естественно, часть этих групп никуда не доходила и погибала, что увеличивало потери — довольно существенно.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">41:57</span><span class="label">Resupply by drone across the kill zone</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">Resupply by drone — a "Baba Yaga" flies in and drops off water, food, ammunition. This can go on indefinitely. So it requires the physical destruction of those troops in that pocket — under conditions where Ukrainian drones are flying overhead.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Снабжение дронами — прилетает «Баба-Яга», выставляет воду, продукты, боеприпасы. Так может продолжаться бесконечно долго. То есть требуется физическое уничтожение этих военнослужащих вот в этом кармане — в условиях, когда сверху летают украинские дроны.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">73:26</span><span class="label">Operator rate of fire: one drone per man</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">The calculation is precisely that enough drones won't arrive in time to hit everyone. Unlike an armored vehicle, which can carry seven troops, a quad bike carries one or two. <strong>For one man on a quad bike you have to spend one drone.</strong> If there are enough operators, every participant dies; if there aren't enough, someone slips through.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Расчёт как раз на то, что не успеет прилететь достаточное количество дронов, чтобы всех поразить. В отличие от бронетехники, где может сидеть семь человек десанта, на квадроцикле — один или два человека. <strong>На одного человека с квадроциклом надо потратить один дрон.</strong> Если операторов достаточно — все участники погибнут; если недостаточно — кто-то проскочит.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EP 2026-05-18 ===================== -->
+  <section class="ep" id="ep0518">
+    <h2>Strikes on Moscow and Kyiv</h2>
+    <div class="epmeta">18 May 2026 · <a href="https://youtu.be/_SroyXAHVdY">youtu.be/_SroyXAHVdY</a> · <span style="color:var(--faint)">mostly long-range strikes; closest to the theme is the guidance mechanics</span></div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">15:19</span><span class="label">Operator brings drone onto target; last hundreds of meters auto-lock</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">Once the operator has brought the drone onto the target, automatic lock-on over the last few hundred meters is quite feasible — and is now being used most intensively, including against moving targets, including on the highway that serves as an alternative to the Crimean Bridge. And that's more than 100 km from the line of contact.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Если оператор выводит дрон уже на цель, то последние сотни метров автоматический захват вполне возможен — и сейчас активнейшим образом используется, в том числе по движущимся целям, в том числе на трассе, которая является альтернативой Крымскому мосту. А это больше 100 км от линии соприкосновения.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">32:20</span><span class="label">Long-range drones: no operator link, just a tracker</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">Most of the drones involved in these strikes — Russian and Ukrainian alike — have no link to an operator at all; the operator cannot steer them. Trackers are often fitted, including in the form of a SIM card, to tell the operator how far the drone managed to fly — and if it fell short, to route the next one differently.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Большинство дронов, участвующих в этих ударах — и российских, и украинских, — не имеют никакой связи с оператором; оператор не может этим дроном управлять. Часто ставятся трекеры, в том числе в виде сим-карты, чтобы сообщить оператору, докуда дрон смог долететь — и если не долетел, в следующий раз направить его по другому маршруту.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EP 2026-05-14 ===================== -->
+  <section class="ep" id="ep0514">
+    <h2>Why does the Kremlin believe Ukraine's defense is about to collapse?</h2>
+    <div class="epmeta">14 May 2026 · <a href="https://youtu.be/C45qZaUtsWc">youtu.be/C45qZaUtsWc</a></div>
+
+    <div class="quote star">
+      <div class="qhead"><span class="ts">28:14 → 29:52</span><span class="starmark">★ ★</span><span class="label">"Twos and threes": 10 groups of 10 → 10 groups of two</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line"><em>Viewer question:</em> "How do we know that instead of one group of ten bodies, they aren't now sending 10 groups of two?"</p>
+          <p class="line">The crux of the problem is that it's ever harder to supply everything, ever harder to deliver ammunition, medicine and food to the front line. This automatically means that both sides find it ever harder to keep significant forces on the front line. <strong>That's why infiltration by these twos and threes became possible — because on the Ukrainian side there are far fewer people on the front line.</strong></p>
+          <p class="line"><strong>Where they used to send 10 groups of 10 men, they now send 10 groups of two men.</strong> Precisely because they're hard to supply. And for the infiltration to work, they have to lie low for a long time in ruined buildings, basements, treelines — accumulating gradually so as to push further later.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line"><em>Вопрос зрителя:</em> «Откуда мы знаем, что вместо одной группы из десяти тел сейчас не посылают 10 групп по двое?»</p>
+          <p class="line">Суть проблемы в том, что всё сложнее обеспечивать всеми предметами снабжения, всё сложнее доставлять к линии фронта боеприпасы, медикаменты, продукты. Это автоматически приводит к тому, что обеим сторонам всё тяжелее содержать на линии фронта значительные силы. <strong>Поэтому просачивание этих двоек-троек стало возможным — потому что со стороны ВСУ на линии фронта стало намного меньше людей.</strong></p>
+          <p class="line"><strong>Там, где посылали раньше 10 групп по 10 человек, теперь посылают 10 групп по два человека.</strong> Именно потому, что их тяжело снабжать. А чтобы просачивание было эффективным, они должны долго вскрываться в разрушенных зданиях, подвалах, лесополосах, накапливаться постепенно, чтобы потом продвинуться дальше.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">05:37</span><span class="label">The kill zone is deepening — now up to 30 km</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">The defense is still solid, built on that same drone line, drone wall, kill zone — call it what you like. This kill zone is widening, or rather deepening: Ukrainian drones, like Russian ones, are penetrating ever further into the near rear — now up to 30 km, in places more.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Оборона по-прежнему крепка, основана на той самой линии дронов, стене дронов, килзоне — можно называть это как угодно. Эта самая килзона расширяется, точнее, углубляется: всё дальше и дальше украинские дроны, как и российские, проникают в ближний тыл — теперь уже до 30 км, местами больше.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">16:55</span><span class="label">The systematic version: "carved sectors," NPO Rubikon at Pokrovsk</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">In the capture of Pokrovsk, the Russian side ran a system led by NPO "Rubikon": <strong>sectors were carved out, and to each sector a sufficient number of reconnaissance and strike drones, plus artillery, was allotted</strong> — and this enabled not just infiltration but systematic strikes: to take Pokrovsk and then continue the advance further north.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">При взятии Покровска с российской стороны действовала система под руководством НПО «Рубикон»: <strong>были нарезаны секторы, на все эти секторы выделено достаточное количество разведывательных и ударных беспилотников, артиллерии</strong> — и это позволило не только просачивание, но и систематические удары: захватить Покровск и продолжить наступление дальше на север.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EP 2026-05-09 ===================== -->
+  <section class="ep" id="ep0509">
+    <h2>Russia's losses over four years of war</h2>
+    <div class="epmeta">9 May 2026 · <a href="https://youtu.be/0g1A0vRfu1k">youtu.be/0g1A0vRfu1k</a></div>
+
+    <div class="quote star">
+      <div class="qhead"><span class="ts">33:42</span><span class="starmark">★</span><span class="label">Assault group size: 10/7 → 2 people</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">The number of people operating inside the drone kill radius was, on both sides, basically falling. If in the winter of 2025 a standard assault — infiltration by a small group — meant a group of ten people, of seven people, then <strong>over the course of 2025 the size of that group steadily shrank, and by the second half of the year an assault group as a rule consisted of two people.</strong></p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Число людей, которые действуют в зоне поражения беспилотников, с обеих сторон в принципе снижалось. Если зимой 25-го года стандартный штурм в виде просачивания небольшой группы — эта группа состояла из десяти человек, семи человек, — то <strong>в течение всего 25-го года размер этой группы неуклонно снижался, и уже во второй половине года в штурмовой группе, как правило, действовало два человека.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote star">
+      <div class="qhead"><span class="ts">48:11</span><span class="starmark">★</span><span class="label">Drones hunt individual soldiers</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">A phase of the war with a kill zone — or a large grey zone — and high-precision munitions: <strong>drones hunt individual stormtroopers, or groups of two, rarely three people.</strong> This works in both directions. And here it no longer matters who is attacking and who is defending — it's a war of drone operators and a hunt for soldiers within UAV range.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Фаза войны с килзоной — или с большой серой зоной — и с большой точностью боеприпасов: <strong>дроны охотятся за отдельными штурмовиками или за группами из двух, редко трёх человек.</strong> Это всё в обе стороны работает. И тут нивелируется, кто наступает, кто обороняется — это война операторов дронов и охота на военнослужащих в зоне досягаемости БПЛА.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">41:00</span><span class="label">Adaptation: clear the field with drones first, then infiltrate</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">We see the Russian command trying to adapt to the Ukrainian tactic — reducing both the overall numbers and the size of the assault groups. Attempts to first clear the battlefield with drones, and only then quietly bring in those same stormtroopers, have them infiltrate, and so on.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Мы видим попытки адаптации к украинской тактике со стороны российского командования — уменьшение общей численности и размеров штурмовых групп. Попытки сначала зачистить поле боя с помощью дронов, а потом тайно заводить этих самых штурмовиков, просачиваться и так далее.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EP 2026-04-30 ===================== -->
+  <section class="ep" id="ep0430">
+    <h2>What will Russia's big summer offensive look like?</h2>
+    <div class="epmeta">30 Apr 2026 · <a href="https://youtu.be/VYNUUc0Q-KY">youtu.be/VYNUUc0Q-KY</a></div>
+
+    <div class="quote star">
+      <div class="qhead"><span class="ts">37:50 → 38:37</span><span class="starmark">★ ★</span><span class="label">Gamified kills: the "e-points" marketplace</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">There's a contradiction around KPIs — which are based on some object you need to destroy: equipment, infantry, command posts, artillery. If you tell all drone operators that hitting armored vehicles is best, they'll go looking for armored vehicles, flying free-hunt missions. <strong>And the AFU has a system, the so-called "e-points" system — that's not a swear word, apparently — an incentive scheme on an internal marketplace where you can obtain various weapons and equipment.</strong></p>
+          <p class="line"><strong>You earn these points for meeting KPIs: if you hit the most valuable thing, you get the most points, and you can then get a piece of equipment to rack up new points.</strong> This way you can effectively regulate the drone-operator units' work without even issuing strict orders. But it conflicts with the need to coordinate with other branches for combined-arms operations.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Есть противоречие между KPI, которая имеет свою основу — какой-то объект, который нужно поразить: технику, пехоту, штабы, артиллерию. Если ты скажешь всем операторам дронов, что лучше всего поражать бронетехнику, они будут выискивать бронетехнику, летать на свободную охоту. <strong>А есть в ВСУ система, так называемая система е-баллов — и это не мат, вроде бы, — а это система поощрения на внутреннем маркете, на котором можно получать разные системы вооружения и техники.</strong></p>
+          <p class="line"><strong>Эти баллы получаются за выполнение KPI: если ты поразил то, что наиболее ценное, получаешь больше всего баллов и можешь потом получить какую-то технику для набора новых этих самых баллов.</strong> Таким образом можно эффективно регулировать работу подразделений операторов беспилотников, даже не используя строгие приказы. Но это входит в противоречие с необходимостью взаимодействия с другими родами войск для общевойсковых операций.</p>
+        </div>
+      </div>
+      <div class="note">Kuznets puns on "система е-баллов" (e-points system), which to the ear sounds like an obscenity — hence "that's not a swear word, apparently." It refers to a real points-for-kills reward marketplace where operators trade scores for gear.</div>
+    </div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">12:06 → 12:53</span><span class="label">Knock out the enemy's drone operators — then rebuild the system every 10 km</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">An important target is precisely the enemy's drone operators. If you knock those operators out — or at least make them act warily, fearing they'll be hit — it makes combat easier. There are accounts, especially from the Ukrainian side, that near Kupyansk and on the Dnipropetrovsk–Zaporizhzhia border they temporarily put practically all the Russian drone operators out of action, which is what allowed successful counterattacks — an advance of 10 km. <strong>But the limitation is clear: you knock out the operators 10 km from the front and advance those 10 km — and after 10 km you find the enemy's new drone operators and have to rebuild the whole system from scratch. That takes not a day or a week, but several weeks.</strong></p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Важной целью являются как раз операторы дронов противника. Если выбиваешь этих операторов — или хотя бы заставляешь их действовать с оглядкой на поражение, — это упрощает ведение боевых действий. Есть рассказы, особенно с украинской стороны, что под Купянском и на границе Днепропетровской и Запорожской областей временно удалось вывести из строя практически всех российских операторов дронов, что и позволило провести результативные контратаки — продвинуться на 10 км. <strong>Но ограничение понятно: ты вышибаешь операторов в 10 км от линии фронта и продвигаешься на эти 10 км — а через 10 км находишь новых операторов противника и должен заново строить всю эту систему. Занимает это не день и не неделю, а несколько недель.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">07:17 → 08:05</span><span class="label">The recon-fire loop: drones spot, everything strikes, then infiltrate</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">We still see the same infiltration, these reconnaissance-fire loops — that is, drones detect targets, and strikes are delivered on them by every means: glide bombs, drones, artillery — and then they try to advance, to infiltrate, to cope with Ukrainian counter-infiltration. And the main problem: they try to cope with the drones, which now operate ever further from the front line, disrupting supply ever deeper inside the Russian formations.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Мы видим всё то же самое просачивание, эти самые разведывательно-огневые контуры — то есть когда дроны выявляют цели, по ним наносятся удары всеми средствами: и планирующими авиабомбами, и дронами, и артиллерией, — и потом пытаются продвинуться, просочиться, справиться с контрпросачиванием со стороны ВСУ. И самая главная проблема: пытаются справиться с дронами, которые теперь действуют всё дальше от линии фронта, нарушают снабжение всё глубже в боевых порядках российских войск.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <div class="qhead"><span class="ts">16:05</span><span class="label">Stormtroopers wait in basements for months, fed by drone</span></div>
+      <div class="cols">
+        <div class="en"><div class="colhead">English</div>
+          <p class="line">The stormtroopers who make it to those basements are harder to hit. <strong>They can sit there sometimes for months, get resupplied by drone, and never reveal themselves — and then, at the necessary moment (which happens all the time), they act.</strong> Cover is needed in the same way for the drone operators themselves.</p>
+        </div>
+        <div class="ru"><div class="colhead">Русский</div>
+          <p class="line">Штурмовиков, которые добираются до этих подвалов, тяжелее поразить. <strong>Они могут сидеть там иногда месяцами, получать снабжение дронами и никак не проявлять себя — а потом в нужный момент, что сплошь и рядом происходит, действуют.</strong> Точно так же требуется укрытие и для самих операторов дронов.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Russian lightly cleaned of stutters and filler (а / э / "вот" / repeats) for readability; wording and meaning unchanged. Timestamps from the cleaned transcripts (<code>2026*-transcript.txt</code>). English translation by Claude. Collection theme: logistics of the kill zone / small assault groups.
+  </footer>
+</div>
+</body>
+</html>
